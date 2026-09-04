@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@onready var camera: Camera3D = $SpringArmPivot/Camera3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -8,7 +9,6 @@ var mouse_sensitivity := 0.1
 var rotation_x := 0.0
 var rotation_y := 0.0
 
-@export var camera : Camera3D 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -26,7 +26,12 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	#var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
+	
+	direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
+	
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -36,13 +41,3 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func _unhandled_input(event: InputEvent) -> void: 
-	if event is InputEventMouseMotion:
-		rotation_y -= event.relative.x * mouse_sensitivity
-		rotation_x -= event.relative.y * mouse_sensitivity
-		
-		rotation_x = clamp(rotation_x,  -90, 90)
-		
-		rotation_degrees.y = rotation_y
-		camera.rotation_degrees.x = rotation_x
-		
