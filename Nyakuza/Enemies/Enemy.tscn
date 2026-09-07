@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwy2n7l7tlb2j"]
 
 [ext_resource type="Shader" uid="uid://dhn6gyywf4d53" path="res://shaders/stylized.gdshader" id="1_bkvnc"]
+[ext_resource type="PackedScene" uid="uid://ck88n7q231a12" path="res://Enemies/hurt_box.tscn" id="2_4isyn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_63jwf"]
 
@@ -41,3 +42,9 @@ shape = SubResource("CapsuleShape3D_63jwf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9415373, 0)
 mesh = SubResource("CapsuleMesh_cr77r")
 surface_material_override/0 = SubResource("ShaderMaterial_okq71")
+
+[node name="HurtBox" parent="." unique_id=1126366470 instance=ExtResource("2_4isyn")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBox" unique_id=1473843387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9455356, 0)
+shape = SubResource("CapsuleShape3D_63jwf")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ck88n7q231a12"]
+
+[ext_resource type="Script" uid="uid://bhh1t4hmmmisi" path="res://Enemies/hurt_box.gd" id="1_eaxyo"]
+[ext_resource type="PackedScene" uid="uid://bv8tieobfmi4h" path="res://Combat/DamageIndicator.tscn" id="2_yhwye"]
+
+[node name="HurtBox" type="Area3D" unique_id=1126366470]
+script = ExtResource("1_eaxyo")
+
+[node name="DamageIndicator" parent="." unique_id=1022323949 instance=ExtResource("2_yhwye")]

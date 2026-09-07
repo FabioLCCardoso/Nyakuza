@@ -58,6 +58,7 @@ func _set_animation(direction):
 	if Input.is_action_just_pressed("attack"):
 		isAttacking = true
 		animationPlayer.play("ComboAtk")
+		
 	elif velocity.x != 0 || velocity.y != 0:
 		animationPlayer.play("Walk")
 
