@@ -1,8 +1,35 @@
 [gd_scene format=3 uid="uid://dwy2n7l7tlb2j"]
 
+[ext_resource type="Shader" uid="uid://dhn6gyywf4d53" path="res://shaders/stylized.gdshader" id="1_bkvnc"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_63jwf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cr77r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okq71"]
+render_priority = 0
+shader = ExtResource("1_bkvnc")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_affect = 0.0
+shader_parameter/use_stepped = true
+shader_parameter/steps = 3.0
+shader_parameter/step_smoothness = 0.3
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+shader_parameter/use_rim = true
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/rim_amount = 2.0
+shader_parameter/rim_smoothness = 0.2
+shader_parameter/rim_mask_shadow = 1.0
+shader_parameter/rim_blend = 1.0
+shader_parameter/use_pattern = true
+shader_parameter/pattern_uv_mode = 2
+shader_parameter/pattern_tiling = 32.0
+shader_parameter/pattern_amount = 0.5
+shader_parameter/pattern_smoothness = 0.5
+shader_parameter/pattern_blend = 0.2
 
 [node name="Enemy" type="CharacterBody3D" unique_id=2066944336]
 
@@ -13,3 +40,4 @@ shape = SubResource("CapsuleShape3D_63jwf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=421816026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9415373, 0)
 mesh = SubResource("CapsuleMesh_cr77r")
+surface_material_override/0 = SubResource("ShaderMaterial_okq71")

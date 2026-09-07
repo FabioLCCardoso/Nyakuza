@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://88ulxlckmycn"]
+
+[ext_resource type="PackedScene" uid="uid://dr0tqahqdvy6s" path="res://PLACEHOLDERS/Animationplaceholder/catboxmeme/source/Gato.fbx" id="1_3fgl5"]
+
+[node name="Gato" unique_id=1362280921 instance=ExtResource("1_3fgl5")]
+
+[node name="Skeleton3D" parent="." index="0" unique_id=1453712639]
+bones/0/position = Vector3(7.669424e-05, 0.13022369, -0.002395329)
+bones/0/rotation = Quaternion(-9.4023716e-07, 1.5586953e-05, -0.00045456376, 1)
+bones/1/rotation = Quaternion(-0.0238984, -2.6446089e-05, 0.0004540614, 0.9997144)
+bones/7/rotation = Quaternion(0.52404416, 0.47974932, -0.49374646, 0.50143075)
+bones/8/rotation = Quaternion(-0.017309664, 0.033474464, -0.026663067, 0.9989339)
+bones/9/rotation = Quaternion(-1.4209681e-07, -0.0019357805, -3.163368e-07, 0.99999815)
+bones/11/rotation = Quaternion(0.49145502, -0.50334907, 0.52375895, 0.48040444)
+bones/12/rotation = Quaternion(-0.0054305126, 0.33451754, -0.031321347, 0.9418533)
+bones/13/rotation = Quaternion(-2.6364748e-07, 0.9616588, -4.845851e-08, 0.27424893)
+bones/15/rotation = Quaternion(0.005265437, 0.18452016, 0.98233306, -0.030764986)
+bones/16/rotation = Quaternion(-0.4100776, -0.07986907, -0.024398943, 0.90821916)
+bones/17/rotation = Quaternion(0.84044296, 0.032148376, -0.10910033, 0.5298295)
+bones/20/rotation = Quaternion(-0.005656603, 0.19691013, 0.9799249, 0.030688057)
+bones/21/rotation = Quaternion(-0.43046904, 0.07557724, 0.02341325, 0.89913094)
+bones/22/rotation = Quaternion(0.845994, -0.029663682, 0.107830234, 0.52133197)
