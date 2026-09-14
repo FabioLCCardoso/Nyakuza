@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MovementState" format=3 uid="uid://dqoc5ipi02pi6"]
+
+[ext_resource type="Script" uid="uid://b81aroyo1p86h" path="res://TesteRefatorado/Player/movement_state.gd" id="1_xcniv"]
+
+[resource]
+script = ExtResource("1_xcniv")
+id = 3
+movement_speed = 12.0
+acceleration = 4.0
+camera_fov = 85.0
+animation_speed = 1.5
+metadata/_custom_type_script = "uid://b81aroyo1p86h"

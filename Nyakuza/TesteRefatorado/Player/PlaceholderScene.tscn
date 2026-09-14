@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bovkjewqyu60t"]
+
+[ext_resource type="PackedScene" uid="uid://dyebh800i2wmt" path="res://Godot/UAL2_Standard.glb" id="1_8o6w3"]
+
+[node name="UAL2_Standard" unique_id=1142791096 instance=ExtResource("1_8o6w3")]

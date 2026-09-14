@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MovementState" format=3 uid="uid://cjx431h7nv1g2"]
+
+[ext_resource type="Script" uid="uid://b81aroyo1p86h" path="res://TesteRefatorado/Player/movement_state.gd" id="1_f4l82"]
+
+[resource]
+script = ExtResource("1_f4l82")
+metadata/_custom_type_script = "uid://b81aroyo1p86h"
