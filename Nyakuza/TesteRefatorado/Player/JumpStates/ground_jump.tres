@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="JumpState" format=3 uid="uid://r80urujxahf4"]
+
+[ext_resource type="Script" uid="uid://biywoltlovss8" path="res://TesteRefatorado/Scene/jump_state.gd" id="1_vjpt2"]
+
+[resource]
+script = ExtResource("1_vjpt2")
+animation_name = "ground_jump"
+jump_height = 3.0

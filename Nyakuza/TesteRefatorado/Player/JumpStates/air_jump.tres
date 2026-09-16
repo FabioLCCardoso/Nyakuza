@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="JumpState" format=3 uid="uid://by6lyv5p3qefo"]
+
+[ext_resource type="Script" uid="uid://biywoltlovss8" path="res://TesteRefatorado/Scene/jump_state.gd" id="1_rnqo5"]
+
+[resource]
+script = ExtResource("1_rnqo5")
+animation_name = "air_jump"
+jump_height = 2.5
+apex_duration = 0.4
