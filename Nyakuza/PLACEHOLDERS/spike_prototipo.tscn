@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bif2hgl673avr"]
+
+[ext_resource type="PackedScene" uid="uid://8v4rb4f6ygf6" path="res://PLACEHOLDERS/Spike/SpikePrototipo.glb" id="1_gfhim"]
+
+[node name="SpikePrototipo" unique_id=1937718141 instance=ExtResource("1_gfhim")]

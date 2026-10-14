@@ -1,6 +1,9 @@
 extends Node
+class_name CameraController
 
 signal set_cam_rotation(_cam_rotation : float) 
+
+@export var player : Player
 
 @onready var yaw_node = $CamYaw
 @onready var pitch_node = $CamYaw/CamPitch
@@ -39,8 +42,15 @@ func _physics_process(delta):
 	
 
 func _on_set_movement_state(_movement_state : MovementState) :
+	
+	if player.is_attacking: 
+		return
+		
+		set_fov(_movement_state.camera_fov)
+		
+func set_fov(value: float): 
 	if tween: 
 		tween.kill()
 		
 	tween = create_tween()
-	tween.tween_property(camera, "fov", _movement_state.camera_fov, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(camera, "fov", value, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
