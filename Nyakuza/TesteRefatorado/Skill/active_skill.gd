@@ -18,6 +18,13 @@ enum State {READY, WINDING_UP, DELIVERING, RECOVERING}
 @export_category("Camera")
 @export var camera_fov : float = 70
 
+@export_category("Combat")
+@export var damage : float = 10
+@export var knockback : float = 4
+@export var knockup : float = 0
+@export var stagger_duration : float = 0.5
+@export var hit_stop : float = 0.06
+
 @export_category("VFX")
 @export var vfx_delay : float = 0.1
 @export var vfx_duration : float = 0.3

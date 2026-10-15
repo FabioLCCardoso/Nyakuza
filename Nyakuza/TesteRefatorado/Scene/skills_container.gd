@@ -2,6 +2,9 @@ extends Node3D
 class_name SkillsContainer
 
 signal completed_recovery
+## avisam a hitbox quando a janela de dano abre/fecha.
+signal delivery_started(skill : ActiveSkill)
+signal delivery_ended
 
 @export var active_skills : Array[ActiveSkill]
 
@@ -50,6 +53,8 @@ func get_current_skill() -> ActiveSkill:
 	return active_skills[current_attack_id]
 	
 func start_attack(): 
+	if attack_state == ActiveSkill.State.DELIVERING:
+		delivery_ended.emit()
 	windup_timer.stop()
 	delivery_timer.stop()
 	recovery_timer.stop()
@@ -78,11 +83,13 @@ func deliver():
 	attack_state = ActiveSkill.State.DELIVERING
 	set_attack_buffer_timescale(1)
 	delivery_timer.start(current_active_skill.delivery_duration)
+	delivery_started.emit(current_active_skill)
 	
 func _on_delivery_timer_timeout(): 
 	recover()
 
 func recover(): 
+	delivery_ended.emit()
 	attack_state = ActiveSkill.State.RECOVERING
 	recovery_timer.start(current_active_skill.recovery_duration)
 	

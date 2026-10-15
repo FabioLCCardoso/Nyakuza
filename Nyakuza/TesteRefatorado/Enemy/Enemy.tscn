@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dp6aw5n6hhl4r"]
+
+[ext_resource type="Script" uid="uid://da38055f7ux6b" path="res://TesteRefatorado/Enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="PackedScene" uid="uid://dw26iy1hcbxxf" path="res://Godot/AnimationLibrary_Godot_Standard.glb" id="2_model"]
+[ext_resource type="Script" uid="uid://dxslbkjovmq0o" path="res://TesteRefatorado/Combat/hurt_box.gd" id="3_hurt"]
+[ext_resource type="Script" uid="uid://5mqhw4r2v7dp" path="res://TesteRefatorado/Combat/health_component.gd" id="4_health"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hurt"]
+height = 1.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_attack"]
+size = Vector3(1.3, 1.5, 1.3)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=456811351]
+script = ExtResource("1_enemy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=166751880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Model" parent="." unique_id=733092446 instance=ExtResource("2_model")]
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=720067938]
+script = ExtResource("3_hurt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=1737247280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("CapsuleShape3D_hurt")
+
+[node name="AttackHitBox" type="Area3D" parent="." unique_id=935252586]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitBox" unique_id=570673130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+shape = SubResource("BoxShape3D_attack")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1749040166]
+script = ExtResource("4_health")
