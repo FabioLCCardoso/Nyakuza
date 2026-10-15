@@ -24,11 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="17_miwgl"]
 [ext_resource type="Script" uid="uid://dvanpuw60xe4m" path="res://TesteRefatorado/Scene/active_skill_controller.gd" id="18_dglqg"]
 [ext_resource type="Script" uid="uid://bnk4f22k3ajl7" path="res://TesteRefatorado/Skill/active_skill.gd" id="19_22d3y"]
-[ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/Enemy.tscn" id="cmb_enemy"]
+[ext_resource type="PackedScene" uid="uid://dp6aw5n6hhl4r" path="res://TesteRefatorado/Enemy/Enemy.tscn" id="cmb_enemy"]
 [ext_resource type="Script" uid="uid://5mqhw4r2v7dp" path="res://TesteRefatorado/Combat/health_component.gd" id="cmb_health"]
 [ext_resource type="Script" uid="uid://d1kpp1kr34lhf" path="res://TesteRefatorado/Combat/combat_hud.gd" id="cmb_hud"]
 [ext_resource type="PackedScene" path="res://TesteRefatorado/Combat/hurt_box.tscn" id="cmb_hurtbox"]
 [ext_resource type="Script" uid="uid://gcr65c1w6mud" path="res://TesteRefatorado/Combat/player_combat.gd" id="cmb_pcombat"]
+[ext_resource type="Script" uid="uid://l4233j3oyd7n" path="res://TesteRefatorado/Scene/dash_controller.gd" id="dash_ctrl"]
 [ext_resource type="Environment" uid="uid://bdbfyah007wsl" path="res://TesteRefatorado/Environment/dusk_environment.tres" id="env_dusk"]
 [ext_resource type="Material" path="res://TesteRefatorado/Environment/ground_stone.tres" id="env_ground"]
 
@@ -228,7 +229,7 @@ blend_point_2/name = &"Running"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_xx1uk"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sccuy"]
-graph_offset = Vector2(367.97116, -46.99797)
+graph_offset = Vector2(66.85693, 10.04126)
 nodes/output/position = Vector2(1940, 60)
 nodes/movement_blend/node = SubResource("AnimationNodeBlendSpace1D_lkujy")
 nodes/movement_blend/position = Vector2(-120, 80)
@@ -319,38 +320,38 @@ shape = SubResource("CapsuleShape3D_cr77r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6167538, 0)
 
 [node name="Skeleton3D" parent="Player/MeshRoot/SpikePrototipo/target_character" parent_id_path=PackedInt32Array(1937718141, 1850045439) index="0" unique_id=439810079]
-bones/0/position = Vector3(0.0094713345, 0.84222203, -0.1014252)
-bones/0/rotation = Quaternion(-0.111092076, -0.18955986, 0.0010494037, 0.97556376)
-bones/1/rotation = Quaternion(0.07443912, 0.05578852, -0.0108804535, 0.9956044)
-bones/2/rotation = Quaternion(-0.012250169, 0.043562274, 0.02202387, 0.9987328)
-bones/3/rotation = Quaternion(-0.00028922013, 0.010273673, 0.010411059, 0.999893)
-bones/4/rotation = Quaternion(0.021992564, 0.07503048, 0.021250196, 0.9967122)
-bones/5/rotation = Quaternion(0.25576687, -0.016146353, -0.06469402, 0.9644363)
-bones/7/rotation = Quaternion(-3.734274e-08, 0.75217354, 0.65780354, -0.039109387)
-bones/8/rotation = Quaternion(-0.4886203, -0.44892198, -0.430089, 0.6121624)
-bones/9/rotation = Quaternion(-0.073726326, 0.7605047, -0.62441444, 0.1621843)
-bones/10/rotation = Quaternion(0.090891436, 0.13682939, 0.06476737, 0.98428744)
-bones/11/rotation = Quaternion(0.0681843, 0.053364452, -0.03476419, 0.99563783)
-bones/12/rotation = Quaternion(-2.454887e-07, 0.893532, -5.003617e-07, -0.44899955)
-bones/13/rotation = Quaternion(-0.48097926, 0.46445465, 0.4017435, 0.62573403)
-bones/14/rotation = Quaternion(-0.09890673, -0.64406496, 0.60281706, 0.4604447)
-bones/15/rotation = Quaternion(0.4016038, -0.120154805, -0.2813102, 0.863216)
-bones/16/rotation = Quaternion(-0.08087059, 0.042521775, 0.25706944, 0.9620641)
-bones/18/rotation = Quaternion(0.9551519, 0.15415737, -0.2506374, 0.0331863)
-bones/19/rotation = Quaternion(0.1844155, -0.058836456, 0.017076435, 0.9809371)
-bones/20/rotation = Quaternion(-0.5675148, 0.10899036, 0.03014078, 0.81556094)
-bones/21/rotation = Quaternion(0.017269736, 0.96293885, -0.23538369, 0.1305571)
-bones/22/rotation = Quaternion(-0.005437945, -0.19414815, 0.9220065, -0.33493423)
-bones/23/rotation = Quaternion(0.98210245, -0.1487493, 0.10284116, -0.05265036)
-bones/24/rotation = Quaternion(0.11386429, 0.059914067, -0.013819699, 0.9915918)
-bones/25/rotation = Quaternion(-0.60501885, -0.17274621, -0.022308143, 0.7769256)
-bones/26/rotation = Quaternion(-0.032397192, 0.94106036, -0.24256414, -0.23349208)
+bones/0/position = Vector3(0.031988636, 0.6996633, 0.0155450385)
+bones/0/rotation = Quaternion(0.07647351, -0.6027207, -0.04053311, 0.79324436)
+bones/1/rotation = Quaternion(0.24805689, -0.007827336, -0.018340526, 0.9685403)
+bones/2/rotation = Quaternion(0.07011532, -0.007271305, -0.01931597, 0.99732536)
+bones/3/rotation = Quaternion(-0.00028923887, 0.010273674, 0.010411059, 0.999893)
+bones/4/rotation = Quaternion(-0.15394172, 0.1838983, -0.032705206, 0.97026485)
+bones/5/rotation = Quaternion(0.02156486, 0.23146313, -0.13145907, 0.9636796)
+bones/7/rotation = Quaternion(-5.512656e-08, 0.75217354, 0.65780354, -0.039109357)
+bones/8/rotation = Quaternion(-0.44352445, -0.50933003, -0.52043957, 0.5225052)
+bones/9/rotation = Quaternion(-0.23608351, 0.49659976, -0.1994764, 0.81108725)
+bones/10/rotation = Quaternion(0.4162376, 0.12156007, 0.21750058, 0.87445015)
+bones/11/rotation = Quaternion(0.19911803, -0.27335712, 0.008700845, 0.9410379)
+bones/12/rotation = Quaternion(-2.5665253e-07, 0.893532, -5.3071926e-07, -0.44899955)
+bones/13/rotation = Quaternion(-0.47492987, 0.48583853, 0.5206364, 0.5170496)
+bones/14/rotation = Quaternion(-0.1174366, -0.7279866, 0.39729548, 0.5462604)
+bones/15/rotation = Quaternion(0.22204547, -0.133521, -0.112816304, 0.95923954)
+bones/16/rotation = Quaternion(0.16204041, 0.031207735, -0.15365914, 0.9742474)
+bones/18/rotation = Quaternion(0.75350916, 0.35828838, -0.3943475, 0.38515407)
+bones/19/rotation = Quaternion(0.45692015, -0.05292086, 0.035227954, 0.887233)
+bones/20/rotation = Quaternion(-0.5186576, 0.11538033, -0.025733324, 0.84677)
+bones/21/rotation = Quaternion(0.023550121, 0.95601374, -0.24339564, 0.16199295)
+bones/22/rotation = Quaternion(-0.0054380028, -0.1941481, 0.92200655, -0.33493418)
+bones/23/rotation = Quaternion(0.94418734, -0.12207404, 0.03185749, 0.30429152)
+bones/24/rotation = Quaternion(0.5000451, 0.05176835, -0.037853226, 0.86362153)
+bones/25/rotation = Quaternion(-0.6892222, -0.11617178, 0.0040489472, 0.71516466)
+bones/26/rotation = Quaternion(-0.044992913, 0.940388, -0.24000993, -0.23673056)
 
 [node name="Mesh_0" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D" index="0" unique_id=1922973331]
 material_overlay = SubResource("ShaderMaterial_hh05e")
 
 [node name="katana" type="BoneAttachment3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D" index="1" unique_id=1173296426]
-transform = Transform3D(-0.32290432, -0.20228997, -0.9245599, -0.67698735, -0.63329446, 0.37500122, -0.6613778, 0.74700516, 0.0675458, -0.32390496, 1.0878283, 0.10966449)
+transform = Transform3D(0.5236271, -0.5868053, -0.6176357, -0.12147139, -0.76898605, 0.62761796, -0.84324306, -0.25361285, -0.4739419, -0.33399147, 0.78962815, -0.29928404)
 bone_name = "mixamorig_RightHandMiddle4"
 bone_idx = 17
 
@@ -359,7 +360,7 @@ transform = Transform3D(0.3375262, -0.4637179, -0.8191721, -0.023656853, 0.86578
 mesh = SubResource("ArrayMesh_48lir")
 
 [node name="HitBox" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/antique_katana_01" unique_id=177115503 instance=ExtResource("14_ygfdl")]
-transform = Transform3D(1, 0, 0, 0, 1.504472, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.6727058, 0, 0, 0, 3.841875, 0, 0, 0)
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/antique_katana_01/HitBox" unique_id=577746487]
@@ -374,7 +375,7 @@ active_skills = [NodePath("ActiveSkill_1"), NodePath("ActiveSkill_2"), NodePath(
 script = ExtResource("19_22d3y")
 animation_name = &"Right_Hand_Sword_Slash"
 windup_duration = 0.1
-delivery_duration = 1.0
+delivery_duration = 0.8
 recovery_duration = 0.2
 knockback = 3.5
 stagger_duration = 0.45
@@ -382,22 +383,22 @@ vfx = NodePath("../GPUTrail3D")
 
 [node name="ActiveSkill_2" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1342802571 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
-animation_name = &"Attack"
+animation_name = &"Charged_Slash"
 windup_duration = 0.3
-delivery_duration = 1.0
+delivery_duration = 0.5
 recovery_duration = 0.2
 damage = 14.0
-knockback = 2.5
-knockup = 9.0
 stagger_duration = 0.6
 vfx = NodePath("../GPUTrail3D")
 
 [node name="ActiveSkill_3" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1662291546 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
 animation_name = &"Attack"
-windup_duration = 1.0
-delivery_duration = 1.0
+windup_duration = 0.4
+delivery_duration = 0.5
 recovery_duration = 0.5
+damage = 20.0
+knockup = 9.0
 vfx = NodePath("../GPUTrail3D")
 
 [node name="GPUTrail3D" type="GPUParticles3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1880832745]
@@ -406,7 +407,6 @@ amount = 100
 lifetime = 100.0
 explosiveness = 1.0
 fixed_fps = 164
-trail_enabled = true
 process_material = SubResource("ShaderMaterial_ygfdl")
 draw_pass_1 = SubResource("QuadMesh_0enyp")
 script = ExtResource("17_22d3y")
@@ -487,6 +487,9 @@ player = NodePath("..")
 health = NodePath("../HealthComponent")
 hurt_box = NodePath("../HurtBox")
 movement_controller = NodePath("../MovementController")
+
+[node name="DashController" type="Node" parent="Player" unique_id=1700000001]
+script = ExtResource("dash_ctrl")
 
 [node name="CombatHUD" type="CanvasLayer" parent="." unique_id=1491815324 node_paths=PackedStringArray("player_health", "player_combat")]
 script = ExtResource("cmb_hud")

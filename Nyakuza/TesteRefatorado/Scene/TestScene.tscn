@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="17_miwgl"]
 [ext_resource type="Script" uid="uid://dvanpuw60xe4m" path="res://TesteRefatorado/Scene/active_skill_controller.gd" id="18_dglqg"]
 [ext_resource type="Script" uid="uid://bnk4f22k3ajl7" path="res://TesteRefatorado/Skill/active_skill.gd" id="19_22d3y"]
+[ext_resource type="Script" path="res://TesteRefatorado/Scene/dash_controller.gd" id="dash_ctrl"]
 
 [sub_resource type="Environment" id="Environment_cr77r"]
 
@@ -374,7 +375,6 @@ amount = 100
 lifetime = 100.0
 explosiveness = 1.0
 fixed_fps = 164
-trail_enabled = true
 process_material = SubResource("ShaderMaterial_ygfdl")
 draw_pass_1 = SubResource("QuadMesh_0enyp")
 script = ExtResource("17_22d3y")
@@ -438,6 +438,9 @@ anim_tree = NodePath("../MeshRoot/AnimationTree")
 skills_container = NodePath("../MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer")
 movement_controller = NodePath("../MovementController")
 camera_controller = NodePath("../CamRoot")
+
+[node name="DashController" type="Node" parent="Player" unique_id=1700000001]
+script = ExtResource("dash_ctrl")
 
 [connection signal="pressed_jump" from="Player" to="Player/MovementController" method="_jump"]
 [connection signal="pressed_jump" from="Player" to="Player/AnimationController" method="_jump"]

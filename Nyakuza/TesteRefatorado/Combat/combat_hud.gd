@@ -32,7 +32,7 @@ func _process(delta):
 	enemy_timer -= delta
 	if enemy_timer <= 0.0:
 		enemy_timer = 0.2
-		enemies_label.text = "INIMIGOS  %d" % get_tree().get_nodes_in_group("enemies").size()
+		enemies_label.text = "INIMIGOS  %d " % get_tree().get_nodes_in_group("enemies").size()
 
 func _unhandled_key_input(event):
 	var e := event as InputEventKey
@@ -146,7 +146,7 @@ func _build_ui() -> void:
 
 	# Dicas de teclas (discretas)
 	var hint := Label.new()
-	hint.text = "F1 God mode    F2 Esconder HUD    R Reiniciar"
+	hint.text = "LMB - Attack, WASD - Movement, Mouse - Camera, Q - Evade"
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.modulate = Color(1, 1, 1, 0.45)
 	hint.anchor_left = 1.0

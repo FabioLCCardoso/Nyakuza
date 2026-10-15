@@ -16,6 +16,8 @@ var player_init_rotation : float
 var dash_timer: Timer
 var dash_velocity: Vector3
 var tween: Tween
+var dash_token: int = 0
+var evading: bool = false
 
 func _ready(): 
 	dash_timer = Timer.new()
@@ -25,6 +27,11 @@ func _ready():
 func _physics_process(delta):
 	velocity.x = speed * direction.normalized().x
 	velocity.z = speed * direction.normalized().z
+	
+	if evading and not is_dashing():
+		evading = false
+		player.velocity.x = velocity.x   # fim da esquiva: corta o deslize
+		player.velocity.z = velocity.z
 	
 	if is_dashing(): 
 		velocity.x = dash_velocity.x
@@ -81,10 +88,26 @@ func _on_set_cam_rotation(_cam_rotation: float):
 	
 func dash(_velocity: Vector3, duration: float, delay: float): 
 	force_rotate_mesh()
+	dash_token += 1
+	var token : int = dash_token
 	await get_tree().create_timer(delay).timeout
+	if token != dash_token:
+		return   # esse dash foi cancelado/trocado (outro golpe ou esquiva) durante o delay
+	evading = false
 	dash_timer.start(duration)
 	var rotation: float = atan2(direction.x, direction.z)
 	dash_velocity = _velocity.rotated(Vector3.UP, rotation)
+
+## Esquiva: impulso instantaneo e fixo, ignora input e o dash do golpe que estava pendente.
+func evade(_velocity: Vector3, duration: float):
+	dash_token += 1
+	if tween:
+		tween.kill()
+	dash_velocity = _velocity
+	evading = true
+	player.velocity.x = _velocity.x   # arranque instantaneo (so a aceleracao deixaria o dash mole)
+	player.velocity.z = _velocity.z
+	dash_timer.start(duration)
 
 func is_dashing(): 
 	return dash_timer.time_left > 0

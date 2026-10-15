@@ -26,7 +26,9 @@ enum State {READY, WINDING_UP, DELIVERING, RECOVERING}
 @export var hit_stop : float = 0.06
 
 @export_category("VFX")
+## espera (s) depois que o golpe comeca a andar ate o rastro ligar
 @export var vfx_delay : float = 0.1
+## tempo (s) que o rastro fica ligado
 @export var vfx_duration : float = 0.3
 @export var vfx : GPUTrail3D
 
@@ -34,6 +36,8 @@ func _ready():
 	load_vfx()
 	
 func load_vfx(): 
+	if vfx == null:
+		return
 	vfx.show()
 	await get_tree().process_frame
 	await get_tree().process_frame

@@ -37,13 +37,9 @@ func _ready():
 func _physics_process(delta):
 	invuln_left = maxf(invuln_left - delta, 0.0)
 
-# Filhos recebem _input ANTES do pai (Player), entao isso roda antes do Player emitir pressed_primary_fire.
-func _input(event):
-	if event.is_action_pressed("primary_fire"):
-		_aim_assist()
-
-func _aim_assist() -> void:
-	if aim_assist_range <= 0.0 or movement_controller == null or health.is_dead or player.is_attacking:
+## Chamado pelo ActiveSkillController no inicio de CADA golpe do combo.
+func aim_assist() -> void:
+	if aim_assist_range <= 0.0 or movement_controller == null or health.is_dead:
 		return
 	var facing : Vector3 = movement_controller.mesh_root.global_transform.basis.z
 	facing.y = 0.0
