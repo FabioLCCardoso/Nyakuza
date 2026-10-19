@@ -1,0 +1,4847 @@
+{
+	"attackers": {
+		"max": 2.0,
+		"mean": 1.815,
+		"p95": 2.0
+	},
+	"draw_calls": {
+		"max": 0.0,
+		"mean": 0.0,
+		"p95": 0.0
+	},
+	"enemy_count": 64,
+	"engine": "4.7-stable (official)",
+	"headless": true,
+	"measurement_note": "Performance monitors may update at roughly 1 second intervals; sample percentiles are not per-frame CPU percentiles. Run capped at 60 FPS without --fixed-fps for measurements.",
+	"memory_mib": {
+		"max": 138.704854011536,
+		"mean": 137.962342923482,
+		"p95": 138.640400886536
+	},
+	"nodes": {
+		"max": 1040.0,
+		"mean": 1038.905,
+		"p95": 1040.0
+	},
+	"physics_ms": {
+		"max": 47.977,
+		"mean": 13.12311,
+		"p95": 47.977
+	},
+	"process_ms": {
+		"max": 17.661,
+		"mean": 5.88193333333332,
+		"p95": 17.661
+	},
+	"sample_frames": 600,
+	"samples": [
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.42906665802,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.405018806458,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.42715549469,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.429257392883,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.431038856506,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.438145637512,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.443818092346,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.440159797668,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.447243690491,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.448857307434,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.430348396301,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.452019691467,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.450474739075,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.456627845764,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.458706855774,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.455780982971,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.45779132843,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.469880104065,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.472249031067,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.484543800354,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.481289863586,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.488305091858,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.490178108215,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.487542152405,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.499562263489,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.501572608948,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.502911567688,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.504921913147,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.507496833801,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.50341129303,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.478489875793,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.497422218323,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.509442329407,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.511452674866,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.508458137512,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.516671180725,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.518612861633,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.520623207092,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.522633552551,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.52464389801,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.526654243469,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.528664588928,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.52615070343,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.533165931702,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.529995918274,
+			"nodes": 1039.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.528389930725,
+			"nodes": 1038.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.495015144348,
+			"nodes": 1038.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.528962135315,
+			"nodes": 1038.0,
+			"physics_ms": 10.426,
+			"process_ms": 7.52
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.525967597961,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.533341407776,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 136.54071521759,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 136.545914649963,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.561726570129,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.533707618713,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.535717964172,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.527718544006,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.524724006653,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.521370887756,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.528386116028,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.524735450745,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.529355049133,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.540642738342,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.53281879425,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.540070533752,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.532071113586,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.538575172424,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.550786018372,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.553009986877,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.559910774231,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.556916236877,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.558926582336,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.571068763733,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.568181037903,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.560181617737,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.536831855774,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.546509742737,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.575489997864,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.577500343323,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.569500923157,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.576584815979,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.578701972961,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.58535861969,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.587010383606,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.589020729065,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.59858417511,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.594857215881,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.601872444153,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.603882789612,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.605580329895,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.602585792542,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.614964485168,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.616974830627,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.619359016418,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.626732826233,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.629818916321,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.621819496155,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.628834724426,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.630486488342,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.632496833801,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.639512062073,
+			"nodes": 1039.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.633648872375,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.632210731506,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.634221076965,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.631226539612,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.643246650696,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.640252113342,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.642262458801,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.648858070374,
+			"nodes": 1038.0,
+			"physics_ms": 12.001,
+			"process_ms": 2.726
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.618954658508,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.647896766663,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.649907112122,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.653115272522,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.655125617981,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.65713596344,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.659146308899,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.661156654358,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.662991523743,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.665001869202,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.667012214661,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.66902256012,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.671032905579,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.673043251038,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.675053596497,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.677063941956,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.679425239563,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.681435585022,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.683445930481,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.692811012268,
+			"nodes": 1038.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.713612556458,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.682579994202,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.66978931427,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.671082496643,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.682255744934,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.695115089417,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.687481880188,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.694603919983,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.700932502747,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.687355995178,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.699963569641,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.692231178284,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.69794178009,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.694947242737,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.696599006653,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.697991371155,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.710370063782,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.712250709534,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.699353218079,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.721383094788,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.713582038879,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.725960731506,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.705677986145,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.702683448792,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.726620674133,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.72362613678,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.735646247864,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.742661476135,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.749814033508,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.746819496155,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.760396003723,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.767411231995,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.768750190735,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.770760536194,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.783139228821,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.775139808655,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.782452583313,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.779564857483,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.781697273254,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.788819313049,
+			"nodes": 1039.0,
+			"physics_ms": 9.289,
+			"process_ms": 9.747
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.790829658508,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.792840003967,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.794850349426,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.791855812073,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.798718452454,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.800728797913,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.804730415344,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.815094947815,
+			"nodes": 1040.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.79438495636,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.787941932678,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.789952278137,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.796967506409,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.789189338684,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.796090126038,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.797383308411,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.792550086975,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.804196357727,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.806206703186,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.798398017883,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.805413246155,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.816899299622,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.82355594635,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.815556526184,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.817307472229,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.792386054993,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.821328163147,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.82954120636,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.831551551819,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.833584785461,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.798233985901,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.795239448547,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.83454990387,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.836560249329,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.838570594788,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.845585823059,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.847596168518,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.839726448059,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.851746559143,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.854954719543,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.861298561096,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.862950325012,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.864960670471,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.861966133118,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.871506690979,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.873623847961,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.880997657776,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.88837146759,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.890381813049,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.897755622864,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.901757240295,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.917103767395,
+			"nodes": 1040.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.879433631897,
+			"nodes": 1040.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.886807441711,
+			"nodes": 1040.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.883812904358,
+			"nodes": 1040.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.895474433899,
+			"nodes": 1040.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.874360084534,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.877568244934,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.854554176331,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.881573677063,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.871071815491,
+			"nodes": 1039.0,
+			"physics_ms": 12.903,
+			"process_ms": 3.653
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.877720832825,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.87450504303,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.886738777161,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.883263587952,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.885396003723,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.887719154358,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.894841194153,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.887001991272,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.91450214386,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.911507606506,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.913517951965,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.910164833069,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.927189826965,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.924195289612,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.931210517883,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.938294410706,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.93029499054,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.937310218811,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.944684028625,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.946694374084,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.943699836731,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.94571018219,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.946629524231,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.91169834137,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.940312385559,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.947327613831,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.944333076477,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.946343421936,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 137.943348884583,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.956566810608,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.963582038879,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.965592384338,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.969075202942,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.975312232971,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.97732257843,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.979332923889,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.976338386536,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.98835849762,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.982480049133,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.981041908264,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.983143806458,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.985154151917,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.987164497375,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.994042396545,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.996052742004,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.998063087463,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.999402046204,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.001412391663,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.003308296204,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.005318641663,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.007328987122,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.009339332581,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.013340950012,
+			"nodes": 1038.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.028779029846,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.985745429993,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.992760658264,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.978863716125,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.980515480042,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.992588996887,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.974701881409,
+			"nodes": 1039.0,
+			"physics_ms": 6.538,
+			"process_ms": 3.257
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.991902351379,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.998803138733,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.999333381653,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.010537147522,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.013173103333,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.015587806702,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 137.996907234192,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.029267311096,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.02126789093,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.003258705139,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.01492023468,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.031945228577,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.028859138489,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.036339759827,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.033345222473,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.050728797913,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.052876472473,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.019921302795,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.05723285675,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.064606666565,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.061657905579,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.073678016663,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.080693244934,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.072693824768,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.07970905304,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.075623512268,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.051060676575,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.074997901917,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.080761909485,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.082772254944,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.080975532532,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.082985877991,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.095005989075,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.097016334534,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.088597297668,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.063729286194,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.087071418762,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.099091529846,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.101101875305,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.097748756409,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.096562385559,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.09512424469,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.102139472961,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.100998878479,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.103009223938,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.110383033752,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.112393379211,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.11440372467,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.111607551575,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.113617897034,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.120991706848,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.128083229065,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.132084846497,
+			"nodes": 1038.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.147522926331,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.094479560852,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.096489906311,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.09198474884,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.114373207092,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.111737251282,
+			"nodes": 1039.0,
+			"physics_ms": 15.169,
+			"process_ms": 3.295
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.123284339905,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.115284919739,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.127442359924,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.137623786926,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.133339881897,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.119976997375,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.147011756897,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.123326301575,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.140351295471,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.132351875305,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.149376869202,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.151440620422,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.148446083069,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.165608406067,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.157822608948,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.159955024719,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.167206764221,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.174221992493,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.186242103577,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.183247566223,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.175248146057,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.197636604309,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.184632301331,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.196652412415,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.193818092346,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.206196784973,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.175179481506,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.182194709778,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.20613193512,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.208142280579,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.205147743225,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.212162971497,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.214524269104,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.216534614563,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.213540077209,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.225918769836,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.234490394592,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.236142158508,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.244790077209,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.240658760071,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.247475624084,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.249485969543,
+			"nodes": 1039.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.238289833069,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.241978645325,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.244095802307,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.246106147766,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.248116493225,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.250126838684,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.251748085022,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.253621101379,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.255631446838,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.257641792297,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.264344215393,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.266354560852,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.268364906311,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.27037525177,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.272957801819,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.274968147278,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.276978492737,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.280980110168,
+			"nodes": 1038.0,
+			"physics_ms": 47.977,
+			"process_ms": 3.898
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.301781654358,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.219067573547,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.221077919006,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.222729682922,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.239708900452,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.22634601593,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.233002662659,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.230145454407,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.252175331116,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.257252693176,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.248948097229,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.251439094543,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.272980690002,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.274067878723,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.25105381012,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.283093452454,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.29026889801,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.282269477844,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.289643287659,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.29665851593,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.279007911682,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.306042671204,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.308465003967,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.315480232239,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.32249546051,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.329510688782,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.321511268616,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.328526496887,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.320061683655,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.337155342102,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.339272499084,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.331273078918,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.332375526428,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.297444343567,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.341401100159,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.34841632843,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.345017433167,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.342022895813,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.350235939026,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.352246284485,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.348832130432,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.323910713196,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.35285282135,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.354863166809,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.357338905334,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.364712715149,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.366723060608,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.368733406067,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.36790561676,
+			"nodes": 1038.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.366467475891,
+			"nodes": 1038.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.373841285706,
+			"nodes": 1038.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.38121509552,
+			"nodes": 1038.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.383202552795,
+			"nodes": 1038.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.385212898254,
+			"nodes": 1038.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.390412330627,
+			"nodes": 1038.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.405850410461,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.332970619202,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.349995613098,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.346642494202,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.343289375305,
+			"nodes": 1039.0,
+			"physics_ms": 5.718,
+			"process_ms": 3.648
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.339715003967,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.346730232239,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.368760108948,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.33890247345,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.370392799377,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.3575258255,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.364541053772,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.386631965637,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.378258705139,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.370526313782,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.392556190491,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.404576301575,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.406586647034,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.398587226868,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.400780677795,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.397786140442,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.419861793518,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.406163215637,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.382012367249,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.430974006653,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.432984352112,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.439999580383,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.426995277405,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.434010505676,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.436867713928,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.438878059387,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.440888404846,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.504590034485,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.506958961487,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.513974189758,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.52098941803,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.517323493958,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.52986240387,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.536877632141,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.533883094788,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.540898323059,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.542908668518,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.544919013977,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.546929359436,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.543934822083,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.545701026917,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.547711372375,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.549721717834,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.543530464172,
+			"nodes": 1038.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.542092323303,
+			"nodes": 1038.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.549466133118,
+			"nodes": 1038.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.551476478577,
+			"nodes": 1038.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.555478096008,
+			"nodes": 1038.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.576127052307,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.508069038391,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.514664649963,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.484738349915,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.518326759338,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.510327339172,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.522347450256,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.535565376282,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.547646522522,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.532803535461,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.539086341858,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.546284675598,
+			"nodes": 1039.0,
+			"physics_ms": 5.564,
+			"process_ms": 3.644
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.543427467346,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.554417610168,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.566437721252,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.563443183899,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.565636634827,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.567646980286,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.584855079651,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.56684589386,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.593880653381,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.590886116028,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.587891578674,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.595265388489,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.597428321838,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.60444355011,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.601449012756,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.61346912384,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.620484352112,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.622853279114,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.63240146637,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.658581733704,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.584229469299,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.544293403625,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.588074684143,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.594716072083,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.58894443512,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.581082344055,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.608170509338,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.589924812317,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.611680030823,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.60875415802,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.620896339417,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.617817878723,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.624344825745,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.626538276672,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.628548622131,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.63055896759,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.62458896637,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.628155708313,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.640175819397,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.637181282043,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.63418674469,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.636197090149,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.64321231842,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.640400886536,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.647355079651,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.654728889465,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.656792640686,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.663807868958,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.665818214417,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.673192024231,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.675560951233,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 1,
+			"draw_calls": 0.0,
+			"memory_mib": 138.676480293274,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.652710914612,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.683381080627,
+			"nodes": 1039.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.693459510803,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.640957832336,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.632599830627,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.639615058899,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.651619911194,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.646344184875,
+			"nodes": 1040.0,
+			"physics_ms": 4.951,
+			"process_ms": 17.661
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.648201942444,
+			"nodes": 1040.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.660290718079,
+			"nodes": 1040.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.652703285217,
+			"nodes": 1040.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.674862861633,
+			"nodes": 1040.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.682061195374,
+			"nodes": 1040.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.68923664093,
+			"nodes": 1040.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.691246986389,
+			"nodes": 1040.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.674832344055,
+			"nodes": 1039.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.683510780334,
+			"nodes": 1039.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.690663337708,
+			"nodes": 1039.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.697838783264,
+			"nodes": 1039.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.704854011536,
+			"nodes": 1039.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		},
+		{
+			"attackers": 2,
+			"draw_calls": 0.0,
+			"memory_mib": 138.702218055725,
+			"nodes": 1039.0,
+			"physics_ms": 13.999,
+			"process_ms": 6.135
+		}
+	],
+	"scenario": "stationary invincible player, mixed enemy AI, no player attacks",
+	"seed": 1977,
+	"spawn_ms": {
+		"max": 4.97,
+		"mean": 1.2666875,
+		"p95": 3.216
+	},
+	"warmup_frames": 180
+}

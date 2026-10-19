@@ -8,6 +8,11 @@ signal delivery_ended
 
 ## Os golpes do combo, em ordem (golpe 1, 2, 3...). Pra aumentar o combo basta adicionar mais ActiveSkills aqui.
 @export var active_skills : Array[ActiveSkill]
+## Os golpes do COMBO AEREO, em ordem. Usados no lugar de active_skills enquanto o player esta no ar com os inimigos
+## (ver AirComboController). O ultimo costuma ter slam = true (finisher que derruba o inimigo).
+@export var air_skills : Array[ActiveSkill]
+@export var heavy_ground_skill: ActiveSkill
+@export var heavy_air_skill: ActiveSkill
 
 @export_category("Combo")
 ## Tempo (s), depois que o golpe acaba, pra apertar de novo e continuar o combo. Passou disso, volta pro golpe 1.
@@ -30,6 +35,8 @@ var combo_timer : Timer = Timer.new()
 var vfx_token : int = 0
 
 var attack_state : ActiveSkill.State = ActiveSkill.State.READY
+## true = o proximo golpe vem de air_skills (ligado pelo AirComboController)
+var air_mode : bool = false
 
 func _ready(): 
 	windup_timer.timeout.connect(_on_windup_timer_timeout)
@@ -39,7 +46,8 @@ func _ready():
 	combo_timer.timeout.connect(_on_combo_timer_timeout)
 	windup_timer.one_shot = true
 	delivery_timer.one_shot = true
-	recovery_timer.one_shot = true 
+	recovery_timer.one_shot = true
+	end_timer.one_shot = true 
 	combo_timer.one_shot = true
 	add_child(windup_timer)
 	add_child(delivery_timer)
@@ -52,7 +60,18 @@ func switch_attack_buffer(attack_anim_name : StringName):
 	attack_buffer = anim_tree.tree_root.get("nodes/attack_buffer_" + str(attack_buffer_id) + "/node")
 	attack_anim_node = attack_buffer.get_node("Animation")
 	attack_anim_node.animation = attack_anim_name
+	_apply_animation_trim(current_active_skill.animation_start_offset)
 	
+## Faz a animacao do buffer atual comecar em 'offset' segundos (0 = comeco normal).
+## IMPORTANTE: sempre reseta, senao um offset antigo vazaria para o proximo golpe que usar esse buffer.
+func _apply_animation_trim(offset : float):
+	attack_anim_node.use_custom_timeline = offset > 0.0
+	if offset > 0.0:
+		var ap := anim_tree.get_node(anim_tree.anim_player) as AnimationPlayer
+		var length : float = ap.get_animation(attack_anim_node.animation).length
+		attack_anim_node.start_offset = offset
+		attack_anim_node.timeline_length = maxf(length - offset, 0.05)
+
 func set_attack_buffer_timescale(value : float): 
 	anim_tree["parameters/attack_buffer_" + str(attack_buffer_id) + "/TimeScale/scale"] = value
 	
@@ -60,8 +79,24 @@ func set_attack_transition(value: String):
 	anim_tree["parameters/attack_transition/transition_request"] = value
 	
 ## Skill que vai tocar no PROXIMO start_attack() (o indice ja aponta pro proximo golpe do combo).
-func get_current_skill() -> ActiveSkill: 
-	return active_skills[current_attack_id]
+func get_current_skill(heavy: bool = false) -> ActiveSkill:
+	if heavy:
+		return heavy_air_skill if air_mode else heavy_ground_skill
+	return skills()[current_attack_id] if not skills().is_empty() else null
+
+## Lista de golpes em uso agora (chao ou ar).
+func skills() -> Array[ActiveSkill]:
+	if air_mode and not air_skills.is_empty():
+		return air_skills
+	return active_skills
+
+## Troca entre combo de chao e combo aereo (sempre recomeca do golpe 1).
+func set_air_mode(value : bool):
+	if air_mode == value:
+		return
+	air_mode = value
+	current_attack_id = 0
+	combo_timer.stop()
 
 func _stop_timers():
 	if attack_state == ActiveSkill.State.DELIVERING:
@@ -73,14 +108,16 @@ func _stop_timers():
 	combo_timer.stop()
 	stop_vfx()
 	
-func start_attack(): 
+func start_attack(heavy: bool = false): 
 	_stop_timers()
 	
-	current_active_skill = active_skills[current_attack_id]
+	current_active_skill = get_current_skill(heavy)
+	if current_active_skill == null:
+		return
 	switch_attack_buffer(current_active_skill.animation_name)
 	
 	## COMBO: o proximo clique toca o proximo golpe; depois do ultimo volta pro primeiro.
-	current_attack_id = (current_attack_id + 1) % active_skills.size()
+	current_attack_id = 0 if heavy else (current_attack_id + 1) % skills().size()
 	windup()
 
 ## Interrompe o golpe na hora (usado pelo dash). Por padrao zera o combo.
@@ -97,15 +134,15 @@ func windup():
 	attack_transition_node.xfade_time = current_active_skill.windup_duration
 	set_attack_transition("attack_buffer_" + str(attack_buffer_id))
 	set_attack_buffer_timescale(0)
-	windup_timer.start(current_active_skill.windup_duration)
+	windup_timer.start(maxf(current_active_skill.windup_duration, 0.001))
 
 func _on_windup_timer_timeout(): 
 	deliver()
 	
 func deliver(): 
 	attack_state = ActiveSkill.State.DELIVERING
-	set_attack_buffer_timescale(1)
-	delivery_timer.start(current_active_skill.delivery_duration)
+	set_attack_buffer_timescale(current_active_skill.playback_speed)
+	delivery_timer.start(maxf(current_active_skill.delivery_duration, 0.001))
 	delivery_started.emit(current_active_skill)
 	play_vfx(current_active_skill)
 	
@@ -115,13 +152,13 @@ func _on_delivery_timer_timeout():
 func recover(): 
 	delivery_ended.emit()
 	attack_state = ActiveSkill.State.RECOVERING
-	recovery_timer.start(current_active_skill.recovery_duration)
+	recovery_timer.start(maxf(current_active_skill.recovery_duration, 0.001))
 	
 func _on_recovery_timer_timeout(): 
 	attack_state = ActiveSkill.State.READY
-	completed_recovery.emit()
 	end_timer.start(0.05)
-	combo_timer.start(combo_window)
+	combo_timer.start(maxf(combo_window, 0.01))
+	completed_recovery.emit()
 
 func _on_end_timer_timeout():  
 	set_attack_transition("end_attack")
@@ -151,9 +188,28 @@ func play_vfx(skill : ActiveSkill):
 	
 func stop_vfx(): 
 	vfx_token += 1
-	for skill in active_skills:
-		if skill.vfx != null:
+	for skill in active_skills + air_skills + [heavy_ground_skill, heavy_air_skill]:
+		if skill != null and skill.vfx != null:
 			skill.vfx.hide()
+
+## Congela um FRAME de uma animacao existente como pose (usado pela guarda e pela subida do combo aereo).
+## Usa os mesmos buffers do ataque, entao so funciona fora de um golpe (cancel_attack antes).
+func hold_pose(anim_name : StringName, at_time : float, blend : float = 0.08):
+	end_timer.stop()
+	attack_buffer_id = 1 - attack_buffer_id
+	attack_buffer = anim_tree.tree_root.get("nodes/attack_buffer_" + str(attack_buffer_id) + "/node")
+	attack_anim_node = attack_buffer.get_node("Animation")
+	attack_anim_node.animation = anim_name
+	_apply_animation_trim(at_time)
+	attack_transition_node.xfade_time = blend
+	set_attack_transition("attack_buffer_" + str(attack_buffer_id))
+	set_attack_buffer_timescale(0)
+
+## Solta a pose congelada e volta pra locomocao.
+func release_pose(blend : float = 0.15):
+	end_timer.stop()
+	attack_transition_node.xfade_time = blend
+	set_attack_transition("end_attack")
 
 func setup(_anim_tree : AnimationTree):
 	anim_tree = _anim_tree

@@ -25,17 +25,23 @@ signal player_died
 @export var god_mode : bool = false
 
 var invuln_left : float = 0.0
+var guard : GuardController
 
 func _ready():
 	if player == null:
 		player = get_parent() as Player
 	player.add_to_group("player")   # os inimigos procuram o player por esse grupo
+	guard = player.find_child("GuardController", false, false) as GuardController
 	health.invincible = god_mode
 	hurt_box.hit_received.connect(_on_hit_received)
 	health.died.connect(_on_died)
 
 func _physics_process(delta):
 	invuln_left = maxf(invuln_left - delta, 0.0)
+
+## Ativa invulnerabilidade por 'seconds' (so aumenta, nunca diminui).
+func grant_invulnerability(seconds : float) -> void:
+	invuln_left = maxf(invuln_left, seconds)
 
 ## Chamado pelo ActiveSkillController no inicio de CADA golpe do combo.
 func aim_assist() -> void:
@@ -65,6 +71,19 @@ func aim_assist() -> void:
 func _on_hit_received(hit : HitData) -> void:
 	if health.is_dead or invuln_left > 0.0:
 		return
+	# DEFESA: a guarda decide se o golpe foi bloqueado, "perfeito" ou se passa inteiro
+	if guard != null:
+		var result := guard.evaluate_hit(hit)
+		if result == GuardController.Result.PERFECT:
+			guard.on_perfect(hit)
+			invuln_left = 0.3
+			return
+		elif result == GuardController.Result.BLOCKED:
+			guard.on_block(hit)
+			health.take_damage(hit.damage * (1.0 - guard.damage_reduction))   # dano que "vaza" pela guarda
+			invuln_left = 0.25
+			player.velocity += hit.direction * hit.knockback * guard.knockback_scale
+			return
 	health.take_damage(hit.damage)
 	invuln_left = invulnerability_time
 	player.velocity += hit.direction * hit.knockback * hurt_knockback_scale
@@ -72,6 +91,13 @@ func _on_hit_received(hit : HitData) -> void:
 	player_hit.emit(hit)
 
 func _on_died() -> void:
+	var skill_controller := player.get_node_or_null("ActiveSkillController") as ActiveSkillController
+	if skill_controller != null:
+		skill_controller.cancel_attack()
+		skill_controller.set_physics_process(false)
+	if guard != null:
+		guard.interrupt()
+	hurt_box.can_receive_hits = false
 	player.remove_from_group("player")   # inimigos perdem o alvo e voltam a ficar parados
 	player.set_process_input(false)
 	player.set_physics_process(false)

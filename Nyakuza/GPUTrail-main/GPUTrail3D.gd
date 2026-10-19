@@ -76,7 +76,7 @@ const _DEFAULT_TEXTURE = "defaults/texture.tres"
 const _DEFAULT_CURVE = "defaults/curve.tres"
 
 var _defaults_have_been_set = false
-func _get_property_list():
+func _get_property_list() -> Array[Dictionary]:
 	return [{"name": "_defaults_have_been_set","type": TYPE_BOOL,"usage": PROPERTY_USAGE_NO_EDITOR}]
 
 func _ready():

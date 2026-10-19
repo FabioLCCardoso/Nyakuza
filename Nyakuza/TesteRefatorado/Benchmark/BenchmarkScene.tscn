@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dde7b5c8vq35k"]
+
+[ext_resource type="Script" uid="uid://damms7wxq5lmu" path="res://TesteRefatorado/Benchmark/benchmark_scene.gd" id="1"]
+
+[node name="Benchmark" type="Node3D" unique_id=33721749]
+script = ExtResource("1")

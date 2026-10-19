@@ -7,6 +7,8 @@ static func spawn(tree : SceneTree, world_pos : Vector3, text : String, color : 
 	if scene == null:
 		return
 
+	if tree.get_node_count_in_group("damage_popups") >= 48:
+		return
 	var label := Label3D.new()
 	label.text = text
 	label.font_size = 64
@@ -19,6 +21,7 @@ static func spawn(tree : SceneTree, world_pos : Vector3, text : String, color : 
 	label.render_priority = 10
 	label.outline_render_priority = 9
 	scene.add_child(label)
+	label.add_to_group("damage_popups")
 
 	var start := world_pos + Vector3(randf_range(-0.3, 0.3), 0.0, randf_range(-0.3, 0.3))
 	label.global_position = start

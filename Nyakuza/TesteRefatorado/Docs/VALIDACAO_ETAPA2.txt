@@ -1,0 +1,77 @@
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Cena principal carrega
+PASS: Limite de 3 vivos preserva fila da primeira onda
+PASS: Morte repetida gera exatamente um KO
+PASS: Cadaver deixa de receber acertos imediatamente
+PASS: Spawner repoe uma vaga enquanto ainda ha fila
+PASS: Remocao sem morte nao concede KO
+PASS: Pontos bloqueados mantem inimigos pendentes
+PASS: Quatro ondas chegam a vitoria
+PASS: 62 inimigos: 61 KOs + 1 removido sem KO
+PASS: Nenhuma onda ultrapassa o limite configurado
+PASS: Vitoria apenas com fila e vivos vazios
+PASS: Panda resistente com stagger reduzido
+PASS: Raposa rapida aplica perfil
+PASS: Pinguim tem AOE e indicador
+PASS: AOE avisa durante preparacao
+PASS: Golpe interrompe AOE e aviso
+PASS: Launcher funciona no tank
+PASS: Dash encontra e segue alvo lancado
+PASS: Subida alcanca hover
+PASS: Combo aereo troca skills e suspende jogador
+PASS: Finisher ativa slam
+PASS: Slam chega ao chao e conclui impacto
+PASS: Fim aereo devolve gravidade e combo de chao
+PASS: Guarda cancela hitbox e dash atrasado do golpe
+PASS: Temporizador de fim do combo nao repete
+PASS: Volume real aplica um dano por swing, sem duplicar lamina e alcance
+PASS: Cancelamento fecha a janela de dano
+PASS: AOE do pinguim causa dano dentro do raio
+PASS: Invulnerabilidade protege de hits simultaneos
+PASS: AOE nao atinge jogador em outra altura
+PASS: Perfect guard anula dano e atordoa atacante
+PASS: Hit-stop prevalece sobre slow-motion do parry
+PASS: Fim do hit-stop preserva parry ainda ativo
+PASS: Morte interrompe ondas
+PASS: Morte cancela ataque e movimento
+PASS: Morte nao deixa movimento aereo travado
+PASS: Encerramento restaura time_scale
+RESULT: 37 checks, 0 failures
+
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Acoes pesado/guarda persistem no Input Map
+PASS: RMB nao ativa guarda junto com pesado
+PASS: F mapeado para guarda
+PASS: Pesado tem launcher e slam dedicados
+PASS: Leve final nao duplica funcao do launcher
+PASS: Janela de dano valida: ActiveSkill_1
+PASS: Janela de dano valida: ActiveSkill_2
+PASS: Janela de dano valida: ActiveSkill_3
+PASS: Combo terrestre menor que 1.5s sem hit-stop
+PASS: Input RMB dispara HeavyLauncher
+PASS: Hitbox real do pesado causa dano e lanca
+PASS: Q pode seguir o launcher dedicado
+PASS: Hover ativa camera aerea
+PASS: Camera afasta no combo aereo
+PASS: Deslocamento de foco limitado
+PASS: Ataque nao gera pulsacao de FOV
+PASS: Pesado aereo inicia slam e camera de descida
+PASS: Slam conclui combo e libera camera
+PASS: Camera retorna suavemente a base
+PASS: Buffer antigo expira
+PASS: Pesado cancelado nao gera golpe atrasado
+PASS: Seis solicitacoes respeitam duas vagas
+PASS: Terceiro inimigo espera
+PASS: Parry libera vaga imediatamente
+PASS: Fila entrega vaga ao proximo elegivel
+PASS: Remocao libera vaga
+PASS: Morte libera vaga
+PASS: Somente um AOE simultaneo
+PASS: Intervalo evita inicios simultaneos
+PASS: Intervalo libera novo ataque apos espera
+PASS: Subida aerea cancela preparacao inimiga
+PASS: Alvo removido nao trava camera
+PASS: Monitor de ataques e removido ao fechar cena
+RESULT: 33 checks, 0 failures

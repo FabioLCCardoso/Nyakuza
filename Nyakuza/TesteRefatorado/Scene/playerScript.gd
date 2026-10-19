@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 signal pressed_primary_fire
+signal pressed_heavy_fire
 signal pressed_jump(jump_state : JumpState)
 signal set_movement_state(_movement_state : MovementState)
 signal set_movement_direction(_movement_direction : Vector3)
@@ -10,12 +11,16 @@ signal set_movement_direction(_movement_direction : Vector3)
 @export var jump_states : Dictionary
 @export var movement_states : Dictionary
 
+@onready var movement_controller: MovementController = get_node_or_null("MovementController") as MovementController
+
 var air_jump_counter : int = 0
 var movement_direction : Vector3
 var is_attacking : bool = false
 
 func _input(event):
 	
+	if event.is_action_pressed("heavy_attack"):
+		pressed_heavy_fire.emit()
 	if event.is_action_pressed("primary_fire"): 
 		pressed_primary_fire.emit()
 		
@@ -47,7 +52,7 @@ func _physics_process(delta):
 	elif air_jump_counter == 0: 
 		air_jump_counter = 1
 		
-	if air_jump_counter <= max_air_jump :
+	if air_jump_counter <= max_air_jump and not is_attacking and (movement_controller == null or not movement_controller.is_dashing()):
 		if Input.is_action_just_pressed("jump"):
 			var jump_name = "ground_jump"
 			

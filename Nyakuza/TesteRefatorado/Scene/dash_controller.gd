@@ -24,6 +24,8 @@ var player : Player
 var movement_controller : MovementController
 var skill_controller : ActiveSkillController
 var player_combat : PlayerCombat
+var air_combo : AirComboController
+var guard : GuardController
 var camera_controller : CameraController
 var cooldown_left : float = 0.0
 var dash_id : int = 0
@@ -39,6 +41,10 @@ func _ready():
 			player_combat = c
 		elif c is CameraController:
 			camera_controller = c
+		elif c is AirComboController:
+			air_combo = c
+		elif c is GuardController:
+			guard = c
 	_ensure_input_action()
 
 func _ensure_input_action():
@@ -58,8 +64,23 @@ func _physics_process(delta):
 		dash()
 
 func dash():
-	if cooldown_left > 0.0 or not player.is_physics_processing():   # cooldown ou player morto
+	if not player.is_physics_processing():   # player morto
 		return
+	
+	# FOLLOW-UP AEREO: dash logo depois de um launcher = sobe junto com o inimigo (ignora o cooldown da esquiva)
+	if air_combo != null and air_combo.try_follow_up():
+		cooldown_left = 0.25
+		return
+	
+	if cooldown_left > 0.0:
+		return
+	
+	# Esquiva cancela o combo aereo e a guarda
+	if air_combo != null and air_combo.is_active():
+		air_combo.end_air_combo()
+	if guard != null and guard.is_guarding:
+		guard.stop_guard()
+	
 	cooldown_left = cooldown
 	dash_id += 1
 	var id : int = dash_id

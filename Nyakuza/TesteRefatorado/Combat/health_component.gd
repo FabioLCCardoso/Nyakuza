@@ -21,7 +21,7 @@ func _enter_tree():
 		current_health = max_health
 
 func take_damage(amount : float) -> void:
-	if is_dead or invincible:
+	if is_dead or invincible or amount <= 0.0:
 		return
 	current_health = clampf(current_health - amount, 0.0, max_health)
 	damaged.emit(amount)
@@ -31,7 +31,7 @@ func take_damage(amount : float) -> void:
 		died.emit()
 
 func heal(amount : float) -> void:
-	if is_dead:
+	if is_dead or amount <= 0.0:
 		return
 	current_health = clampf(current_health + amount, 0.0, max_health)
 	health_changed.emit(current_health, max_health)

@@ -15,5 +15,8 @@ func _ready():
 	monitoring = false
 	monitorable = true
 
+var can_receive_hits: bool = true
+
 func receive_hit(hit : HitData) -> void:
-	hit_received.emit(hit)
+	if can_receive_hits:
+		hit_received.emit(hit)

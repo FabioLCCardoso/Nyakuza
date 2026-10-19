@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyProfile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://TesteRefatorado/Enemy/enemy_profile.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Pinguim"
+max_health = 60.0
+move_speed = 2.6
+attack_range = 2.4
+attack_damage = 10.0
+attack_windup = 0.9
+attack_active = 0.18
+attack_recover = 0.85
+attack_cooldown = 0.9
+area_attack_radius = 2.7
+stagger_scale = 1.0
+knockback_scale = 1.0
+tint = Color(0.22, 0.42, 0.65, 1)

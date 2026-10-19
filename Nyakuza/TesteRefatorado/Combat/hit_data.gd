@@ -15,3 +15,5 @@ var knockup : float = 0.0          # lancamento vertical (m/s). > 0 = launcher
 var stagger_duration : float = 0.4 # tempo de "stun" (s)
 var direction : Vector3 = Vector3.FORWARD  # horizontal, de quem bateu -> quem apanhou
 var hit_stop : float = 0.0         # congelada de tela (s). Usado so pelo player
+var slam : bool = false            # finisher aereo: joga o alvo no chao (impacto + onda de choque)
+var unblockable : bool = false     # a guarda nao segura (para golpes especiais de boss)

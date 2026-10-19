@@ -8,6 +8,9 @@ enum State {READY, WINDING_UP, DELIVERING, RECOVERING}
 @export var windup_duration : float
 @export var delivery_duration : float
 @export var recovery_duration : float
+## Comeca a animacao daqui (s) em vez do frame 0. Pula a "preparacao" longa das animacoes. 0 = desligado.
+@export var animation_start_offset : float = 0.0
+@export_range(0.1, 3.0) var playback_speed: float = 1.0
 
 @export_category("Movement")
 @export var acceleration : float = 8
@@ -24,6 +27,10 @@ enum State {READY, WINDING_UP, DELIVERING, RECOVERING}
 @export var knockup : float = 0
 @export var stagger_duration : float = 0.5
 @export var hit_stop : float = 0.06
+## Atraso (s) entre o inicio do DELIVERING e a hitbox ligar (o dano cai quando a espada realmente passa).
+@export var hit_delay : float = 0.0
+## Finisher aereo: o golpe joga o inimigo no chao (impacto + onda de choque nos vizinhos).
+@export var slam : bool = false
 
 @export_category("VFX")
 ## espera (s) depois que o golpe comeca a andar ate o rastro ligar
