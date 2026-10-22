@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://baapexpn4dfh4"]
+
+[ext_resource type="Shader" uid="uid://by6kh2vh2lurk" path="res://TesteRefatorado/Visuals/nyakuza_toon.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://b0cmrhjx0giev" path="res://TesteRefatorado/Visuals/ink_outline.gdshader" id="2"]
+[ext_resource type="Texture2D" uid="uid://cm5t3ab6esdlp" path="res://PLACEHOLDERS/Spike/SpikePrototipo_Image_0.jpg" id="3"]
+
+[sub_resource type="ShaderMaterial" id="Outline"]
+render_priority = 0
+shader = ExtResource("2")
+shader_parameter/ink_color = Color(0.018, 0.012, 0.035, 1)
+shader_parameter/width = 0.012
+
+[resource]
+resource_name = "Player Toon (textured)"
+render_priority = 0
+next_pass = SubResource("Outline")
+shader = ExtResource("1")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3")
+shader_parameter/shadow_color = Color(0.17, 0.12, 0.24, 1)
+shader_parameter/mid_color = Color(0.64, 0.58, 0.73, 1)
+shader_parameter/shadow_threshold = 0.08
+shader_parameter/light_threshold = 0.58
+shader_parameter/edge_softness = 0.045
+shader_parameter/ambient_floor = 0.14
+shader_parameter/saturation = 1.12
+shader_parameter/rim_color = Color(0.58, 0.76, 1, 1)
+shader_parameter/rim_strength = 0.18
+shader_parameter/rim_power = 4.0
+shader_parameter/hatch_strength = 0.04
+shader_parameter/hatch_scale = 36.0

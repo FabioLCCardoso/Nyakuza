@@ -10,6 +10,10 @@ class_name CombatHUD
 ## Opcional: mostra o indicador "COMBO AEREO".
 @export var air_combo : AirComboController
 
+var musou: MusouController
+var musou_bar: ProgressBar
+var musou_label: Label
+var musou_message_left: float = 0.0
 var root : Control
 var hp_trail : ColorRect
 var hp_fill : ColorRect
@@ -42,8 +46,12 @@ func _ready():
 		hit_box.hit_landed.connect(_on_hit_landed)
 	_update_god_label()
 	_bind_director.call_deferred()
+	_bind_musou.call_deferred()
 
 func _process(delta):
+	musou_message_left = maxf(0.0, musou_message_left - delta)
+	if is_instance_valid(musou) and musou_message_left <= 0.0:
+		_update_musou(musou.charge, musou.max_charge)
 	if combo_left > 0.0:
 		combo_left -= delta
 		if combo_left <= 0.0:
@@ -210,7 +218,7 @@ func _build_ui() -> void:
 
 	# Dicas de teclas (discretas)
 	var hint := Label.new()
-	hint.text = "LMB Leve | RMB Pesado (lanca / slam) | F Guarda | Q Dash\nWASD Mover | Espaco Pular | F5 Reiniciar | Esc Cursor"
+	hint.text = "LMB Leve | RMB Pesado (lanca / slam) | F Guarda | Q Dash | R Musou\nWASD Mover | Espaco Pular | F5 Reiniciar | Esc Cursor"
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.modulate = Color(1, 1, 1, 0.45)
 	hint.anchor_left = 1.0
@@ -311,3 +319,41 @@ func _update_wave_labels() -> void:
 			wave_label.text = "ONDAS INTERROMPIDAS"
 		WaveDirector.Phase.ERROR:
 			wave_label.text = "ERRO DE CONFIGURACAO\n" + director.status_message
+
+func _bind_musou() -> void:
+	if player_combat == null:
+		return
+	musou = player_combat.player.get_node_or_null("MusouController") as MusouController
+	if musou == null:
+		return
+	musou_bar = ProgressBar.new()
+	musou_bar.position = Vector2(48, 66)
+	musou_bar.size = Vector2(280, 16)
+	musou_bar.show_percentage = false
+	musou_bar.modulate = Color(0.4, 0.8, 1.0)
+	musou_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(musou_bar)
+	musou_label = Label.new()
+	musou_label.position = Vector2(48, 84)
+	musou_label.add_theme_font_size_override("font_size", 17)
+	musou_label.add_theme_constant_override("outline_size", 5)
+	musou_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(musou_label)
+	musou.charge_changed.connect(_update_musou)
+	musou.activation_rejected.connect(func(reason: String):
+		musou_label.text = reason
+		musou_message_left = 1.4)
+	musou.field_hit.connect(_on_hit_landed)
+	_update_musou(musou.charge, musou.max_charge)
+
+func _update_musou(current: float, maximum: float) -> void:
+	musou_bar.max_value = maximum
+	musou_bar.value = current
+	if musou_message_left > 0.0:
+		return
+	if is_instance_valid(musou.field):
+		musou_label.text = "MUSOU ATIVA — ESFERA DE CORTES"
+	elif current >= maximum:
+		musou_label.text = "R — MUSOU PRONTA"
+	else:
+		musou_label.text = "MUSOU %d / %d — acerte / perfect guard" % [int(current), int(maximum)]

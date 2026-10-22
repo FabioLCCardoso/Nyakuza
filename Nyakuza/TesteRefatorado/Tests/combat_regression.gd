@@ -106,9 +106,12 @@ func _run() -> void:
 	# Disable ordinary attacks while testing player control.
 	for enemy in [tank, fox, penguin]:
 		enemy.attack_cd = 100.0
+	# Etapa 3: teste aereo parte da postura quebrada; quebra real tem suite propria.
+	tank.posture = 0.0
+	tank.posture_break_left = 6.0
 	strike(tank, 1, 9.0)
 	await frames(10)
-	check(tank.is_juggleable(), "Launcher funciona no tank")
+	check(tank.is_juggleable(), "Launcher funciona no tank com postura quebrada")
 	check(air.try_follow_up(), "Dash encontra e segue alvo lancado")
 	for i in range(60):
 		await frames(1)

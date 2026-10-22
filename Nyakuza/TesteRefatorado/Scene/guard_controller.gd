@@ -1,6 +1,6 @@
 extends Node
 class_name GuardController
-## DEFESA simples. Segure o botao de guarda (botao direito do mouse / LB do controle; acao "guard").
+## DEFESA simples. Segure o botao de guarda (F / LB do controle; acao "guard").
 ## - Cancela o combo na hora (como o dash).
 ## - Parado e virado automaticamente pro inimigo mais perto.
 ## - Golpe vindo de frente: dano reduzido + empurrao reduzido (BLOQUEADO).

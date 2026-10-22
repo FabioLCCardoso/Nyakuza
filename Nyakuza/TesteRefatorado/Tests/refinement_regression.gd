@@ -47,6 +47,7 @@ func _run() -> void:
 	check(total < 1.5, "Combo terrestre menor que 1.5s sem hit-stop")
 	var enemy: Enemy = director.red_panda_scene.instantiate()
 	game.add_child(enemy)
+	enemy.posture_max = 0.0 # isolate aerial regression; elite posture covered in stage3 suite
 	enemy.global_position = player.global_position + Vector3(0, 0.5, 1.5)
 	enemy.attack_cd = 100.0
 	controller.movement_controller.direction = Vector3.BACK

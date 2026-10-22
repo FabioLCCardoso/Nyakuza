@@ -16,4 +16,6 @@ attack_cooldown = 0.28
 area_attack_radius = 0.0
 stagger_scale = 0.55
 knockback_scale = 0.45
+posture_max = 60.0
+posture_break_duration = 6.0
 tint = Color(0.65, 0.12, 0.18, 1)

@@ -4,6 +4,7 @@ class_name Enemy
 ## Tudo que da pra ajustar esta nos @export abaixo (aba Inspector).
 
 signal died(enemy : Enemy)
+signal posture_broken
 
 enum State { IDLE, CHASE, ATTACK_WINDUP, ATTACK_ACTIVE, ATTACK_RECOVER, STAGGER, AIRBORNE, DEAD }
 
@@ -54,6 +55,25 @@ enum State { IDLE, CHASE, ATTACK_WINDUP, ATTACK_ACTIVE, ATTACK_RECOVER, STAGGER,
 @export var slam_shockwave_radius : float = 3.0
 @export var slam_shockwave_damage : float = 8.0
 
+@export_category("Crowd Positioning")
+@export var flank_enabled: bool = true
+@export_range(0.1, 1.0) var orbit_speed_scale: float = 0.55
+@export var flank_distance: float = 7.0
+@export_category("Posture")
+@export var posture_max: float = 0.0
+@export var posture_regen_delay: float = 3.0
+@export var posture_regen_rate: float = 10.0
+@export var posture_break_duration: float = 6.0
+var posture: float = 0.0
+var posture_break_left: float = 0.0
+var posture_regen_left: float = 0.0
+var posture_mat: ShaderMaterial
+var posture_bar: MeshInstance3D
+var flank_side: float = 1.0
+var flank_angle: float = 0.0
+var orbit_direction: float = 1.0
+var obstacle_check_left: float = 0.0
+
 @export_category("Look")
 @export var tint : Color = Color(0.55, 0.1, 0.1)
 
@@ -64,7 +84,7 @@ const ANIM_HIT : StringName = &"Hit_Chest"
 const ANIM_AIR : StringName = &"Hit_Head"
 const ANIM_DEATH : StringName = &"Death01"
 
-const STYLIZED_SHADER : Shader = preload("res://shaders/stylized.gdshader")
+
 
 @onready var model : Node3D = $Model
 @onready var health : HealthComponent = $HealthComponent
@@ -106,6 +126,10 @@ var bar_mesh : MeshInstance3D
 func _ready():
 	attack_coordinator = get_tree().get_first_node_in_group("attack_coordinator") as AttackCoordinator
 	_apply_profile()
+	posture = posture_max
+	flank_side = -1.0 if get_instance_id() % 2 == 0 else 1.0
+	orbit_direction = flank_side
+	flank_angle = flank_side * randf_range(1.1, 2.4)
 	add_to_group("enemies")
 	collision_layer = 4
 	collision_mask = 1
@@ -125,6 +149,7 @@ func _ready():
 	ground_y = global_position.y
 	_setup_visuals()
 	_build_health_bar()
+	_build_posture_bar()
 	_build_area_indicator()
 
 	_play(ANIM_IDLE)
@@ -136,6 +161,8 @@ func is_dead() -> bool:
 
 # ------------------------------------------------------------------ loop principal
 func _physics_process(delta):
+	_tick_posture(delta)
+	obstacle_check_left -= delta
 	separation_left -= delta
 	attack_cd = maxf(attack_cd - delta, 0.0)
 	state_timer -= delta
@@ -204,15 +231,44 @@ func _process_chase(delta : float) -> void:
 	_face(dir, delta)
 
 	if dist <= attack_range:
-		_set_horizontal(Vector3.ZERO)
-		_play(ANIM_IDLE)
 		var facing := Vector3(sin(rotation.y), 0.0, cos(rotation.y))
 		if attack_cd <= 0.0 and facing.dot(dir) > 0.8 and absf(t.global_position.y - global_position.y) < 1.8 and not t.is_in_group("air_combo"):
 			_start_attack()
+			if state == State.ATTACK_WINDUP:
+				_set_horizontal(Vector3.ZERO)
+				return
+		if flank_enabled:
+			_move_waiting(t, dir, dist)
+		else:
+			_set_horizontal(Vector3.ZERO)
+			_play(ANIM_IDLE)
 	else:
-		var move_dir := (dir + _separation() * 0.8).normalized()
+		var approach := dir
+		if flank_enabled and dist < flank_distance:
+			# Aproxima pelos lados/costas, mas converge ao alcance.
+			var mesh_root := t.get_node_or_null("MeshRoot") as Node3D
+			var facing := mesh_root.global_basis.z if mesh_root != null else t.global_basis.z
+			facing.y = 0.0
+			var waypoint := t.global_position + facing.normalized().rotated(Vector3.UP, flank_angle) * attack_range * 0.65
+			approach = waypoint - global_position
+			approach.y = 0.0
+			approach = approach.normalized()
+		var move_dir := (approach + _separation() * 0.8).normalized()
 		_set_horizontal(move_dir * move_speed * speed_mult)
 		_play(ANIM_RUN, move_speed * speed_mult / 3.6)
+
+func _move_waiting(_victim: Node3D, inward: Vector3, distance: float) -> void:
+	var tangent := Vector3(-inward.z, 0.0, inward.x) * orbit_direction
+	# Anel interno preserva elegibilidade na fila do coordenador.
+	var radial := inward * clampf((distance - attack_range * 0.82) * 2.5, -1.0, 1.0)
+	var move_dir := (tangent * 0.65 + radial + _separation() * 0.5).normalized()
+	if obstacle_check_left <= 0.0:
+		obstacle_check_left = 0.2
+		if test_move(global_transform, move_dir * 0.5):
+			orbit_direction *= -1.0
+			move_dir = -tangent
+	_set_horizontal(move_dir * move_speed * speed_mult * orbit_speed_scale)
+	_play(ANIM_RUN, maxf(0.5, move_speed * orbit_speed_scale / 3.6))
 
 func _start_attack() -> void:
 	if is_instance_valid(attack_coordinator) and not attack_coordinator.request_attack(self):
@@ -307,7 +363,8 @@ func _on_hit_received(hit : HitData) -> void:
 		return
 	last_attacker = hit.attacker
 	health.take_damage(hit.damage)
-	DamagePopup.spawn(get_tree(), global_position + Vector3(0.0, 2.2, 0.0), str(int(hit.damage)))
+	if hit.show_damage_popup:
+		DamagePopup.spawn(get_tree(), global_position + Vector3(0.0, 2.2, 0.0), str(int(hit.damage)))
 	_flash(Color(1.0, 1.0, 1.0, 0.9), 0.15)
 	_update_health_bar()
 
@@ -315,6 +372,10 @@ func _on_hit_received(hit : HitData) -> void:
 		_die(hit)
 		return
 
+	# O proprio pesado que zera a barra pode lancar.
+	_apply_posture_hit(hit)
+	if has_posture_armor() or (state == State.AIRBORNE and not hit.affects_air_reaction):
+		return
 	knock_velocity = hit.direction * hit.knockback * knockback_scale
 	if hit.slam and state == State.AIRBORNE:
 		_start_slam(hit)
@@ -449,6 +510,8 @@ func _die(hit : HitData) -> void:
 	_play(ANIM_DEATH, 1.0, 0.05, true)
 	if bar_mesh != null:
 		bar_mesh.hide()
+	if posture_bar != null:
+		posture_bar.hide()
 	died.emit(self)
 	_cleanup_later()
 
@@ -516,19 +579,8 @@ func _play(anim_name : StringName, speed : float = 1.0, blend : float = 0.15, re
 
 # ------------------------------------------------------------------ visual
 func _setup_visuals() -> void:
-	var mat := ShaderMaterial.new()
-	mat.shader = STYLIZED_SHADER
-	mat.set_shader_parameter("albedo_color", tint)
-	mat.set_shader_parameter("albedo_affect", 0.8)
-	mat.set_shader_parameter("use_stepped", true)
-	mat.set_shader_parameter("steps", 3.0)
-	mat.set_shader_parameter("step_smoothness", 0.3)
-	mat.set_shader_parameter("shadow_tint", Color(0, 0, 0, 1))
-	mat.set_shader_parameter("shadow_tint_amount", 0.4)
-	mat.set_shader_parameter("use_rim", true)
-	mat.set_shader_parameter("rim_color", Color(1, 1, 1, 1))
-	mat.set_shader_parameter("rim_amount", 2.0)
-	mat.set_shader_parameter("rim_smoothness", 0.2)
+	var mat := preload("res://TesteRefatorado/Visuals/toon_balanced.tres").duplicate() as ShaderMaterial
+	mat.set_shader_parameter("base_color", tint)
 
 	# Overlay usado para o flash branco (acertou) e para o telegrafo vermelho (vai atacar).
 	flash_mat = StandardMaterial3D.new()
@@ -572,7 +624,7 @@ func _update_health_bar() -> void:
 func _apply_profile() -> void:
 	if profile == null:
 		return
-	for property in ["max_health", "move_speed", "attack_range", "attack_damage", "attack_knockback", "attack_windup", "attack_active", "attack_recover", "attack_cooldown", "tint", "area_attack_radius", "stagger_scale", "knockback_scale"]:
+	for property in ["max_health", "move_speed", "attack_range", "attack_damage", "attack_knockback", "attack_windup", "attack_active", "attack_recover", "attack_cooldown", "tint", "area_attack_radius", "stagger_scale", "knockback_scale", "posture_max", "posture_regen_delay", "posture_regen_rate", "posture_break_duration"]:
 		set(property, profile.get(property))
 
 func _build_area_indicator() -> void:
@@ -604,3 +656,53 @@ func _deliver_area_attack() -> void:
 	var hurt := victim.get_node_or_null("HurtBox") as CombatHurtBox
 	if hurt != null:
 		_deliver_hit(hurt)
+
+# Postura intacta bloqueia reacoes, nunca dano de vida. Parry continua interrompendo.
+func has_posture_armor() -> bool:
+	return posture_max > 0.0 and posture > 0.0 and posture_break_left <= 0.0
+
+func _apply_posture_hit(hit: HitData) -> void:
+	if not has_posture_armor() or not hit.is_heavy or hit.posture_damage <= 0.0:
+		return
+	posture_regen_left = posture_regen_delay
+	posture = maxf(0.0, posture - hit.posture_damage)
+	if posture <= 0.0:
+		posture_break_left = maxf(posture_break_duration, 0.1)
+		posture_broken.emit()
+		DamagePopup.spawn(get_tree(), global_position + Vector3(0, 2.7, 0), "POSTURA QUEBRADA", Color(1, 0.8, 0.25), 1.0)
+		_enter(State.STAGGER, 0.65)
+	_update_posture_bar()
+
+func _tick_posture(delta: float) -> void:
+	if posture_max <= 0.0 or is_dead():
+		return
+	posture_regen_left = maxf(0.0, posture_regen_left - delta)
+	if posture <= 0.0:
+		posture_break_left = maxf(0.0, posture_break_left - delta)
+		# Nunca restaura armadura no meio de uma animacao aerea/slam.
+		if posture_break_left <= 0.0 and state != State.AIRBORNE and is_on_floor():
+			posture = posture_max
+	elif posture_regen_left <= 0.0:
+		posture = minf(posture_max, posture + posture_regen_rate * delta)
+	_update_posture_bar()
+
+func _build_posture_bar() -> void:
+	if posture_max <= 0.0:
+		return
+	posture_mat = ShaderMaterial.new()
+	posture_mat.shader = HEALTH_BAR_SHADER
+	posture_mat.set_shader_parameter("fg_color", Color(1, 0.76, 0.18))
+	var quad := QuadMesh.new()
+	quad.size = Vector2(1.0, 0.06)
+	posture_bar = MeshInstance3D.new()
+	posture_bar.mesh = quad
+	posture_bar.material_override = posture_mat
+	posture_bar.position = Vector3(0, 2.18, 0)
+	posture_bar.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(posture_bar)
+
+func _update_posture_bar() -> void:
+	if posture_mat == null:
+		return
+	posture_mat.set_shader_parameter("ratio", posture / maxf(posture_max, 0.01))
+	posture_mat.set_shader_parameter("bg_color", Color(0.2, 0.65, 0.9, 0.9) if posture <= 0.0 else Color(0.04, 0.04, 0.04, 0.85))

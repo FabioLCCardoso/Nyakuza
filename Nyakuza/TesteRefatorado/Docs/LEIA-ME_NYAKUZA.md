@@ -1,172 +1,216 @@
-# Nyakuza — etapa 2: ritmo, pesado, coordenação e câmera
+# Nyakuza — etapa 3: flanqueamento, postura, musou e toon
 
-Esta versão continua a entrega de ondas/KOs/classes. O trabalho se concentra em `TesteRefatorado`. Modelos e animações continuam provisórios. **Não foram adicionados sons.**
+Esta entrega continua a etapa de combate rápido, pesado e câmera aérea. As alterações de jogo estão em `TesteRefatorado`; o Input Map foi atualizado em `project.godot`. Não foi criada alternativa ao slam. Não foram adicionados sons nem substituídos os modelos provisórios.
 
-## Log de mudanças
+## Log de alterações
 
-### 1. Ritmo dos golpes
+### Inimigos circulam e flanqueiam
 
-Reduzidas preparação, entrega e recuperação das habilidades terrestres e aéreas. A velocidade do trecho animado agora é configurável por `Playback Speed`, sem depender de alterar os arquivos de animação. Os atrasos da hitbox e do rastro existente foram ajustados às novas durações.
+- A até 7 m, a perseguição procura um ponto lateral/traseiro relativo à direção do personagem. Cada inimigo recebe um lado e um ângulo de aproximação.
+- Dentro do alcance, quem aguarda vaga ou cooldown circula em vez de ficar parado. Um ajuste radial mantém o inimigo próximo do alcance de ataque, e a separação existente ajuda a evitar sobreposição.
+- O movimento de espera usa 55% da velocidade da classe. O corpo continua virado para o jogador; a animação de corrida ainda é placeholder, sem animação específica de strafe.
+- Uma sondagem curta de colisão a cada 0,2 s inverte o sentido de circulação diante de um obstáculo.
+- Continuam as duas vagas de ataque, o limite de um ataque em área e o intervalo entre inícios. A fila do `AttackCoordinator` continua decidindo quem pode atacar.
 
-| Golpe terrestre | Preparação anterior → nova | Entrega anterior → nova | Recuperação anterior → nova |
-|---|---|---|---|
-| Leve 1 | 0,10 → 0,055 s | 0,80 → 0,24 s | 0,20 → 0,10 s |
-| Leve 2 | 0,30 → 0,07 s | 0,50 → 0,27 s | 0,20 → 0,11 s |
-| Leve 3 | 0,40 → 0,09 s | 0,50 → 0,30 s | 0,50 → 0,14 s |
+É um comportamento local para a arena atual. Não é navegação completa: obstáculos extensos, corredores e esquinas ainda exigem NavigationRegion/NavigationAgent e um mapa navegável.
 
-A soma nominal dos três leves passou de **3,50 para 1,375 s**, sem considerar hit-stop e cancelamentos. Isso é uma mudança de temporização, não uma medição de velocidade percebida por um jogador.
+### Postura quebrável por ataques fortes
 
-- Buffer de entrada de 0,28 s, com apenas um próximo comando. O último clique leve/pesado substitui o anterior.
-- O comando expira: um clique antigo não dispara um ataque muito depois.
-- O próximo golpe pode começar na recuperação após um mínimo de 0,035 s. Não cancela a entrega de dano para encadear outro golpe.
-- Guarda e dash continuam podendo interromper o golpe.
-- Cliques durante a subida aérea aguardam o hover, respeitando a mesma validade do buffer.
-- Hit-stop dos leves foi reduzido para evitar que muitos acertos deixem toda a sequência excessivamente lenta.
+O panda-vermelho é a primeira classe com postura. Raposas e pinguins permanecem sem essa armadura.
 
-Os timings são um ponto inicial para os placeholders atuais. O alinhamento visual exato deve ser ajustado quando substituíres as animações.
+| Parâmetro | Valor inicial |
+|---|---:|
+| Postura do panda-vermelho | 60 |
+| Dano de postura de cada pesado | 35 |
+| Janela após a quebra | 6 s |
+| Atraso para regenerar postura parcialmente danificada | 3 s sem dano de postura |
+| Regeneração | 10 pontos/s |
 
-### 2. Ataque pesado com função própria
+- Postura intacta bloqueia stagger, empurrão e lançamento por golpes comuns, mas **não reduz o dano de vida**. Não é um segundo HP.
+- Leves tiram vida, mas não postura. Os dois pesados estão marcados com `Is Heavy = true` e `Posture Damage = 35`.
+- Dois pesados próximos quebram a postura. O mesmo golpe que zera a barra já aplica seu launcher, sem exigir um terceiro ataque.
+- A barra amarela acima do inimigo mostra a postura. Ao quebrar, aparece “POSTURA QUEBRADA” e a barra vazia fica azul.
+- A postura volta inteira depois da janela, desde que o inimigo esteja no chão e fora do estado aéreo. Nunca volta no meio do slam.
+- Perfect guard ainda interrompe inimigos com postura intacta, mas não quebra essa barra sozinho.
+- A musou causa dano de vida em elites, mas não dano de postura. Assim, o pesado mantém essa função.
 
-- **RMB no chão: HeavyLauncher.** Dano 22 e impulso vertical 10 m/s.
-- **RMB durante o combo aéreo: HeavySlam.** Dano 22 e finalização descendente, reaproveitando impacto e onda de choque existentes.
-- O pesado usa 0,13 s de preparação, 0,30 s de entrega e 0,18 s de recuperação. Intervalo mínimo entre inícios: 0,55 s.
-- O terceiro leve terrestre agora empurra horizontalmente; o launcher deixou de depender de terminar a sequência de leves.
-- O terceiro leve aéreo continua podendo finalizar com slam. O pesado oferece acesso direto ao finisher.
-- O pesado reinicia o índice do combo leve; a próxima sequência começa no primeiro leve.
-- Hurtboxes, detecção de um acerto por swing e cancelamento de dano atrasado continuam compartilhados.
-- **A guarda passou do RMB para F**, evitando que pesado e guarda disparem juntos. O Input Map já foi atualizado no projeto.
+### Musou: esfera de cortes persistente
 
-A função escolhida para o pesado é launcher/finisher. Não foi inventado um sistema de escudos inimigos apenas para oferecer quebra de defesa.
+**R**, com a barra cheia e o jogador no chão, cria uma esfera fixa à frente do personagem. Ela continua cortando enquanto tu podes te mover e atacar normalmente.
 
-### 3. Limite de ataques inimigos
+| Parâmetro | Valor inicial |
+|---|---:|
+| Carga máxima / inicial | 100 / 0 |
+| Carga por vítima atingida por leve | 6 |
+| Carga por vítima atingida por pesado | 8 |
+| Carga por perfect guard | 12 |
+| Distância de criação à frente | 3 m |
+| Raio | 3,2 m |
+| Duração | 4 s de tempo de jogo |
+| Intervalo entre pulsos | 0,25 s |
+| Dano por pulso | 8 |
 
-Novo nó `AttackCoordinator` em `CombatScene`:
+A função escolhida é **controle e dano numa área persistente**. Não é uma animação cinematográfica nem uma reprodução exata das habilidades de Vergil/Ayaka.
 
-- `Max Attackers = 2`: no máximo dois inimigos entre preparação, impacto e recuperação.
-- `Max Area Attackers = 1`: apenas um pinguim executando AOE nesse intervalo.
-- `Start Spacing = 0.18`: evita dois inimigos começarem seus ataques no mesmo instante.
-- A fila dá prioridade aos candidatos elegíveis que já estavam esperando. Um candidato fora de alcance, morto ou interrompido sai da fila.
-- A vaga é liberada por stagger, launcher, parry, morte, remoção e término da recuperação.
-- Se o jogador entra no combo aéreo durante a preparação inimiga, a preparação é cancelada e libera a vaga.
-- O limite não reduz a quantidade de criaturas na arena: os outros continuam presentes, perseguindo ou aguardando alcance/vaga.
-- O coordenador expõe `Nyakuza/Attacking` em **Debugger → Monitors**.
+- O efeito tem uma superfície translúcida com cortes animados e três lâminas circulares inclinadas. É procedural e não depende de texturas externas novas.
+- A esfera fica onde foi criada; não segue o jogador e não busca inimigos automaticamente.
+- A posição é ajustada diante de uma parede e precisa encontrar chão. O ponto de criação usa a frente do corpo, não um alvo marcado pelo mouse.
+- Cada pulso verifica distância até o centro do inimigo e linha de visão na camada do mundo. Não atravessa paredes para causar dano.
+- Há stagger curto em inimigos comuns no chão. Em alvos aéreos, os pulsos não renovam a suspensão nem alteram a queda do slam.
+- Com os valores padrão, um alvo presente em todos os 16 pulsos pode receber 128 de dano. Entrar tarde ou sair do raio reduz esse total.
+- Não há dano no jogador. Matar com a esfera passa pelo fluxo normal de morte e conta KO uma única vez.
+- Não há invulnerabilidade concedida pela ultimate. A ativação cancela guarda, ataque e deslocamento de golpe; depois devolve o controle.
+- Não se pode ativar no ar. Tentativas inválidas não gastam carga e mostram um aviso no HUD.
+- Só existe uma esfera ativa por jogador. Enquanto ela está ativa, a carga não sobe, mesmo com ataques da espada. Seus próprios pulsos nunca geram carga.
+- Morte do jogador, reinício ou encerramento da cena removem o campo. Reiniciar também reinicia a carga.
+- A barra e o aviso “R — MUSOU PRONTA” foram adicionados ao HUD. Os hits do campo entram no contador de combo.
 
-Cenas antigas sem `AttackCoordinator` mantêm o comportamento anterior. A cena principal já tem o nó conectado por grupo; não é preciso ligar sinais manualmente.
+Para evitar poluir a tela, só um a cada quatro pulsos produz número flutuante. Esse número mostra o dano daquele pulso, não a soma dos quatro. A vida continua sendo reduzida em todos eles.
 
-### 4. Câmera durante subida e slam
+### Toon shader
 
-O `CamRoot` agora faz enquadramento aéreo com suavização:
+Criei um material autoral com um ponto intermediário entre as referências: contraste e massas escuras fortes, bordas gráficas, sombras violeta, cores saturadas e transições estreitas com rim light discreto. O resultado depende também da iluminação, das texturas e das normais do modelo; o shader sozinho não reproduz toda a direção de arte desses jogos.
 
-- Foco interpolado entre jogador e alvo, com peso padrão 0,45 e deslocamento máximo de 3 m.
-- Distância-base de 3 m; distância aérea de referência 4,8 m, aumentando no slam para 6,5 m, mais um ajuste pelo afastamento do foco; teto configurável de 10 m.
-- Inclinação assistida de referência -12° no ar e -28° no slam, combinada com a inclinação escolhida pelo jogador.
-- O mouse continua controlando a câmera. Ao mover o mouse, a assistência de inclinação cede por 0,8 s.
-- FOV aéreo estável de 76°, evitando zoom a cada golpe. O dash ainda pode usar sua variação própria.
-- A câmera acompanha brevemente a descida por 0,45 s ao terminar o combo e retorna suavemente à base.
-- Alvos removidos/mortos são tratados sem acessar referências inválidas; morte do jogador limpa o enquadramento aéreo.
-- `SpringArm3D` considera somente a camada do mundo, excluindo o jogador: corpos da horda não encurtam o braço da câmera.
+- `nyakuza_toon.gdshader`: três faixas de iluminação, cores de sombra/meio-tom, suavidade, saturação, rim e hachura opcional nas sombras.
+- `ink_outline.gdshader`: contorno por casca invertida em uma segunda passagem. Espessura em metros, não em pixels.
+- `toon_balanced.tres`: preset-base usado pelos inimigos, com cor de cada classe.
+- `player_toon.tres`: mesmo shader, preservando a textura do jogador e com hachura mais discreta.
+- `katana_toon.tres`: preserva a textura da espada, com rim um pouco mais forte e sem hachura.
+- `toon_noir.tres` e `toon_soft.tres`: opções mais contrastada e mais suave para comparação.
+- `ToonPreview.tscn`: bancada com os três presets sob a mesma luz.
 
-Os testes verificaram estados, distância, limites e retorno. Não foi feita uma avaliação visual interativa do enquadramento no teu monitor; isso permanece parte do teste jogável.
+O material antigo do corpo do jogador era aplicado como overlay completo. Agora o toon usa `Material Override`, evitando desenhar uma segunda superfície inteira só para sombrear. O contorno ainda adiciona sua própria passagem. O flash de dano/aviso vermelho dos inimigos continua como overlay independente.
 
-### 5. Medição antes de aumentar a horda ou usar pooling
+O shader foi aplicado ao jogador, à katana e aos inimigos. Os materiais da arena foram preservados. Os shaders antigos continuam disponíveis para cenas legadas.
 
-Criada `TesteRefatorado/Benchmark/BenchmarkScene.tscn`:
+## Como aplicar na Godot
 
-- Cargas de 16, 32 e 64 inimigos, mesclando as três classes.
-- Jogador invencível, ondas desligadas e separação espacial ativa.
-- 180 frames de aquecimento e 600 de captura.
-- Seed fixa 1977; o cenário de referência é jogador parado, IA ativa, sem ataques do jogador.
-- Exporta JSON com amostras e resumos de processamento, física, memória, nós, draw calls, atacantes e custo de criação de cada inimigo.
-- Monitores personalizados de atacantes, inimigos vivos e última instanciação.
-- O roteiro de teste de desempenho e os resultados estão em `TesteRefatorado/Docs/BENCHMARK.md` e `Benchmark/Results`.
+### Projeto completo
 
-**Decisão desta etapa:** manter 16 vivos na partida normal e não adicionar pooling completo. A comparação de CPU/física e os custos de criação foram medidos antes dessa decisão. A coleta é headless: não mede o custo real de GPU, sombras, materiais, desenho dos esqueletos ou efeitos na tua máquina. Logo, não autoriza prometer 60 FPS nem subir o limite automaticamente.
+1. Extraia `Nyakuza.zip` em uma pasta nova.
+2. Importe `Nyakuza/project.godot` na Godot 4.7 e espere a importação terminar.
+3. Abra `res://TesteRefatorado/Scene/CombatScene.tscn` e pressione F6; F5 inicia o projeto.
+4. Não é necessário criar nós nem conectar sinais manualmente: `Player/MusouController`, Input Map, materiais e referências já estão prontos.
 
-## O que fazer na engine
+### Patch incremental
 
-### Abrir a versão completa
+`Nyakuza_patch.zip` deve ser aplicado **sobre a etapa 2 entregue anteriormente**, a versão com pesado em RMB, guarda em F e câmera aérea. Não é um projeto independente nem um patch direto sobre o upload original.
 
-1. Extrai `Nyakuza.zip` em uma nova pasta, mantendo tua cópia anterior.
-2. Importa `Nyakuza/project.godot` na **Godot 4.7** e aguarda a reimportação.
-3. Abre `res://TesteRefatorado/Scene/CombatScene.tscn`.
-4. Usa F6 para testar a cena ou F5 no editor para iniciar o projeto.
+Feche a Godot, faça uma cópia da tua versão e extraia o patch alinhando a pasta `Nyakuza` com a pasta do projeto. Substitua os arquivos indicados em `TesteRefatorado/Docs/ARQUIVOS_ALTERADOS_ETAPA3.txt`. Se já editaste esses arquivos localmente, compara antes de sobrescrever. Para evitar mistura de versões, prefira o ZIP completo.
 
-A cena já contém o coordenador, os dois nós de pesado, as referências e os novos controles. **Não é necessário montar os nós manualmente.**
+### Controles
 
-### Aplicar o patch
-
-`Nyakuza_patch.zip` é incremental **sobre a primeira entrega modificada** (a versão com quatro ondas e 62 inimigos). Não é um projeto independente e não serve sozinho sobre o primeiro upload original. Extraia sobre uma cópia daquela entrega, alinhando a pasta `Nyakuza` com a raiz do projeto e substituindo os arquivos listados em `Docs/ARQUIVOS_ALTERADOS_ETAPA2.txt`.
-
-Se já fizeste outras alterações locais, compara os scripts/cena antes de sobrescrever. O projeto completo é a opção mais simples para evitar mistura de versões.
-
-### Controles atualizados
-
-| Entrada | Função |
+| Tecla | Ação |
 |---|---|
-| LMB | Ataque leve / sequência leve |
-| **RMB** | **Launcher no chão; slam no combo aéreo** |
-| **F** | **Guarda / perfect guard** |
-| Q | Dash; próximo de um alvo lançado, perseguição aérea |
-| WASD | Movimento |
-| Shift | Sprint |
-| Espaço | Pulo / pulo aéreo |
-| F1 / F2 | Invencibilidade / mostrar-esconder HUD |
-| F5 dentro do jogo | Reiniciar a cena |
+| LMB | Leve / combo |
+| RMB | Pesado: launcher no chão / slam no combo aéreo |
+| F | Guarda / perfect guard |
+| Q | Dash / perseguição de alvo lançado |
+| R | Musou com carga cheia, no chão |
+| WASD / Shift / Espaço | Movimento / sprint / salto |
+| F1 / F2 | Invencibilidade de teste / esconder HUD |
+| F5 dentro do jogo | Reiniciar |
 | Esc | Liberar cursor |
 
-Fluxo para conferir: **RMB → acertar o launcher → Q → LMB para hits aéreos → RMB para slam**. Também testa LMB → LMB → RMB, guarda com F durante a preparação do pesado e dash para cancelar.
+A ação `musou` está mapeada no teclado. Não foi implementado um esquema completo de controle de videogame nesta etapa.
 
-R continua livre; o especial musou não faz parte desta etapa. O controle de videogame tem pesado em Y e guarda em LB, mas o restante do projeto continua orientado a mouse/teclado; não é anunciado suporte completo a controle.
+### Roteiro rápido para conferir
 
-### Onde ajustar
+1. Contra uma raposa: RMB deve lançar imediatamente; Q segue para o combo aéreo.
+2. Contra um panda-vermelho: leves tiram vida, mas não a barra amarela. Acerte dois RMB antes de ela regenerar; o segundo deve quebrar e lançar.
+3. Rodeie uma horda sem atacar e observe os inimigos que aguardam vaga se moverem lateralmente. Só dois devem entrar em preparação/ataque/recuperação ao mesmo tempo.
+4. Carregue a barra com acertos e perfect guards, fique no chão e pressione R. Afaste-se: a esfera deve ficar no lugar.
+5. Para testar R imediatamente, selecione `Player/MusouController` e coloque **Initial Charge = 100** no Inspector. Volte para 0 depois; F1 concede invencibilidade, não carga.
+6. Abra `res://TesteRefatorado/Visuals/ToonPreview.tscn` e use F6 para comparar os materiais.
 
-- **Ritmo:** `Player → MeshRoot → SpikePrototipo → target_character → Skeleton3D → katana → SkillsContainer`. Abre `ActiveSkill_1/2/3`, `AirSkill_1/2/3`, `HeavyLauncher` e `HeavySlam`. Ajusta `Windup Duration`, `Delivery Duration`, `Recovery Duration`, `Animation Start Offset`, `Playback Speed` e `Hit Delay`.
-- **Buffer e intervalo do pesado:** nó `Player/ActiveSkillController`.
-- **Pressão da horda:** nó raiz `AttackCoordinator`. Aumentar `Max Attackers` afeta dificuldade, não quantos inimigos existem.
-- **Enquadramento:** nó `Player/CamRoot`, seção `Aerial Framing`. Desmarca `Aerial Framing` para comparar com o enquadramento sem assistência.
-- **Ondas e quantidade viva:** continuam no `WaveDirector`, como na entrega anterior. Não aumentei `Max Alive` automaticamente.
+## Onde ajustar e como o código funciona
 
-### Repetir o benchmark no Profiler
+### Responsabilidades dos arquivos
 
-1. Abre `res://TesteRefatorado/Benchmark/BenchmarkScene.tscn` e executa com F6.
-2. Usa **1, 2 ou 3** para selecionar 16, 32 ou 64 inimigos. Cada seleção recria o cenário e inicia a captura. **F7** repete a captura da carga atual.
-3. No editor, abre **Debugger → Profiler** e pressiona **Start**. Observa o custo dos scripts e da física durante a parte estável, após a criação dos inimigos.
-4. Em **Monitors**, acompanha `Nyakuza/Attacking`, `Nyakuza/Alive`, `Nyakuza/Spawn_ms`, memória e chamadas de desenho. No **Visual Profiler**, observa CPU/GPU e sombras com renderização ligada.
-5. O JSON é gravado em `user://nyakuza_benchmark.json`. Usa **Project → Open User Data Folder** para encontrá-lo. Copia/renomeia após cada rodada, pois a próxima sobrescreve o mesmo arquivo.
-6. Faz três rodadas por carga, na mesma resolução, renderer e configuração gráfica, mantendo o jogador parado. Depois faz um segundo conjunto atacando e usando combos aéreos — esse conjunto mede outro cenário, com VFX e dano.
+| Arquivo dentro de TesteRefatorado | Responsabilidade |
+|---|---|
+| `Enemy/enemy.gd` | Estados, flanqueamento, postura e reação ao dano |
+| `Enemy/enemy_profile.gd` e `Enemy/Profiles/*.tres` | Valores iniciais de cada classe |
+| `Combat/attack_coordinator.gd` | Vagas e fila de ataques; não move os inimigos |
+| `Skill/active_skill.gd` | Dados editáveis dos golpes, incluindo dano de postura |
+| `Combat/hit_data.gd` | Pacote de dados de um golpe |
+| `Combat/hit_box.gd` | Converte habilidade em HitData e evita hit duplicado por swing |
+| `Musou/musou_controller.gd` | Entrada R, carga, validação e criação da esfera |
+| `Musou/musou_sphere.gd` | Pulsos, alcance, paredes, duração e efeito visual |
+| `Combat/combat_hud.gd` | Exibição da carga e mensagens |
+| `Visuals/*.gdshader` e `Visuals/*.tres` | Código de sombreamento e seus presets |
 
-Os monitores internos podem atualizar em intervalos próximos de 1 s. Os percentis do JSON descrevem as amostras desses monitores, não uma medição independente do custo de cada frame. Para analisar picos individuais, usa o histórico do Profiler. Não some diretamente `Process` e `Physics` como se fossem necessariamente custos independentes.
+**Como dar postura a outra classe?** Abra o `.tres` em `Enemy/Profiles` e altere `Posture Max` para um valor maior que zero. Zero desliga a mecânica. Não altere o Resource durante a partida: ele é compartilhado. `_apply_profile()` copia os valores para cada inimigo, enquanto `posture` guarda o estado individual.
 
-Referências da API consultadas: [Performance](https://docs.godotengine.org/en/stable/classes/class_performance.html), [Profiler](https://docs.godotengine.org/en/stable/tutorials/scripting/debug/the_profiler.html), [SpringArm3D](https://docs.godotengine.org/en/stable/classes/class_springarm3d.html).
+**Como mudar quantos pesados quebram?** Ajuste `Posture Max` no perfil ou `Posture Damage` nos nós `HeavyLauncher` e `HeavySlam`. Eles ficam em `Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer`. Sem regeneração entre acertos, a quantidade é o teto de `Posture Max / Posture Damage`; 60/35 exige dois. O golpe precisa ter `Is Heavy` ligado: aumentar apenas `Damage` não faz dele um ataque forte para a postura.
 
-## Validação
+**Por que leves não interrompem um elite?** É a armadura de postura funcionando. O dano de vida já foi aplicado antes da checagem. A quebra é calculada antes da reação, permitindo que o próprio pesado que quebra lance. Parry tem uma rota própria e continua interrompendo.
 
-- Godot 4.7 stable, Linux, headless.
-- **37 verificações anteriores aprovadas**, preservando ondas, KOs, classes e cancelamentos.
-- **33 verificações novas aprovadas**: Input Map, função do pesado, launcher real, combo aéreo, slam, câmera, buffer, cancelamento, duas vagas, fila, limite de AOE, intervalo de início, liberação por parry/morte/remoção e limpeza dos monitores.
-- Logs em `Docs/VALIDACAO_ETAPA2.txt`.
-- Nenhum som novo, modelo substituído ou sistema musou/boss adicionado.
+**A postura impede combo infinito depois de quebrada?** Não completamente. Ela controla a entrada no juggle e não volta no meio dele. Um limite absoluto de duração aérea ou rendimentos decrescentes ainda seria uma mecânica separada; não interrompi um combo ativo arbitrariamente.
 
-Para repetir os testes, a partir da raiz do projeto:
+**Onde ajustar flanqueamento?** Em `Enemy.tscn`, selecione o nó raiz e use `Crowd Positioning`: `Flank Enabled`, `Orbit Speed Scale` e `Flank Distance`. O script mistura direção tangencial, correção radial e separação. `_start_attack()` ainda precisa obter vaga do coordenador. Não remova esse pedido para “destravar” um inimigo, pois ele é o limite de pressão da horda.
+
+**Onde ajustar a ultimate?** No nó `Player/MusouController`, use as seções `Charge` e `Cutting Sphere`. `Damage Per Tick` é por pulso: reduzir `Tick Interval` aumenta o número de pulsos e, portanto, o dano total. O tempo usa o delta do jogo; hit-stop/slow motion também desaceleram sua duração. A esfera é irmã do jogador na árvore, por isso não acompanha sua transformação.
+
+**Por que minha musou não ativa ou não carrega?** O HUD informa carga insuficiente, uso no ar, campo já ativo ou ausência de chão à frente. Ela exige 100 de carga por padrão. A carga vem por vítima atingida, então um golpe que pega vários inimigos carrega mais. Não há ganho passivo, por bloqueio comum, onda de choque de slam ou pulso da esfera. Durante um campo ativo, toda recarga fica suspensa.
+
+**Por que a esfera não usa uma hitbox continuamente ligada?** A mecânica usa pulsos a 4 Hz, uma consulta ao grupo `enemies` por pulso e um raycast apenas para cada candidato dentro do raio. Isso evita dano dependente do número de frames e mantém a filtragem de paredes. A seleção usa o centro aproximado do inimigo (posição + 1 m), não interseção exata com toda a malha. Ajusta isso para bosses muito grandes.
+
+**Como trocar o visual da esfera?** Edite `cut_color` no shader para a cor padrão, ou os materiais em `_build_visuals()`. O dano está separado em `_pulse()`: podes substituir o visual por partículas/animação sem alterar os KOs. A casca translúcida não colide; paredes limitam o dano, mas podem atravessar visualmente parte do efeito.
+
+### Ajustar o toon no Inspector
+
+Abra `Visuals/player_toon.tres`, `toon_balanced.tres` ou outro preset. Expanda **Shader Parameters**.
+
+| Parâmetro | Efeito |
+|---|---|
+| `base_color` / `albedo_texture` | Cor base e textura UV |
+| `shadow_color` / `mid_color` | Cor das faixas de sombra e meio-tom |
+| `shadow_threshold` / `light_threshold` | Onde cada faixa começa; mantenha o primeiro menor que o segundo |
+| `edge_softness` | Menor = corte mais duro; maior = transição suave |
+| `ambient_floor` | Piso de claridade nas zonas sem luz direta |
+| `saturation` | Intensidade das cores |
+| `rim_strength` / `rim_power` | Intensidade e concentração da borda iluminada |
+| `hatch_strength` / `hatch_scale` | Força e frequência da trama nas sombras; zero desliga |
+| `Next Pass → Shader Parameters → width` | Espessura do contorno |
+
+Para um resultado mais noir/gráfico, comece pelo preset `toon_noir`. Para algo mais suave, use `toon_soft`. O padrão do jogo é `toon_balanced`, com adaptações para textura do jogador e espada. São presets autorais, não shaders extraídos dos jogos de referência.
+
+**Como aplicar ao gato/modelo definitivo?** Selecione o `MeshInstance3D` real do modelo e coloque um material duplicado em **Geometry → Material Override**, ou aplique por superfície se houver materiais diferentes para pelo/terno/olhos. Defina a textura em `albedo_texture`. Ao usar um único Override, ele substitui todos os materiais da malha: para UVs/texturas separadas, prefira materiais por superfície. Não aplique no Skeleton3D nem no AnimationPlayer. Confira escala, normais suavizadas e UVs antes de calibrar contorno/hachura.
+
+**Por que o contorno pode apresentar emendas?** A casca extruda as normais da malha; normais duras, vértices separados e superfícies abertas podem revelar falhas. Reduza `width` ou desative `Next Pass` nesse material. A largura é em metros, então sua espessura aparente varia com a distância. Cabelos/cartões transparentes precisam de material próprio; este toon é opaco.
+
+**Preciso refazer a iluminação?** O material recebe luz direta e sombras; uma luz principal clara facilita ler as faixas. Muitas luzes fortes somam contribuições e podem lavar o contraste. A arena continua com sua iluminação anterior. Calibre primeiro na bancada `ToonPreview`, depois na cena do jogo. Para as sombras do rosto do gato definitivo, um tratamento específico de normais/máscara poderá ser necessário.
+
+**Impacto de desempenho?** O contorno acrescenta uma passagem por malha e a esfera tem transparência. Não prometa ganho só por usar toon. O campo reutiliza quatro malhas enquanto está ativo e evita criar um efeito novo a cada hit, mas ainda há custo de desenho e consultas de dano. O limite normal de 16 vivos foi mantido. Os benchmarks em `Docs/BENCHMARK.md` são históricos da etapa 2, anteriores a esses efeitos.
+
+## Validação e limites
+
+- Godot 4.7 stable, Linux, execução headless.
+- 37 verificações de combate/ondas, 33 de refinamento e 47 desta etapa: **117 verificações aprovadas**.
+- Os testes antigos de combo aéreo agora usam um alvo sem armadura ou com postura já quebrada; os novos verificam a quebra real do elite pela hitbox do pesado.
+- Validação sintática dos três shaders por leitura dos uniformes: 14 no toon, 2 no contorno e 2 na esfera.
+- Cena de comparação carregada em modo headless. Não houve validação visual nem medição de GPU: a aparência renderizada, transparência e contorno precisam ser conferidos na tua máquina.
+- Logs em `Docs/VALIDACAO_ETAPA3.txt`.
+- Permanecem avisos de `Gato.mtl` ausente em OBJ antigos, fora da cena principal. Não impedem o combate; não inventei materiais para esses arquivos legados.
+
+Comandos para repetir a partir da raiz do projeto (substitua `godot` pelo caminho do executável):
 
 ```text
 godot --headless --path . --fixed-fps 60 --script res://TesteRefatorado/Tests/combat_regression.gd
 godot --headless --path . --fixed-fps 60 --script res://TesteRefatorado/Tests/refinement_regression.gd
+godot --headless --path . --fixed-fps 60 --script res://TesteRefatorado/Tests/stage3_regression.gd
+godot --headless --path . --script res://TesteRefatorado/Tests/shader_validation.gd
 ```
 
-`--fixed-fps` é adequado para as verificações funcionais, mas não para esta coleta de desempenho. O benchmark usa execução em tempo real, com limite de 60 FPS e profiling habilitado.
-
-Continuam os dois avisos de materiais `Gato.mtl` ausentes nos OBJ antigos que não são usados na cena principal; não impediu a importação dos recursos de combate. A importação direta de Blender continua desligada conforme a primeira entrega.
+Referência técnica do shader: [Spatial shaders — documentação oficial Godot](https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/spatial_shader.html). Os históricos das entregas anteriores estão em `Docs/HISTORICO_ETAPA1.md` e `Docs/HISTORICO_ETAPA2.md`.
 
 ## Dicas para a próxima etapa
 
-1. **Jogar e calibrar as novas janelas.** Verifica se o pesado parece pesado o suficiente e se os leves não perdem legibilidade. Ajusta animação e hitbox juntas.
-2. **Dar escolha ao fim do ar.** Um finisher horizontal ou um dash aéreo lateral pode criar decisões além de sempre terminar em slam, sem exigir muitas habilidades novas.
-3. **Aprimorar posicionamento dos inimigos em espera.** Com vagas de ataque funcionando, os demais podem circular, flanquear ou manter distância, em vez de esperar na mesma linha.
-4. **Planejar resistência ao juggle.** Para elites e Cookie, uma barra de postura pode liberar uma janela aérea; evita imunidade total que anule o diferencial do combate.
-5. **Definir o musou em uma única habilidade.** Barra que cresce com acertos/parries, uso em R e uma função clara de controle de multidão são suficientes para o próximo protótipo.
-6. **Testar a câmera em situações extremas.** Alvo junto de parede, mudança brusca de direção, morte no ar e vários inimigos lançados. Mantém a assistência opcional.
-7. **Separar custo de renderização e instanciação.** Se aparecer gargalo em sombras/animações, pooling não resolverá esse problema. Só introduz pooling quando os picos de criação/destruição forem demonstrados.
-8. **Criar navegação quando houver obstáculos reais.** A perseguição ainda é direta e apropriada à arena aberta; um mapa com paredes precisa de rotas navegáveis e validação dos pontos de nascimento.
-
-O histórico da etapa anterior foi preservado em `Docs/HISTORICO_ETAPA1.md`. Seus controles antigos são históricos; os controles válidos desta entrega são os da tabela acima.
+1. Calibrar em jogo o tempo para encher a musou; ganhar carga por vítima favorece hordas e pode encher rápido em grupos densos.
+2. Testar se dois pesados e 6 s de vulnerabilidade deixam o panda interessante sem tornar a postura uma obrigação repetitiva.
+3. Criar animações de strafe e um aviso visual próprio de postura intacta/quebrada, preservando a distinção do aviso vermelho de ataque.
+4. Conferir a esfera perto da câmera e de paredes; reduzir opacidade e quantidade de linhas se esconder os inimigos.
+5. Definir uma paleta do personagem e testar o toon no gato definitivo antes de aplicar o mesmo material em toda a arena.
+6. Medir no Visual Profiler o contorno e a transparência com horda + musou. Otimizar o efeito que aparecer como gargalo antes de aumentar o número de inimigos.
+7. Adicionar navegação completa quando a arena ganhar obstáculos que exijam contorno de rotas.

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3]
+[ext_resource type="Shader" path="res://TesteRefatorado/Visuals/nyakuza_toon.gdshader" id="1"]
+[ext_resource type="Shader" path="res://TesteRefatorado/Visuals/ink_outline.gdshader" id="2"]
+[sub_resource type="ShaderMaterial" id="Outline"]
+shader = ExtResource("2")
+shader_parameter/width = 0.007
+[resource]
+resource_name = "Nyakuza Soft Toon"
+shader = ExtResource("1")
+next_pass = SubResource("Outline")
+shader_parameter/shadow_color = Color(0.34, 0.28, 0.44, 1)
+shader_parameter/mid_color = Color(0.78, 0.72, 0.84, 1)
+shader_parameter/edge_softness = 0.1
+shader_parameter/hatch_strength = 0.0
+shader_parameter/rim_strength = 0.12

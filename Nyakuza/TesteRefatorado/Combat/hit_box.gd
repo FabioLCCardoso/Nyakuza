@@ -106,6 +106,7 @@ func _try_hit(hurt_box : CombatHurtBox) -> void:
 
 	var hit := HitData.new()
 	hit.attacker = attacker
+	hit.grants_musou = true
 	if current_skill != null:
 		hit.damage = current_skill.damage
 		hit.knockback = current_skill.knockback
@@ -113,6 +114,8 @@ func _try_hit(hurt_box : CombatHurtBox) -> void:
 		hit.stagger_duration = current_skill.stagger_duration
 		hit.hit_stop = current_skill.hit_stop
 		hit.slam = current_skill.slam
+		hit.is_heavy = current_skill.is_heavy
+		hit.posture_damage = current_skill.posture_damage
 
 	var origin : Vector3 = attacker.global_position if attacker != null else global_position
 	var flat : Vector3 = hurt_box.global_position - origin

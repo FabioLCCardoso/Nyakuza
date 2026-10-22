@@ -22,6 +22,8 @@ enum State {READY, WINDING_UP, DELIVERING, RECOVERING}
 @export var camera_fov : float = 70
 
 @export_category("Combat")
+@export var is_heavy: bool = false
+@export var posture_damage: float = 0.0
 @export var damage : float = 10
 @export var knockback : float = 4
 @export var knockup : float = 0

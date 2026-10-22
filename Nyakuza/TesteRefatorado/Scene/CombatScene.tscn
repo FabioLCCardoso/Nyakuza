@@ -11,8 +11,6 @@
 [ext_resource type="Script" uid="uid://wcs1al76dib2" path="res://TesteRefatorado/Scene/movement_controller.gd" id="7_eo0lr"]
 [ext_resource type="PackedScene" uid="uid://bif2hgl673avr" path="res://PLACEHOLDERS/spike_prototipo.tscn" id="8_xx1uk"]
 [ext_resource type="Script" uid="uid://d2ho5h3ae7td4" path="res://TesteRefatorado/Scene/animation_controller.gd" id="9_2al16"]
-[ext_resource type="Shader" uid="uid://dhn6gyywf4d53" path="res://shaders/stylized.gdshader" id="9_6mv87"]
-[ext_resource type="Texture2D" uid="uid://cm5t3ab6esdlp" path="res://PLACEHOLDERS/Spike/SpikePrototipo_Image_0.jpg" id="10_05q3o"]
 [ext_resource type="Texture2D" uid="uid://dxesg8qars0bi" path="res://PLACEHOLDERS/Katana/antique_katana_01_4k_antique_katana_01_diff.jpg" id="11_hh05e"]
 [ext_resource type="Texture2D" uid="uid://djvw20243hg7i" path="res://PLACEHOLDERS/Katana/antique_katana_01_4k_antique_katana_01_metal-antique_katana_01_rough.png" id="12_ndvwk"]
 [ext_resource type="Texture2D" uid="uid://cyctvumprjvs2" path="res://PLACEHOLDERS/Katana/antique_katana_01_4k_antique_katana_01_nor_gl.png" id="13_dglqg"]
@@ -25,7 +23,7 @@
 [ext_resource type="Script" uid="uid://dvanpuw60xe4m" path="res://TesteRefatorado/Scene/active_skill_controller.gd" id="18_dglqg"]
 [ext_resource type="Script" uid="uid://bnk4f22k3ajl7" path="res://TesteRefatorado/Skill/active_skill.gd" id="19_22d3y"]
 [ext_resource type="Script" uid="uid://c2w5amv7bcsgj" path="res://TesteRefatorado/Scene/air_combo_controller.gd" id="air_ctrl"]
-[ext_resource type="PackedScene" uid="uid://dp6aw5n6hhl4r" path="res://TesteRefatorado/Enemy/Enemy.tscn" id="cmb_enemy"]
+[ext_resource type="Script" uid="uid://dcxogekufr37k" path="res://TesteRefatorado/Combat/attack_coordinator.gd" id="attack_coordinator"]
 [ext_resource type="Script" uid="uid://5mqhw4r2v7dp" path="res://TesteRefatorado/Combat/health_component.gd" id="cmb_health"]
 [ext_resource type="Script" uid="uid://d1kpp1kr34lhf" path="res://TesteRefatorado/Combat/combat_hud.gd" id="cmb_hud"]
 [ext_resource type="PackedScene" path="res://TesteRefatorado/Combat/hurt_box.tscn" id="cmb_hurtbox"]
@@ -33,47 +31,21 @@
 [ext_resource type="Script" uid="uid://l4233j3oyd7n" path="res://TesteRefatorado/Scene/dash_controller.gd" id="dash_ctrl"]
 [ext_resource type="Environment" uid="uid://bdbfyah007wsl" path="res://TesteRefatorado/Environment/dusk_environment.tres" id="env_dusk"]
 [ext_resource type="Material" path="res://TesteRefatorado/Environment/ground_stone.tres" id="env_ground"]
-[ext_resource type="Script" uid="uid://duwvnu00p7mty" path="res://TesteRefatorado/Scene/guard_controller.gd" id="guard_ctrl"]
-
-[ext_resource type="Script" path="res://TesteRefatorado/Waves/wave_director.gd" id="wave_director"]
-[ext_resource type="Script" path="res://TesteRefatorado/Waves/wave_definition.gd" id="wave_definition"]
-[ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/penguin.tscn" id="penguin"]
 [ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/fox.tscn" id="fox"]
+[ext_resource type="Script" uid="uid://duwvnu00p7mty" path="res://TesteRefatorado/Scene/guard_controller.gd" id="guard_ctrl"]
+[ext_resource type="Material" path="res://TesteRefatorado/Visuals/katana_toon.tres" id="katana_toon"]
+[ext_resource type="Script" uid="uid://8o4hccrtojh6" path="res://TesteRefatorado/Musou/musou_controller.gd" id="musou"]
+[ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/penguin.tscn" id="penguin"]
+[ext_resource type="Material" path="res://TesteRefatorado/Visuals/player_toon.tres" id="player_toon"]
 [ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/red_panda.tscn" id="red_panda"]
 [ext_resource type="Resource" path="res://TesteRefatorado/Waves/Definitions/wave_01.tres" id="wave_1"]
 [ext_resource type="Resource" path="res://TesteRefatorado/Waves/Definitions/wave_02.tres" id="wave_2"]
 [ext_resource type="Resource" path="res://TesteRefatorado/Waves/Definitions/wave_03.tres" id="wave_3"]
 [ext_resource type="Resource" path="res://TesteRefatorado/Waves/Definitions/wave_04.tres" id="wave_4"]
-
-[ext_resource type="Script" path="res://TesteRefatorado/Combat/attack_coordinator.gd" id="attack_coordinator"]
+[ext_resource type="Script" uid="uid://doop06dvktoj8" path="res://TesteRefatorado/Waves/wave_definition.gd" id="wave_definition"]
+[ext_resource type="Script" uid="uid://bfrfwk1awhra0" path="res://TesteRefatorado/Waves/wave_director.gd" id="wave_director"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cr77r"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh05e"]
-render_priority = 0
-shader = ExtResource("9_6mv87")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("10_05q3o")
-shader_parameter/albedo_affect = 0.80000001192096
-shader_parameter/use_stepped = true
-shader_parameter/steps = 3.0
-shader_parameter/step_smoothness = 0.3
-shader_parameter/shadow_tint = Color(0, 0, 0, 1)
-shader_parameter/shadow_tint_amount = 0.4
-shader_parameter/specular = 0.0
-shader_parameter/normal_strength = 0.0
-shader_parameter/use_rim = true
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/rim_amount = 2.0
-shader_parameter/rim_smoothness = 0.2
-shader_parameter/rim_mask_shadow = 1.0
-shader_parameter/rim_blend = 1.0
-shader_parameter/use_pattern = true
-shader_parameter/pattern_uv_mode = 2
-shader_parameter/pattern_tiling = 32.0
-shader_parameter/pattern_amount = 0.5
-shader_parameter/pattern_smoothness = 0.5
-shader_parameter/pattern_blend = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eede3"]
 resource_name = "antique_katana_01"
@@ -311,12 +283,11 @@ transform = Transform3D(292.32895, 0, 0, 0, 0.9999936, 0, 0, 0, 238.11354, 0, 0,
 use_collision = true
 material = ExtResource("env_ground")
 
-[node name="AttackCoordinator" type="Node" parent="."]
+[node name="AttackCoordinator" type="Node" parent="." unique_id=1459341755]
 script = ExtResource("attack_coordinator")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1361046987]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("1_ikq1s")
 jump_states = {
 "air_jump": ExtResource("6_6mv87"),
@@ -367,7 +338,7 @@ bones/25/rotation = Quaternion(-0.60501885, -0.17274621, -0.022308143, 0.7769256
 bones/26/rotation = Quaternion(-0.032397192, 0.94106036, -0.24256414, -0.23349208)
 
 [node name="Mesh_0" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D" index="0" unique_id=1922973331]
-material_overlay = SubResource("ShaderMaterial_hh05e")
+material_override = ExtResource("player_toon")
 
 [node name="katana" type="BoneAttachment3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D" index="1" unique_id=1173296426]
 transform = Transform3D(-0.32290432, -0.20228997, -0.9245599, -0.67698735, -0.63329446, 0.37500122, -0.6613778, 0.74700516, 0.0675458, -0.32390496, 1.0878283, 0.10966449)
@@ -376,6 +347,7 @@ bone_idx = 17
 
 [node name="antique_katana_01" type="MeshInstance3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana" unique_id=802148240]
 transform = Transform3D(0.3375262, -0.4637179, -0.8191721, -0.023656853, 0.86578697, -0.49985373, 0.9410188, 0.1880922, 0.28125542, -0.118661165, 0.1362499, 0.011631489)
+material_override = ExtResource("katana_toon")
 mesh = SubResource("ArrayMesh_48lir")
 
 [node name="HitBox" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/antique_katana_01" unique_id=177115503 instance=ExtResource("14_ygfdl")]
@@ -388,10 +360,10 @@ shape = SubResource("ConvexPolygonShape3D_e8642")
 
 [node name="SkillsContainer" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana" unique_id=102526432 node_paths=PackedStringArray("active_skills", "air_skills", "heavy_ground_skill", "heavy_air_skill")]
 script = ExtResource("14_ndvwk")
-heavy_ground_skill = NodePath("HeavyLauncher")
-heavy_air_skill = NodePath("HeavySlam")
 active_skills = [NodePath("ActiveSkill_1"), NodePath("ActiveSkill_2"), NodePath("ActiveSkill_3")]
 air_skills = [NodePath("AirSkill_1"), NodePath("AirSkill_2"), NodePath("AirSkill_3")]
+heavy_ground_skill = NodePath("HeavyLauncher")
+heavy_air_skill = NodePath("HeavySlam")
 
 [node name="ActiveSkill_1" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1690275044 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
@@ -399,25 +371,17 @@ animation_name = &"Right_Hand_Sword_Slash"
 windup_duration = 0.055
 delivery_duration = 0.24
 recovery_duration = 0.1
+animation_start_offset = 0.34
+playback_speed = 1.5
+dash_delay = 0.02
+dash_duration = 0.12
 knockback = 3.5
 stagger_duration = 0.45
-vfx = NodePath("../GPUTrail3D")
-
-animation_start_offset = 0.34
-
-playback_speed = 1.5
-
-hit_delay = 0.045
-
 hit_stop = 0.035
-
-dash_delay = 0.02
-
-dash_duration = 0.12
-
+hit_delay = 0.045
 vfx_delay = 0.045
-
 vfx_duration = 0.195
+vfx = NodePath("../GPUTrail3D")
 
 [node name="ActiveSkill_2" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1342802571 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
@@ -425,25 +389,17 @@ animation_name = &"Charged_Slash"
 windup_duration = 0.07
 delivery_duration = 0.27
 recovery_duration = 0.11
+animation_start_offset = 0.94
+playback_speed = 1.5
+dash_delay = 0.02
+dash_duration = 0.12
 damage = 14.0
 stagger_duration = 0.6
-vfx = NodePath("../GPUTrail3D")
-
-animation_start_offset = 0.94
-
-playback_speed = 1.5
-
-hit_delay = 0.05
-
 hit_stop = 0.035
-
-dash_delay = 0.02
-
-dash_duration = 0.12
-
+hit_delay = 0.05
 vfx_delay = 0.05
-
 vfx_duration = 0.22000000000000003
+vfx = NodePath("../GPUTrail3D")
 
 [node name="ActiveSkill_3" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1662291546 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
@@ -451,27 +407,17 @@ animation_name = &"Attack"
 windup_duration = 0.09
 delivery_duration = 0.3
 recovery_duration = 0.14
-damage = 20.0
-knockup = 0.0
-vfx = NodePath("../GPUTrail3D")
-
 animation_start_offset = 0.8
-
 playback_speed = 1.4
-
-hit_delay = 0.08
-
-hit_stop = 0.045
-
 dash_delay = 0.02
-
 dash_duration = 0.12
-
-vfx_delay = 0.08
-
-vfx_duration = 0.21999999999999997
-
+damage = 20.0
 knockback = 6.0
+hit_stop = 0.045
+hit_delay = 0.08
+vfx_delay = 0.08
+vfx_duration = 0.21999999999999997
+vfx = NodePath("../GPUTrail3D")
 
 [node name="AirSkill_1" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1710000001 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
@@ -480,6 +426,9 @@ windup_duration = 0.045
 delivery_duration = 0.23
 recovery_duration = 0.1
 animation_start_offset = 0.34
+playback_speed = 1.5
+dash_delay = 0.02
+dash_duration = 0.12
 damage = 7.0
 knockback = 2.0
 stagger_duration = 0.6
@@ -489,12 +438,6 @@ vfx_delay = 0.04
 vfx_duration = 0.19
 vfx = NodePath("../GPUTrail3D")
 
-playback_speed = 1.5
-
-dash_delay = 0.02
-
-dash_duration = 0.12
-
 [node name="AirSkill_2" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1710000002 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
 animation_name = &"Charged_Slash"
@@ -502,20 +445,17 @@ windup_duration = 0.05
 delivery_duration = 0.26
 recovery_duration = 0.11
 animation_start_offset = 0.94
+playback_speed = 1.5
+dash_delay = 0.02
+dash_duration = 0.12
 damage = 9.0
 knockback = 2.0
 stagger_duration = 0.6
 hit_stop = 0.035
 hit_delay = 0.05
 vfx_delay = 0.05
-vfx_duration = 0.21000000000000002
+vfx_duration = 0.21
 vfx = NodePath("../GPUTrail3D")
-
-playback_speed = 1.5
-
-dash_delay = 0.02
-
-dash_duration = 0.12
 
 [node name="AirSkill_3" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1710000003 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
@@ -524,61 +464,57 @@ windup_duration = 0.08
 delivery_duration = 0.32
 recovery_duration = 0.16
 animation_start_offset = 0.8
+playback_speed = 1.4
+dash_delay = 0.02
+dash_duration = 0.12
 damage = 18.0
 knockback = 2.5
 stagger_duration = 0.6
-hit_stop = 0.06
 hit_delay = 0.1
 slam = true
-vfx_delay = 0.1
+vfx_duration = 0.22
 vfx = NodePath("../GPUTrail3D")
 
-playback_speed = 1.4
-
-dash_delay = 0.02
-
-dash_duration = 0.12
-
-vfx_duration = 0.22
-
-[node name="HeavyLauncher" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" node_paths=PackedStringArray("vfx")]
+[node name="HeavyLauncher" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1990753553 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
 animation_name = &"Charged_Upward_Slash"
 windup_duration = 0.13
-delivery_duration = 0.30
+delivery_duration = 0.3
 recovery_duration = 0.18
 animation_start_offset = 0.6
 playback_speed = 1.4
-damage = 22.0
-knockup = 10.0
-knockback = 2.0
-stagger_duration = 0.65
-hit_delay = 0.08
-hit_stop = 0.055
-slam = false
 dash_delay = 0.03
 dash_duration = 0.12
+is_heavy = true
+posture_damage = 35.0
+damage = 22.0
+knockback = 2.0
+knockup = 10.0
+stagger_duration = 0.65
+hit_stop = 0.055
+hit_delay = 0.08
 vfx_delay = 0.08
 vfx_duration = 0.22
 vfx = NodePath("../GPUTrail3D")
 
-[node name="HeavySlam" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" node_paths=PackedStringArray("vfx")]
+[node name="HeavySlam" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=2144029592 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
 animation_name = &"Attack"
 windup_duration = 0.13
-delivery_duration = 0.30
+delivery_duration = 0.3
 recovery_duration = 0.18
 animation_start_offset = 0.8
 playback_speed = 1.4
-damage = 22.0
-knockup = 0.0
-knockback = 2.0
-stagger_duration = 0.65
-hit_delay = 0.08
-hit_stop = 0.055
-slam = true
 dash_delay = 0.03
 dash_duration = 0.12
+is_heavy = true
+posture_damage = 35.0
+damage = 22.0
+knockback = 2.0
+stagger_duration = 0.65
+hit_stop = 0.055
+hit_delay = 0.08
+slam = true
 vfx_delay = 0.08
 vfx_duration = 0.22
 vfx = NodePath("../GPUTrail3D")
@@ -679,6 +615,9 @@ script = ExtResource("air_ctrl")
 [node name="GuardController" type="Node" parent="Player" unique_id=1700000003]
 script = ExtResource("guard_ctrl")
 
+[node name="MusouController" type="Node" parent="Player" unique_id=835423516]
+script = ExtResource("musou")
+
 [node name="CombatHUD" type="CanvasLayer" parent="." unique_id=1491815324 node_paths=PackedStringArray("player_health", "player_combat", "hit_box", "air_combo")]
 script = ExtResource("cmb_hud")
 player_health = NodePath("../Player/HealthComponent")
@@ -686,7 +625,7 @@ player_combat = NodePath("../Player/PlayerCombat")
 hit_box = NodePath("../Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/antique_katana_01/HitBox")
 air_combo = NodePath("../Player/AirComboController")
 
-[node name="WaveDirector" type="Node3D" parent="." node_paths=PackedStringArray("spawn_points", "player")]
+[node name="WaveDirector" type="Node3D" parent="." unique_id=800698893 node_paths=PackedStringArray("spawn_points", "player")]
 script = ExtResource("wave_director")
 waves = Array[ExtResource("wave_definition")]([ExtResource("wave_1"), ExtResource("wave_2"), ExtResource("wave_3"), ExtResource("wave_4")])
 penguin_scene = ExtResource("penguin")
@@ -695,31 +634,31 @@ red_panda_scene = ExtResource("red_panda")
 spawn_points = NodePath("../SpawnPoints")
 player = NodePath("../Player")
 
-[node name="SpawnPoints" type="Node3D" parent="."]
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=600176894]
 
-[node name="Spawn1" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(-12, 0.6, 4)
+[node name="Spawn1" type="Marker3D" parent="SpawnPoints" unique_id=1519252933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.6, 4)
 
-[node name="Spawn2" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(12, 0.6, 4)
+[node name="Spawn2" type="Marker3D" parent="SpawnPoints" unique_id=1847432221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.6, 4)
 
-[node name="Spawn3" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(-10, 0.6, 15)
+[node name="Spawn3" type="Marker3D" parent="SpawnPoints" unique_id=264704568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.6, 15)
 
-[node name="Spawn4" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(10, 0.6, 15)
+[node name="Spawn4" type="Marker3D" parent="SpawnPoints" unique_id=1071568294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.6, 15)
 
-[node name="Spawn5" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(-6, 0.6, -10)
+[node name="Spawn5" type="Marker3D" parent="SpawnPoints" unique_id=1031181256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.6, -10)
 
-[node name="Spawn6" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(6, 0.6, -10)
+[node name="Spawn6" type="Marker3D" parent="SpawnPoints" unique_id=1924165488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.6, -10)
 
-[node name="Spawn7" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(0, 0.6, 20)
+[node name="Spawn7" type="Marker3D" parent="SpawnPoints" unique_id=1734716339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 20)
 
-[node name="Spawn8" type="Marker3D" parent="SpawnPoints"]
-position = Vector3(0, 0.6, -14)
+[node name="Spawn8" type="Marker3D" parent="SpawnPoints" unique_id=893146139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -14)
 
 [node name="Arena" type="Node3D" parent="." unique_id=1338358150]
 

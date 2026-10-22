@@ -16,4 +16,10 @@ class_name EnemyProfile
 @export var area_attack_radius: float = 0.0
 @export_range(0.1, 1.0) var stagger_scale: float = 1.0
 @export_range(0.0, 1.0) var knockback_scale: float = 1.0
+@export_category("Posture")
+## Zero desliga postura. Dados do perfil sao copiados para cada inimigo.
+@export var posture_max: float = 0.0
+@export var posture_regen_delay: float = 3.0
+@export var posture_regen_rate: float = 10.0
+@export var posture_break_duration: float = 6.0
 @export var tint: Color = Color(0.55, 0.1, 0.1)
