@@ -62,8 +62,9 @@ func _physics_process(delta):
 			velocity.y -= fall_gravity * delta
 	
 	if player.is_on_floor() and velocity.y < 0.0:
-		velocity.y = 0.0
+		velocity.y = -0.5
 	player.velocity = player.velocity.lerp(velocity, clampf(acceleration * delta, 0.0, 1.0))
+	player.velocity.y = velocity.y
 	player.move_and_slide()
 	
 	var target_rotation = atan2(direction.x, direction.z) - player.rotation.y

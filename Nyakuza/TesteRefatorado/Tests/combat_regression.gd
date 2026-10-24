@@ -28,7 +28,10 @@ func strike(enemy: Enemy, damage: float, launch: float = 0.0, slam: bool = false
 	enemy.hurt_box.receive_hit(hit)
 
 func _run() -> void:
-	var scene := load("res://TesteRefatorado/Scene/CombatScene.tscn") as PackedScene
+	var scene_path := OS.get_environment("NYAKUZA_TEST_SCENE")
+	if scene_path.is_empty():
+		scene_path = "res://TesteRefatorado/Scene/CombatScene.tscn"
+	var scene := load(scene_path) as PackedScene
 	check(scene != null, "Cena principal carrega")
 	var game := scene.instantiate()
 	root.add_child(game)

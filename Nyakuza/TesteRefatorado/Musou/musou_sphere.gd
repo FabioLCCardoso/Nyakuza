@@ -7,6 +7,12 @@ var radius: float = 3.2
 var duration: float = 4.0
 var tick_interval: float = 0.25
 var damage_per_tick: float = 8.0
+var pull_speed: float = 7.0
+var slot_spacing: float = 1.05
+var capture_interval: float = 0.1
+var capture_left: float = 0.0
+var slots: Array[Vector3] = []
+var captured: Dictionary = {}
 var age: float = 0.0
 var next_tick: float = 0.0
 var pulse_count: int = 0
@@ -17,16 +23,27 @@ func _ready() -> void:
 	radius = maxf(radius, 0.1)
 	duration = maxf(duration, 0.1)
 	tick_interval = maxf(tick_interval, 0.05)
+	_build_slots()
 	_build_visuals()
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(caster) or not caster.is_physics_processing():
+		_release_all()
 		queue_free()
 		return
+	capture_left -= delta
+	if capture_left <= 0.0:
+		capture_left = maxf(capture_interval, 0.05)
+		_update_capture()
+	for record in captured.values():
+		var enemy := record.ref.get_ref() as Enemy
+		if is_instance_valid(enemy):
+			enemy.set_musou_capture(self, global_position + slots[record.slot], pull_speed)
 	age = minf(age + delta, duration)
 	while next_tick < age and next_tick < duration:
 		_pulse()
 		next_tick += tick_interval
 	if age >= duration:
+		_release_all()
 		queue_free()
 func _process(delta: float) -> void:
 	for i in rings.size():
@@ -87,3 +104,62 @@ func _build_visuals() -> void:
 		add_child(ring)
 		ring.rotation = Vector3(float(i) * 0.9 + 0.3, float(i), float(i) * 0.65)
 		rings.append(ring)
+
+func _build_slots() -> void:
+	slot_spacing = maxf(slot_spacing, 0.95)
+	var usable := maxf(radius - 0.5, 0.0)
+	var limit := int(ceil(usable / slot_spacing)) + 1
+	for row in range(-limit, limit + 1):
+		for col in range(-limit, limit + 1):
+			var point := Vector3((float(col) + float(row) * 0.5) * slot_spacing, 0.0, float(row) * slot_spacing * 0.8660254)
+			if point.length() <= usable:
+				slots.append(point)
+	slots.sort_custom(func(a: Vector3, b: Vector3) -> bool: return a.length_squared() < b.length_squared())
+
+func _visible_target(enemy: Enemy, margin: float = 0.0) -> bool:
+	var center := enemy.global_position + Vector3.UP
+	if center.distance_squared_to(global_position) > pow(radius + margin, 2.0):
+		return false
+	var ray := PhysicsRayQueryParameters3D.create(global_position, center, 1)
+	return get_world_3d().direct_space_state.intersect_ray(ray).is_empty()
+
+func _update_capture() -> void:
+	for id in captured.keys():
+		var enemy := captured[id].ref.get_ref() as Enemy
+		if not is_instance_valid(enemy) or enemy.is_dead() or not _visible_target(enemy, 0.2):
+			if is_instance_valid(enemy):
+				enemy.end_musou_capture(self)
+			captured.erase(id)
+	var occupied: Dictionary = {}
+	for record in captured.values():
+		occupied[record.slot] = true
+	for node in get_tree().get_nodes_in_group("enemies"):
+		var enemy := node as Enemy
+		if enemy == null or enemy.is_dead() or captured.has(enemy.get_instance_id()) or not _visible_target(enemy):
+			continue
+		var best: int = -1
+		var score: float = INF
+		for i in slots.size():
+			if occupied.has(i):
+				continue
+			var destination := global_position + slots[i]
+			var ray := PhysicsRayQueryParameters3D.create(global_position, destination, 1)
+			if not get_world_3d().direct_space_state.intersect_ray(ray).is_empty():
+				continue
+			var cost := slots[i].length_squared() * 4.0 + destination.distance_squared_to(enemy.global_position + Vector3.UP)
+			if cost < score:
+				score = cost
+				best = i
+		if best >= 0 and enemy.set_musou_capture(self, global_position + slots[best], pull_speed):
+			captured[enemy.get_instance_id()] = {"ref": weakref(enemy), "slot": best}
+			occupied[best] = true
+
+func _release_all() -> void:
+	for record in captured.values():
+		var enemy := record.ref.get_ref() as Enemy
+		if is_instance_valid(enemy):
+			enemy.end_musou_capture(self)
+	captured.clear()
+
+func _exit_tree() -> void:
+	_release_all()

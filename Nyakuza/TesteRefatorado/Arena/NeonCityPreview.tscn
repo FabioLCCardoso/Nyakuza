@@ -1,0 +1,8 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://TesteRefatorado/Arena/NeonCityArena.tscn" id="arena"]
+[node name="NeonCityPreview" type="Node3D"]
+[node name="Arena" parent="." instance=ExtResource("arena")]
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(15, 11, 20)
+rotation_degrees = Vector3(-10.4, 27.3, 0)
+current = true

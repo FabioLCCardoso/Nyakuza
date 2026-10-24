@@ -1,0 +1,1728 @@
+[gd_scene format=3]
+
+[ext_resource type="FontFile" path="res://TesteRefatorado/Arena/Fonts/NotoSansJP.ttf" id="font"]
+[ext_resource type="Shader" path="res://TesteRefatorado/Arena/neon_ground.gdshader" id="ground"]
+[ext_resource type="Shader" path="res://TesteRefatorado/Arena/rising_sun_flag.gdshader" id="flag"]
+[ext_resource type="Shader" path="res://TesteRefatorado/Arena/neon_sky.gdshader" id="sky"]
+
+[sub_resource type="StandardMaterial3D" id="R1"]
+albedo_color = Color(0.055, 0.025, 0.09, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="R2"]
+albedo_color = Color(0.11, 0.055, 0.18, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="R3"]
+albedo_color = Color(0.018, 0.015, 0.04, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="R4"]
+albedo_color = Color(0.5, 0.025, 0.07, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="R5"]
+albedo_color = Color(0.04, 0.7, 0.95, 1)
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.04, 0.7, 0.95, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="StandardMaterial3D" id="R6"]
+albedo_color = Color(0.8, 0.025, 0.3, 1)
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.8, 0.025, 0.3, 1)
+emission_energy_multiplier = 1.6
+
+[sub_resource type="StandardMaterial3D" id="R7"]
+albedo_color = Color(0.3, 0.05, 0.8, 1)
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.3, 0.05, 0.8, 1)
+emission_energy_multiplier = 1.1
+
+[sub_resource type="StandardMaterial3D" id="R8"]
+albedo_color = Color(0.6, 0.8, 0.85, 1)
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.6, 0.8, 0.85, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="StandardMaterial3D" id="R9"]
+albedo_color = Color(0.9, 0.5, 0.04, 1)
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.9, 0.5, 0.04, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="ShaderMaterial" id="R10"]
+shader = ExtResource("ground")
+
+[sub_resource type="ShaderMaterial" id="R11"]
+shader = ExtResource("flag")
+
+[sub_resource type="ShaderMaterial" id="R12"]
+shader = ExtResource("sky")
+
+[sub_resource type="Sky" id="R13"]
+sky_material = SubResource("R12")
+
+[sub_resource type="Environment" id="R14"]
+background_mode = 2
+sky = SubResource("R13")
+ambient_light_source = 3
+ambient_light_color = Color(0.28, 0.21, 0.5, 1)
+ambient_light_energy = 0.7
+reflected_light_source = 2
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.55
+fog_enabled = true
+fog_density = 0.002
+fog_light_color = Color(0.17, 0.04, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="R15"]
+size = Vector3(48, 1, 60)
+material = SubResource("R10")
+
+[sub_resource type="BoxShape3D" id="R16"]
+size = Vector3(48, 1, 60)
+
+[sub_resource type="BoxMesh" id="R17"]
+size = Vector3(3, 0.12, 52)
+material = SubResource("R1")
+
+[sub_resource type="BoxMesh" id="R18"]
+size = Vector3(1, 10, 54)
+material = SubResource("R2")
+
+[sub_resource type="BoxShape3D" id="R19"]
+size = Vector3(1, 10, 54)
+
+[sub_resource type="BoxMesh" id="R20"]
+size = Vector3(44, 10, 1)
+material = SubResource("R2")
+
+[sub_resource type="BoxShape3D" id="R21"]
+size = Vector3(44, 10, 1)
+
+[sub_resource type="BoxMesh" id="R22"]
+size = Vector3(3, 0.12, 52)
+material = SubResource("R1")
+
+[sub_resource type="BoxMesh" id="R23"]
+size = Vector3(1, 10, 54)
+material = SubResource("R2")
+
+[sub_resource type="BoxShape3D" id="R24"]
+size = Vector3(1, 10, 54)
+
+[sub_resource type="BoxMesh" id="R25"]
+size = Vector3(44, 10, 1)
+material = SubResource("R2")
+
+[sub_resource type="BoxShape3D" id="R26"]
+size = Vector3(44, 10, 1)
+
+[sub_resource type="BoxMesh" id="R27"]
+size = Vector3(5, 21, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R28"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R29"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R30"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R31"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R7")
+
+[sub_resource type="BoxMesh" id="R32"]
+size = Vector3(5, 18, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R33"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R34"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R35"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R36"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R37"]
+size = Vector3(5, 15, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R38"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R39"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R40"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R41"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R7")
+
+[sub_resource type="BoxMesh" id="R42"]
+size = Vector3(5, 15, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R43"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R44"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R45"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R46"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R47"]
+size = Vector3(5, 21, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R48"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R49"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R50"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R51"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R7")
+
+[sub_resource type="BoxMesh" id="R52"]
+size = Vector3(5, 18, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R53"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R54"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R55"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R56"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R57"]
+size = Vector3(5, 18, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R58"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R59"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R60"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R61"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R7")
+
+[sub_resource type="BoxMesh" id="R62"]
+size = Vector3(5, 21, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R63"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R64"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R65"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R66"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R67"]
+size = Vector3(5, 12, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R68"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R69"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R70"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R71"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R7")
+
+[sub_resource type="BoxMesh" id="R72"]
+size = Vector3(5, 15, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R73"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R74"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R75"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R76"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R77"]
+size = Vector3(5, 12, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R78"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R79"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R80"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R81"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R7")
+
+[sub_resource type="BoxMesh" id="R82"]
+size = Vector3(5, 21, 8)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R83"]
+size = Vector3(5.2, 0.12, 8.2)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R84"]
+size = Vector3(0.22, 1.4, 7.2)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R85"]
+size = Vector3(0.08, 0.08, 7.1)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R86"]
+size = Vector3(0.4, 5, 1.6)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R87"]
+size = Vector3(5, 14, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R88"]
+size = Vector3(5, 14, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R89"]
+size = Vector3(5, 22, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R90"]
+size = Vector3(5, 18, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R91"]
+size = Vector3(5, 14, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R92"]
+size = Vector3(5, 18, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R93"]
+size = Vector3(5, 22, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R94"]
+size = Vector3(12, 5, 0.1)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R95"]
+size = Vector3(0.65, 6.2, 0.65)
+material = SubResource("R4")
+
+[sub_resource type="BoxShape3D" id="R96"]
+size = Vector3(0.65, 6.2, 0.65)
+
+[sub_resource type="BoxMesh" id="R97"]
+size = Vector3(0.65, 6.2, 0.65)
+material = SubResource("R4")
+
+[sub_resource type="BoxShape3D" id="R98"]
+size = Vector3(0.65, 6.2, 0.65)
+
+[sub_resource type="BoxMesh" id="R99"]
+size = Vector3(12, 0.4, 0.6)
+material = SubResource("R4")
+
+[sub_resource type="BoxMesh" id="R100"]
+size = Vector3(14, 0.4, 1)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R101"]
+size = Vector3(13.5, 0.15, 0.9)
+material = SubResource("R4")
+
+[sub_resource type="BoxMesh" id="R102"]
+size = Vector3(0.12, 7, 0.12)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R103"]
+size = Vector3(0.12, 7, 0.12)
+
+[sub_resource type="PlaneMesh" id="R104"]
+size = Vector2(2.5, 1.6)
+subdivide_width = 20
+subdivide_depth = 12
+material = SubResource("R11")
+
+[sub_resource type="BoxMesh" id="R105"]
+size = Vector3(0.12, 7, 0.12)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R106"]
+size = Vector3(0.12, 7, 0.12)
+
+[sub_resource type="PlaneMesh" id="R107"]
+size = Vector2(2.5, 1.6)
+subdivide_width = 20
+subdivide_depth = 12
+material = SubResource("R11")
+
+[sub_resource type="BoxMesh" id="R108"]
+size = Vector3(5, 22, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R109"]
+size = Vector3(5, 22, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R110"]
+size = Vector3(5, 22, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R111"]
+size = Vector3(5, 14, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R112"]
+size = Vector3(5, 14, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R113"]
+size = Vector3(5, 22, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R114"]
+size = Vector3(5, 14, 5)
+material = SubResource("R2")
+
+[sub_resource type="BoxMesh" id="R115"]
+size = Vector3(12, 5, 0.1)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R116"]
+size = Vector3(0.65, 6.2, 0.65)
+material = SubResource("R4")
+
+[sub_resource type="BoxShape3D" id="R117"]
+size = Vector3(0.65, 6.2, 0.65)
+
+[sub_resource type="BoxMesh" id="R118"]
+size = Vector3(0.65, 6.2, 0.65)
+material = SubResource("R4")
+
+[sub_resource type="BoxShape3D" id="R119"]
+size = Vector3(0.65, 6.2, 0.65)
+
+[sub_resource type="BoxMesh" id="R120"]
+size = Vector3(12, 0.4, 0.6)
+material = SubResource("R4")
+
+[sub_resource type="BoxMesh" id="R121"]
+size = Vector3(14, 0.4, 1)
+material = SubResource("R3")
+
+[sub_resource type="BoxMesh" id="R122"]
+size = Vector3(13.5, 0.15, 0.9)
+material = SubResource("R4")
+
+[sub_resource type="BoxMesh" id="R123"]
+size = Vector3(0.12, 7, 0.12)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R124"]
+size = Vector3(0.12, 7, 0.12)
+
+[sub_resource type="PlaneMesh" id="R125"]
+size = Vector2(2.5, 1.6)
+subdivide_width = 20
+subdivide_depth = 12
+material = SubResource("R11")
+
+[sub_resource type="BoxMesh" id="R126"]
+size = Vector3(0.12, 7, 0.12)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R127"]
+size = Vector3(0.12, 7, 0.12)
+
+[sub_resource type="PlaneMesh" id="R128"]
+size = Vector2(2.5, 1.6)
+subdivide_width = 20
+subdivide_depth = 12
+material = SubResource("R11")
+
+[sub_resource type="BoxMesh" id="R129"]
+size = Vector3(0.08, 1.15, 1.1)
+material = SubResource("R5")
+
+[sub_resource type="MultiMesh" id="R130"]
+transform_format = 1
+instance_count = 63
+mesh = SubResource("R129")
+buffer = PackedFloat32Array(1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -24.4, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -22, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -19.6, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -24.4, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -22, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -19.6, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -24.4, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -22, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -19.6, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, -24.4, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, -22, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, -19.6, 1, 0, 0, -21.43, 0, 1, 0, 18, 0, 0, 1, -24.4, 1, 0, 0, -21.43, 0, 1, 0, 18, 0, 0, 1, -22, 1, 0, 0, -21.43, 0, 1, 0, 18, 0, 0, 1, -19.6, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -6.4, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -4, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -1.6, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -6.4, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -4, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -1.6, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -6.4, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -4, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -1.6, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 11.6, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 14, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 16.4, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 11.6, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 14, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 16.4, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 11.6, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 14, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 16.4, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, 11.6, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, 14, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, 16.4, 1, 0, 0, -21.43, 0, 1, 0, 18, 0, 0, 1, 11.6, 1, 0, 0, -21.43, 0, 1, 0, 18, 0, 0, 1, 14, 1, 0, 0, -21.43, 0, 1, 0, 18, 0, 0, 1, 16.4, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -24.4, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -22, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -19.6, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -24.4, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -22, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -19.6, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, -24.4, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, -22, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, -19.6, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, -24.4, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, -22, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, -19.6, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -6.4, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -4, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -1.6, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -6.4, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -4, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -1.6, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 11.6, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 14, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 16.4, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 11.6, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 14, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 16.4)
+
+[sub_resource type="BoxMesh" id="R131"]
+size = Vector3(0.08, 1.15, 1.1)
+material = SubResource("R6")
+
+[sub_resource type="MultiMesh" id="R132"]
+transform_format = 1
+instance_count = 72
+mesh = SubResource("R131")
+buffer = PackedFloat32Array(1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -15.4, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -13, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, -10.6, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -15.4, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -13, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, -10.6, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -15.4, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -13, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, -10.6, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, -15.4, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, -13, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, -10.6, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 2.6, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 5, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 7.4, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 2.6, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 5, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 7.4, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 2.6, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 5, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 7.4, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 20.6, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 23, 1, 0, 0, -21.43, 0, 1, 0, 6, 0, 0, 1, 25.4, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 20.6, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 23, 1, 0, 0, -21.43, 0, 1, 0, 9, 0, 0, 1, 25.4, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 20.6, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 23, 1, 0, 0, -21.43, 0, 1, 0, 12, 0, 0, 1, 25.4, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, 20.6, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, 23, 1, 0, 0, -21.43, 0, 1, 0, 15, 0, 0, 1, 25.4, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -15.4, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -13, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, -10.6, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -15.4, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -13, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, -10.6, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, -15.4, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, -13, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, -10.6, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, -15.4, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, -13, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, -10.6, 1, 0, 0, 21.43, 0, 1, 0, 18, 0, 0, 1, -15.4, 1, 0, 0, 21.43, 0, 1, 0, 18, 0, 0, 1, -13, 1, 0, 0, 21.43, 0, 1, 0, 18, 0, 0, 1, -10.6, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 2.6, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 5, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 7.4, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 2.6, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 5, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 7.4, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, 2.6, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, 5, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, 7.4, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 20.6, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 23, 1, 0, 0, 21.43, 0, 1, 0, 6, 0, 0, 1, 25.4, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 20.6, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 23, 1, 0, 0, 21.43, 0, 1, 0, 9, 0, 0, 1, 25.4, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, 20.6, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, 23, 1, 0, 0, 21.43, 0, 1, 0, 12, 0, 0, 1, 25.4, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, 20.6, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, 23, 1, 0, 0, 21.43, 0, 1, 0, 15, 0, 0, 1, 25.4, 1, 0, 0, 21.43, 0, 1, 0, 18, 0, 0, 1, 20.6, 1, 0, 0, 21.43, 0, 1, 0, 18, 0, 0, 1, 23, 1, 0, 0, 21.43, 0, 1, 0, 18, 0, 0, 1, 25.4)
+
+[sub_resource type="BoxMesh" id="R133"]
+size = Vector3(1.1, 1.15, 0.08)
+material = SubResource("R5")
+
+[sub_resource type="MultiMesh" id="R134"]
+transform_format = 1
+instance_count = 64
+mesh = SubResource("R133")
+buffer = PackedFloat32Array(1, 0, 0, -19.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, -16.6, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, -19.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, -16.6, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, -19.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, -16.6, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, -7.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, -4.6, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, -7.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, -4.6, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, -7.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, -4.6, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, -7.4, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, -4.6, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, -7.4, 0, 1, 0, 19, 0, 0, 1, -27.43, 1, 0, 0, -4.6, 0, 1, 0, 19, 0, 0, 1, -27.43, 1, 0, 0, 4.6, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, 7.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, 4.6, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, 7.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, 4.6, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, 7.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, 16.6, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, 19.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, 16.6, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, 19.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, 16.6, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, 19.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, 16.6, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, 19.4, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, 16.6, 0, 1, 0, 19, 0, 0, 1, -27.43, 1, 0, 0, 19.4, 0, 1, 0, 19, 0, 0, 1, -27.43, 1, 0, 0, -19.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, -16.6, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, -19.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, -16.6, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, -19.4, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, -16.6, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, -19.4, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, -16.6, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, -19.4, 0, 1, 0, 19, 0, 0, 1, 27.43, 1, 0, 0, -16.6, 0, 1, 0, 19, 0, 0, 1, 27.43, 1, 0, 0, -7.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, -4.6, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, -7.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, -4.6, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, -7.4, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, -4.6, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, -7.4, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, -4.6, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, -7.4, 0, 1, 0, 19, 0, 0, 1, 27.43, 1, 0, 0, -4.6, 0, 1, 0, 19, 0, 0, 1, 27.43, 1, 0, 0, 4.6, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, 7.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, 4.6, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, 7.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, 4.6, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, 7.4, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, 16.6, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, 19.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, 16.6, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, 19.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, 16.6, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, 19.4, 0, 1, 0, 13, 0, 0, 1, 27.43)
+
+[sub_resource type="BoxMesh" id="R135"]
+size = Vector3(1.1, 1.15, 0.08)
+material = SubResource("R6")
+
+[sub_resource type="MultiMesh" id="R136"]
+transform_format = 1
+instance_count = 48
+mesh = SubResource("R135")
+buffer = PackedFloat32Array(1, 0, 0, -13.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, -10.6, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, -13.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, -10.6, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, -13.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, -10.6, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, -1.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, 1.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, -1.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, 1.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, -1.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, 1.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, -1.4, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, 1.4, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, 10.6, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, 13.4, 0, 1, 0, 7, 0, 0, 1, -27.43, 1, 0, 0, 10.6, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, 13.4, 0, 1, 0, 10, 0, 0, 1, -27.43, 1, 0, 0, 10.6, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, 13.4, 0, 1, 0, 13, 0, 0, 1, -27.43, 1, 0, 0, 10.6, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, 13.4, 0, 1, 0, 16, 0, 0, 1, -27.43, 1, 0, 0, -13.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, -10.6, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, -13.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, -10.6, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, -13.4, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, -10.6, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, -13.4, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, -10.6, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, -13.4, 0, 1, 0, 19, 0, 0, 1, 27.43, 1, 0, 0, -10.6, 0, 1, 0, 19, 0, 0, 1, 27.43, 1, 0, 0, -1.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, 1.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, -1.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, 1.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, -1.4, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, 1.4, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, 10.6, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, 13.4, 0, 1, 0, 7, 0, 0, 1, 27.43, 1, 0, 0, 10.6, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, 13.4, 0, 1, 0, 10, 0, 0, 1, 27.43, 1, 0, 0, 10.6, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, 13.4, 0, 1, 0, 13, 0, 0, 1, 27.43, 1, 0, 0, 10.6, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, 13.4, 0, 1, 0, 16, 0, 0, 1, 27.43, 1, 0, 0, 10.6, 0, 1, 0, 19, 0, 0, 1, 27.43, 1, 0, 0, 13.4, 0, 1, 0, 19, 0, 0, 1, 27.43)
+
+[sub_resource type="BoxMesh" id="R137"]
+size = Vector3(1.1, 0.015, 3)
+material = SubResource("R8")
+
+[sub_resource type="MultiMesh" id="R138"]
+transform_format = 1
+instance_count = 16
+mesh = SubResource("R137")
+buffer = PackedFloat32Array(1, 0, 0, -7, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, -5, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, -3, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, -1, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, 1, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, 3, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, 5, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, 7, 0, 1, 0, 0.515, 0, 0, 1, -19, 1, 0, 0, -7, 0, 1, 0, 0.515, 0, 0, 1, 19, 1, 0, 0, -5, 0, 1, 0, 0.515, 0, 0, 1, 19, 1, 0, 0, -3, 0, 1, 0, 0.515, 0, 0, 1, 19, 1, 0, 0, -1, 0, 1, 0, 0.515, 0, 0, 1, 19, 1, 0, 0, 1, 0, 1, 0, 0.515, 0, 0, 1, 19, 1, 0, 0, 3, 0, 1, 0, 0.515, 0, 0, 1, 19, 1, 0, 0, 5, 0, 1, 0, 0.515, 0, 0, 1, 19, 1, 0, 0, 7, 0, 1, 0, 0.515, 0, 0, 1, 19)
+
+[sub_resource type="BoxMesh" id="R139"]
+size = Vector3(0.12, 0.016, 1.4)
+material = SubResource("R9")
+
+[sub_resource type="MultiMesh" id="R140"]
+transform_format = 1
+instance_count = 22
+mesh = SubResource("R139")
+buffer = PackedFloat32Array(1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, -15, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, -12, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, -9, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, -6, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, -3, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, 0, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, 3, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, 6, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, 9, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, 12, 1, 0, 0, -8, 0, 1, 0, 0.516, 0, 0, 1, 15, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, -15, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, -12, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, -9, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, -6, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, -3, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, 0, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, 3, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, 6, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, 9, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, 12, 1, 0, 0, 8, 0, 1, 0, 0.516, 0, 0, 1, 15)
+
+[sub_resource type="BoxMesh" id="R141"]
+size = Vector3(0.35, 0.018, 0.35)
+material = SubResource("R7")
+
+[sub_resource type="MultiMesh" id="R142"]
+transform_format = 1
+instance_count = 22
+mesh = SubResource("R141")
+buffer = PackedFloat32Array(1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, -15, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, -12, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, -9, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, -6, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, -3, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, 0, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, 3, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, 6, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, 9, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, 12, 1, 0, 0, -13, 0, 1, 0, 0.518, 0, 0, 1, 15, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, -15, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, -12, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, -9, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, -6, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, -3, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, 0, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, 3, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, 6, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, 9, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, 12, 1, 0, 0, 13, 0, 1, 0, 0.518, 0, 0, 1, 15)
+
+[sub_resource type="BoxMesh" id="R143"]
+size = Vector3(11.5, 0.035, 0.08)
+material = SubResource("R1")
+
+[sub_resource type="MultiMesh" id="R144"]
+transform_format = 1
+instance_count = 30
+mesh = SubResource("R143")
+buffer = PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, 0.7, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 1.0, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 1.3, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 1.6, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 1.9, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 2.2, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 2.5, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 2.8, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 3.1, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 3.4, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 3.7, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 4.0, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 4.3, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 4.6, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 4.9, 0, 0, 1, -26.3, 1, 0, 0, 0, 0, 1, 0, 0.7, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 1.0, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 1.3, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 1.6, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 1.9, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 2.2, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 2.5, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 2.8, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 3.1, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 3.4, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 3.7, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 4.0, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 4.3, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 4.6, 0, 0, 1, 26.3, 1, 0, 0, 0, 0, 1, 0, 4.9, 0, 0, 1, 26.3)
+
+[sub_resource type="BoxMesh" id="R145"]
+size = Vector3(0.16, 4.4, 0.16)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R146"]
+size = Vector3(0.16, 4.4, 0.16)
+
+[sub_resource type="BoxMesh" id="R147"]
+size = Vector3(0.65, 0.25, 0.65)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R148"]
+size = Vector3(1, 2.2, 0.8)
+material = SubResource("R3")
+
+[sub_resource type="BoxShape3D" id="R149"]
+size = Vector3(1, 2.2, 0.8)
+
+[sub_resource type="BoxMesh" id="R150"]
+size = Vector3(0.75, 1.2, 0.03)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R151"]
+size = Vector3(0.16, 4.4, 0.16)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R152"]
+size = Vector3(0.16, 4.4, 0.16)
+
+[sub_resource type="BoxMesh" id="R153"]
+size = Vector3(0.65, 0.25, 0.65)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R154"]
+size = Vector3(1, 2.2, 0.8)
+material = SubResource("R3")
+
+[sub_resource type="BoxShape3D" id="R155"]
+size = Vector3(1, 2.2, 0.8)
+
+[sub_resource type="BoxMesh" id="R156"]
+size = Vector3(0.75, 1.2, 0.03)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R157"]
+size = Vector3(0.16, 4.4, 0.16)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R158"]
+size = Vector3(0.16, 4.4, 0.16)
+
+[sub_resource type="BoxMesh" id="R159"]
+size = Vector3(0.65, 0.25, 0.65)
+material = SubResource("R6")
+
+[sub_resource type="BoxMesh" id="R160"]
+size = Vector3(1, 2.2, 0.8)
+material = SubResource("R3")
+
+[sub_resource type="BoxShape3D" id="R161"]
+size = Vector3(1, 2.2, 0.8)
+
+[sub_resource type="BoxMesh" id="R162"]
+size = Vector3(0.75, 1.2, 0.03)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R163"]
+size = Vector3(0.16, 4.4, 0.16)
+material = SubResource("R1")
+
+[sub_resource type="BoxShape3D" id="R164"]
+size = Vector3(0.16, 4.4, 0.16)
+
+[sub_resource type="BoxMesh" id="R165"]
+size = Vector3(0.65, 0.25, 0.65)
+material = SubResource("R5")
+
+[sub_resource type="BoxMesh" id="R166"]
+size = Vector3(1, 2.2, 0.8)
+material = SubResource("R3")
+
+[sub_resource type="BoxShape3D" id="R167"]
+size = Vector3(1, 2.2, 0.8)
+
+[sub_resource type="BoxMesh" id="R168"]
+size = Vector3(0.75, 1.2, 0.03)
+material = SubResource("R5")
+
+[node name="NeonCityArena" type="Node3D"]
+
+
+[node name="Buildings" type="Node3D" parent="."]
+
+
+[node name="Signs" type="Node3D" parent="."]
+
+
+[node name="Torii" type="Node3D" parent="."]
+
+
+[node name="Flags" type="Node3D" parent="."]
+
+
+[node name="Details" type="Node3D" parent="."]
+
+
+[node name="Props" type="Node3D" parent="."]
+
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("R14")
+
+[node name="MoonKey" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48, -25, 0)
+light_color = Color(0.58, 0.68, 1, 1)
+light_energy = 1.2
+shadow_enabled = true
+directional_shadow_max_distance = 70.0
+
+[node name="Ground" type="StaticBody3D" parent="."]
+position = Vector3(0, 0, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("R15")
+
+[node name="Collision" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("R16")
+
+[node name="Sidewalk-1" type="MeshInstance3D" parent="."]
+position = Vector3(-19.5, 0.56, 0)
+mesh = SubResource("R17")
+
+[node name="BoundaryX-1" type="StaticBody3D" parent="."]
+position = Vector3(-21.8, 5, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="BoundaryX-1"]
+mesh = SubResource("R18")
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryX-1"]
+shape = SubResource("R19")
+
+[node name="BoundaryZ-1" type="StaticBody3D" parent="."]
+position = Vector3(0, 5, -27)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="BoundaryZ-1"]
+mesh = SubResource("R20")
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryZ-1"]
+shape = SubResource("R21")
+
+[node name="Sidewalk1" type="MeshInstance3D" parent="."]
+position = Vector3(19.5, 0.56, 0)
+mesh = SubResource("R22")
+
+[node name="BoundaryX1" type="StaticBody3D" parent="."]
+position = Vector3(21.8, 5, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="BoundaryX1"]
+mesh = SubResource("R23")
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryX1"]
+shape = SubResource("R24")
+
+[node name="BoundaryZ1" type="StaticBody3D" parent="."]
+position = Vector3(0, 5, 27)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="BoundaryZ1"]
+mesh = SubResource("R25")
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryZ1"]
+shape = SubResource("R26")
+
+[node name="Tower-1_0" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 11.0, -22)
+mesh = SubResource("R27")
+
+[node name="Roof-1_0" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 21.6, -22)
+mesh = SubResource("R28")
+
+[node name="Shop-1_0" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.23, 3.3, -22)
+mesh = SubResource("R29")
+
+[node name="ShopLine-1_0" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.04, 2.5, -22)
+mesh = SubResource("R30")
+
+[node name="ShopText-1_0" type="Label3D" parent="Signs"]
+position = Vector3(-21.05, 3.3, -22)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ラーメン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade-1_0" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-20.5, 8, -18.4)
+mesh = SubResource("R31")
+
+[node name="BladeText-1_0" type="Label3D" parent="Signs"]
+position = Vector3(-20.26, 8, -18.4)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower-1_1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 9.5, -13)
+mesh = SubResource("R32")
+
+[node name="Roof-1_1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 18.6, -13)
+mesh = SubResource("R33")
+
+[node name="Shop-1_1" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.23, 3.3, -13)
+mesh = SubResource("R34")
+
+[node name="ShopLine-1_1" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.04, 2.5, -13)
+mesh = SubResource("R35")
+
+[node name="ShopText-1_1" type="Label3D" parent="Signs"]
+position = Vector3(-21.05, 3.3, -13)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "カラオケ"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade-1_1" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-20.5, 8, -9.4)
+mesh = SubResource("R36")
+
+[node name="BladeText-1_1" type="Label3D" parent="Signs"]
+position = Vector3(-20.26, 8, -9.4)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower-1_2" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 8.0, -4)
+mesh = SubResource("R37")
+
+[node name="Roof-1_2" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 15.6, -4)
+mesh = SubResource("R38")
+
+[node name="Shop-1_2" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.23, 3.3, -4)
+mesh = SubResource("R39")
+
+[node name="ShopLine-1_2" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.04, 2.5, -4)
+mesh = SubResource("R40")
+
+[node name="ShopText-1_2" type="Label3D" parent="Signs"]
+position = Vector3(-21.05, 3.3, -4)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ゲームセンター"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade-1_2" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-20.5, 8, -0.4)
+mesh = SubResource("R41")
+
+[node name="BladeText-1_2" type="Label3D" parent="Signs"]
+position = Vector3(-20.26, 8, -0.4)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower-1_3" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 8.0, 5)
+mesh = SubResource("R42")
+
+[node name="Roof-1_3" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 15.6, 5)
+mesh = SubResource("R43")
+
+[node name="Shop-1_3" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.23, 3.3, 5)
+mesh = SubResource("R44")
+
+[node name="ShopLine-1_3" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.04, 2.5, 5)
+mesh = SubResource("R45")
+
+[node name="ShopText-1_3" type="Label3D" parent="Signs"]
+position = Vector3(-21.05, 3.3, 5)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ネコ組"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade-1_3" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-20.5, 8, 8.6)
+mesh = SubResource("R46")
+
+[node name="BladeText-1_3" type="Label3D" parent="Signs"]
+position = Vector3(-20.26, 8, 8.6)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower-1_4" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 11.0, 14)
+mesh = SubResource("R47")
+
+[node name="Roof-1_4" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 21.6, 14)
+mesh = SubResource("R48")
+
+[node name="Shop-1_4" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.23, 3.3, 14)
+mesh = SubResource("R49")
+
+[node name="ShopLine-1_4" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.04, 2.5, 14)
+mesh = SubResource("R50")
+
+[node name="ShopText-1_4" type="Label3D" parent="Signs"]
+position = Vector3(-21.05, 3.3, 14)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "夜の街"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade-1_4" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-20.5, 8, 17.6)
+mesh = SubResource("R51")
+
+[node name="BladeText-1_4" type="Label3D" parent="Signs"]
+position = Vector3(-20.26, 8, 17.6)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower-1_5" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 9.5, 23)
+mesh = SubResource("R52")
+
+[node name="Roof-1_5" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-24, 18.6, 23)
+mesh = SubResource("R53")
+
+[node name="Shop-1_5" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.23, 3.3, 23)
+mesh = SubResource("R54")
+
+[node name="ShopLine-1_5" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-21.04, 2.5, 23)
+mesh = SubResource("R55")
+
+[node name="ShopText-1_5" type="Label3D" parent="Signs"]
+position = Vector3(-21.05, 3.3, 23)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "NEKO CLUB"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade-1_5" type="MeshInstance3D" parent="Signs"]
+position = Vector3(-20.5, 8, 26.6)
+mesh = SubResource("R56")
+
+[node name="BladeText-1_5" type="Label3D" parent="Signs"]
+position = Vector3(-20.26, 8, 26.6)
+rotation = Vector3(0, 1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower1_0" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 9.5, -22)
+mesh = SubResource("R57")
+
+[node name="Roof1_0" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 18.6, -22)
+mesh = SubResource("R58")
+
+[node name="Shop1_0" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.23, 3.3, -22)
+mesh = SubResource("R59")
+
+[node name="ShopLine1_0" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.04, 2.5, -22)
+mesh = SubResource("R60")
+
+[node name="ShopText1_0" type="Label3D" parent="Signs"]
+position = Vector3(21.05, 3.3, -22)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ラーメン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade1_0" type="MeshInstance3D" parent="Signs"]
+position = Vector3(20.5, 8, -18.4)
+mesh = SubResource("R61")
+
+[node name="BladeText1_0" type="Label3D" parent="Signs"]
+position = Vector3(20.26, 8, -18.4)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower1_1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 11.0, -13)
+mesh = SubResource("R62")
+
+[node name="Roof1_1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 21.6, -13)
+mesh = SubResource("R63")
+
+[node name="Shop1_1" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.23, 3.3, -13)
+mesh = SubResource("R64")
+
+[node name="ShopLine1_1" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.04, 2.5, -13)
+mesh = SubResource("R65")
+
+[node name="ShopText1_1" type="Label3D" parent="Signs"]
+position = Vector3(21.05, 3.3, -13)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "カラオケ"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade1_1" type="MeshInstance3D" parent="Signs"]
+position = Vector3(20.5, 8, -9.4)
+mesh = SubResource("R66")
+
+[node name="BladeText1_1" type="Label3D" parent="Signs"]
+position = Vector3(20.26, 8, -9.4)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower1_2" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 6.5, -4)
+mesh = SubResource("R67")
+
+[node name="Roof1_2" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 12.6, -4)
+mesh = SubResource("R68")
+
+[node name="Shop1_2" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.23, 3.3, -4)
+mesh = SubResource("R69")
+
+[node name="ShopLine1_2" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.04, 2.5, -4)
+mesh = SubResource("R70")
+
+[node name="ShopText1_2" type="Label3D" parent="Signs"]
+position = Vector3(21.05, 3.3, -4)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ゲームセンター"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade1_2" type="MeshInstance3D" parent="Signs"]
+position = Vector3(20.5, 8, -0.4)
+mesh = SubResource("R71")
+
+[node name="BladeText1_2" type="Label3D" parent="Signs"]
+position = Vector3(20.26, 8, -0.4)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower1_3" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 8.0, 5)
+mesh = SubResource("R72")
+
+[node name="Roof1_3" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 15.6, 5)
+mesh = SubResource("R73")
+
+[node name="Shop1_3" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.23, 3.3, 5)
+mesh = SubResource("R74")
+
+[node name="ShopLine1_3" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.04, 2.5, 5)
+mesh = SubResource("R75")
+
+[node name="ShopText1_3" type="Label3D" parent="Signs"]
+position = Vector3(21.05, 3.3, 5)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ネコ組"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade1_3" type="MeshInstance3D" parent="Signs"]
+position = Vector3(20.5, 8, 8.6)
+mesh = SubResource("R76")
+
+[node name="BladeText1_3" type="Label3D" parent="Signs"]
+position = Vector3(20.26, 8, 8.6)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower1_4" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 6.5, 14)
+mesh = SubResource("R77")
+
+[node name="Roof1_4" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 12.6, 14)
+mesh = SubResource("R78")
+
+[node name="Shop1_4" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.23, 3.3, 14)
+mesh = SubResource("R79")
+
+[node name="ShopLine1_4" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.04, 2.5, 14)
+mesh = SubResource("R80")
+
+[node name="ShopText1_4" type="Label3D" parent="Signs"]
+position = Vector3(21.05, 3.3, 14)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "夜の街"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade1_4" type="MeshInstance3D" parent="Signs"]
+position = Vector3(20.5, 8, 17.6)
+mesh = SubResource("R81")
+
+[node name="BladeText1_4" type="Label3D" parent="Signs"]
+position = Vector3(20.26, 8, 17.6)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Tower1_5" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 11.0, 23)
+mesh = SubResource("R82")
+
+[node name="Roof1_5" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(24, 21.6, 23)
+mesh = SubResource("R83")
+
+[node name="Shop1_5" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.23, 3.3, 23)
+mesh = SubResource("R84")
+
+[node name="ShopLine1_5" type="MeshInstance3D" parent="Signs"]
+position = Vector3(21.04, 2.5, 23)
+mesh = SubResource("R85")
+
+[node name="ShopText1_5" type="Label3D" parent="Signs"]
+position = Vector3(21.05, 3.3, 23)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "NEKO CLUB"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(0.45, 0.95, 1, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Blade1_5" type="MeshInstance3D" parent="Signs"]
+position = Vector3(20.5, 8, 26.6)
+mesh = SubResource("R86")
+
+[node name="BladeText1_5" type="Label3D" parent="Signs"]
+position = Vector3(20.26, 8, 26.6)
+rotation = Vector3(0, -1.5708, 0)
+font = ExtResource("font")
+text = "ネ\nオ\nン"
+font_size = 110
+pixel_size = 0.007
+modulate = Color(1, 0.85, 0.95, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="EndTower-1_0" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-18, 7.5, -30)
+mesh = SubResource("R87")
+
+[node name="EndTower-1_1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-12, 7.5, -30)
+mesh = SubResource("R88")
+
+[node name="EndTower-1_2" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-6, 11.5, -30)
+mesh = SubResource("R89")
+
+[node name="EndTower-1_3" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(0, 9.5, -30)
+mesh = SubResource("R90")
+
+[node name="EndTower-1_4" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(6, 7.5, -30)
+mesh = SubResource("R91")
+
+[node name="EndTower-1_5" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(12, 9.5, -30)
+mesh = SubResource("R92")
+
+[node name="EndTower-1_6" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(18, 11.5, -30)
+mesh = SubResource("R93")
+
+[node name="Garage-1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(0, 3, -26.4)
+mesh = SubResource("R94")
+
+[node name="Club-1" type="Label3D" parent="Signs"]
+position = Vector3(0, 8, -26.4)
+rotation = Vector3(0, 0, 0)
+font = ExtResource("font")
+text = "NEKO DISTRICT"
+font_size = 110
+pixel_size = 0.011
+modulate = Color(1, 0.35, 0.7, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Pillar-1_-5.5" type="StaticBody3D" parent="Torii"]
+position = Vector3(-5.5, 3.6, -22)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Torii/Pillar-1_-5.5"]
+mesh = SubResource("R95")
+
+[node name="Collision" type="CollisionShape3D" parent="Torii/Pillar-1_-5.5"]
+shape = SubResource("R96")
+
+[node name="Pillar-1_5.5" type="StaticBody3D" parent="Torii"]
+position = Vector3(5.5, 3.6, -22)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Torii/Pillar-1_5.5"]
+mesh = SubResource("R97")
+
+[node name="Collision" type="CollisionShape3D" parent="Torii/Pillar-1_5.5"]
+shape = SubResource("R98")
+
+[node name="Beam-1" type="MeshInstance3D" parent="Torii"]
+position = Vector3(0, 5.5, -22)
+mesh = SubResource("R99")
+
+[node name="Cap-1" type="MeshInstance3D" parent="Torii"]
+position = Vector3(0, 6.9, -22)
+mesh = SubResource("R100")
+
+[node name="Top-1" type="MeshInstance3D" parent="Torii"]
+position = Vector3(0, 7.15, -22)
+mesh = SubResource("R101")
+
+[node name="FlagPole-1_-17" type="StaticBody3D" parent="Flags"]
+position = Vector3(-17, 4, -17)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Flags/FlagPole-1_-17"]
+mesh = SubResource("R102")
+
+[node name="Collision" type="CollisionShape3D" parent="Flags/FlagPole-1_-17"]
+shape = SubResource("R103")
+
+[node name="Flag-1_-17" type="MeshInstance3D" parent="Flags"]
+position = Vector3(-15.7, 6.4, -17)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("R104")
+cast_shadow = 0
+
+[node name="FlagPole-1_17" type="StaticBody3D" parent="Flags"]
+position = Vector3(17, 4, -17)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Flags/FlagPole-1_17"]
+mesh = SubResource("R105")
+
+[node name="Collision" type="CollisionShape3D" parent="Flags/FlagPole-1_17"]
+shape = SubResource("R106")
+
+[node name="Flag-1_17" type="MeshInstance3D" parent="Flags"]
+position = Vector3(18.3, 6.4, -17)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("R107")
+cast_shadow = 0
+
+[node name="EndTower1_0" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-18, 11.5, 30)
+mesh = SubResource("R108")
+
+[node name="EndTower1_1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-12, 11.5, 30)
+mesh = SubResource("R109")
+
+[node name="EndTower1_2" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(-6, 11.5, 30)
+mesh = SubResource("R110")
+
+[node name="EndTower1_3" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(0, 7.5, 30)
+mesh = SubResource("R111")
+
+[node name="EndTower1_4" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(6, 7.5, 30)
+mesh = SubResource("R112")
+
+[node name="EndTower1_5" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(12, 11.5, 30)
+mesh = SubResource("R113")
+
+[node name="EndTower1_6" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(18, 7.5, 30)
+mesh = SubResource("R114")
+
+[node name="Garage1" type="MeshInstance3D" parent="Buildings"]
+position = Vector3(0, 3, 26.4)
+mesh = SubResource("R115")
+
+[node name="Club1" type="Label3D" parent="Signs"]
+position = Vector3(0, 8, 26.4)
+rotation = Vector3(0, 3.14159, 0)
+font = ExtResource("font")
+text = "NEKO DISTRICT"
+font_size = 110
+pixel_size = 0.011
+modulate = Color(1, 0.35, 0.7, 1)
+outline_size = 3
+outline_modulate = Color(0.04, 0.01, 0.08, 1)
+no_depth_test = false
+
+[node name="Pillar1_-5.5" type="StaticBody3D" parent="Torii"]
+position = Vector3(-5.5, 3.6, 22)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Torii/Pillar1_-5.5"]
+mesh = SubResource("R116")
+
+[node name="Collision" type="CollisionShape3D" parent="Torii/Pillar1_-5.5"]
+shape = SubResource("R117")
+
+[node name="Pillar1_5.5" type="StaticBody3D" parent="Torii"]
+position = Vector3(5.5, 3.6, 22)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Torii/Pillar1_5.5"]
+mesh = SubResource("R118")
+
+[node name="Collision" type="CollisionShape3D" parent="Torii/Pillar1_5.5"]
+shape = SubResource("R119")
+
+[node name="Beam1" type="MeshInstance3D" parent="Torii"]
+position = Vector3(0, 5.5, 22)
+mesh = SubResource("R120")
+
+[node name="Cap1" type="MeshInstance3D" parent="Torii"]
+position = Vector3(0, 6.9, 22)
+mesh = SubResource("R121")
+
+[node name="Top1" type="MeshInstance3D" parent="Torii"]
+position = Vector3(0, 7.15, 22)
+mesh = SubResource("R122")
+
+[node name="FlagPole1_-17" type="StaticBody3D" parent="Flags"]
+position = Vector3(-17, 4, 17)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Flags/FlagPole1_-17"]
+mesh = SubResource("R123")
+
+[node name="Collision" type="CollisionShape3D" parent="Flags/FlagPole1_-17"]
+shape = SubResource("R124")
+
+[node name="Flag1_-17" type="MeshInstance3D" parent="Flags"]
+position = Vector3(-15.7, 6.4, 17)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("R125")
+cast_shadow = 0
+
+[node name="FlagPole1_17" type="StaticBody3D" parent="Flags"]
+position = Vector3(17, 4, 17)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Flags/FlagPole1_17"]
+mesh = SubResource("R126")
+
+[node name="Collision" type="CollisionShape3D" parent="Flags/FlagPole1_17"]
+shape = SubResource("R127")
+
+[node name="Flag1_17" type="MeshInstance3D" parent="Flags"]
+position = Vector3(18.3, 6.4, 17)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("R128")
+cast_shadow = 0
+
+[node name="Windows0" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R130")
+cast_shadow = 0
+
+[node name="Windows1" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R132")
+cast_shadow = 0
+
+[node name="Windows2" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R134")
+cast_shadow = 0
+
+[node name="Windows3" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R136")
+cast_shadow = 0
+
+[node name="Crosswalk" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R138")
+cast_shadow = 0
+
+[node name="RoadLines" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R140")
+cast_shadow = 0
+
+[node name="PlazaDots" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R142")
+cast_shadow = 0
+
+[node name="GarageSlats" type="MultiMeshInstance3D" parent="Details"]
+multimesh = SubResource("R144")
+cast_shadow = 0
+
+[node name="LampPole0" type="StaticBody3D" parent="Props"]
+position = Vector3(-19, 2.7, -12)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/LampPole0"]
+mesh = SubResource("R145")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/LampPole0"]
+shape = SubResource("R146")
+
+[node name="Lamp0" type="MeshInstance3D" parent="Props"]
+position = Vector3(-19, 5, -12)
+mesh = SubResource("R147")
+
+[node name="NeonLight0" type="OmniLight3D" parent="Props"]
+position = Vector3(-19, 4.8, -12)
+light_color = Color(1, 0.04, 0.3, 1)
+light_energy = 3.0
+omni_range = 10.0
+shadow_enabled = false
+
+[node name="Vending0" type="StaticBody3D" parent="Props"]
+position = Vector3(-19, 1.6, -10)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/Vending0"]
+mesh = SubResource("R148")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/Vending0"]
+shape = SubResource("R149")
+
+[node name="VendingGlow0" type="MeshInstance3D" parent="Props"]
+position = Vector3(-19, 1.8, -9.58)
+mesh = SubResource("R150")
+
+[node name="LampPole1" type="StaticBody3D" parent="Props"]
+position = Vector3(19, 2.7, -12)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/LampPole1"]
+mesh = SubResource("R151")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/LampPole1"]
+shape = SubResource("R152")
+
+[node name="Lamp1" type="MeshInstance3D" parent="Props"]
+position = Vector3(19, 5, -12)
+mesh = SubResource("R153")
+
+[node name="NeonLight1" type="OmniLight3D" parent="Props"]
+position = Vector3(19, 4.8, -12)
+light_color = Color(0.1, 0.5, 1, 1)
+light_energy = 3.0
+omni_range = 10.0
+shadow_enabled = false
+
+[node name="Vending1" type="StaticBody3D" parent="Props"]
+position = Vector3(19, 1.6, -10)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/Vending1"]
+mesh = SubResource("R154")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/Vending1"]
+shape = SubResource("R155")
+
+[node name="VendingGlow1" type="MeshInstance3D" parent="Props"]
+position = Vector3(19, 1.8, -9.58)
+mesh = SubResource("R156")
+
+[node name="LampPole2" type="StaticBody3D" parent="Props"]
+position = Vector3(-19, 2.7, 12)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/LampPole2"]
+mesh = SubResource("R157")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/LampPole2"]
+shape = SubResource("R158")
+
+[node name="Lamp2" type="MeshInstance3D" parent="Props"]
+position = Vector3(-19, 5, 12)
+mesh = SubResource("R159")
+
+[node name="NeonLight2" type="OmniLight3D" parent="Props"]
+position = Vector3(-19, 4.8, 12)
+light_color = Color(1, 0.04, 0.3, 1)
+light_energy = 3.0
+omni_range = 10.0
+shadow_enabled = false
+
+[node name="Vending2" type="StaticBody3D" parent="Props"]
+position = Vector3(-19, 1.6, 14)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/Vending2"]
+mesh = SubResource("R160")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/Vending2"]
+shape = SubResource("R161")
+
+[node name="VendingGlow2" type="MeshInstance3D" parent="Props"]
+position = Vector3(-19, 1.8, 14.42)
+mesh = SubResource("R162")
+
+[node name="LampPole3" type="StaticBody3D" parent="Props"]
+position = Vector3(19, 2.7, 12)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/LampPole3"]
+mesh = SubResource("R163")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/LampPole3"]
+shape = SubResource("R164")
+
+[node name="Lamp3" type="MeshInstance3D" parent="Props"]
+position = Vector3(19, 5, 12)
+mesh = SubResource("R165")
+
+[node name="NeonLight3" type="OmniLight3D" parent="Props"]
+position = Vector3(19, 4.8, 12)
+light_color = Color(0.1, 0.5, 1, 1)
+light_energy = 3.0
+omni_range = 10.0
+shadow_enabled = false
+
+[node name="Vending3" type="StaticBody3D" parent="Props"]
+position = Vector3(19, 1.6, 14)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Props/Vending3"]
+mesh = SubResource("R166")
+
+[node name="Collision" type="CollisionShape3D" parent="Props/Vending3"]
+shape = SubResource("R167")
+
+[node name="VendingGlow3" type="MeshInstance3D" parent="Props"]
+position = Vector3(19, 1.8, 14.42)
+mesh = SubResource("R168")

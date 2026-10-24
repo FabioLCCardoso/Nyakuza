@@ -15,6 +15,10 @@ signal field_hit(hit: HitData, hurt: CombatHurtBox)
 @export var duration: float = 4.0
 @export var tick_interval: float = 0.25
 @export var damage_per_tick: float = 8.0
+@export_category("Vortex Capture")
+@export var pull_speed: float = 7.0
+@export var slot_spacing: float = 1.05
+@export var capture_interval: float = 0.1
 @export var placement_distance: float = 3.0
 var charge: float = 0.0
 var field: MusouSphere
@@ -88,6 +92,9 @@ func try_activate() -> bool:
 	field.duration = duration
 	field.tick_interval = tick_interval
 	field.damage_per_tick = damage_per_tick
+	field.pull_speed = pull_speed
+	field.slot_spacing = slot_spacing
+	field.capture_interval = capture_interval
 	field.hit_landed.connect(func(hit: HitData, hurt: CombatHurtBox): field_hit.emit(hit, hurt))
 	# Irmao do Player: nao acompanha movimento e desaparece junto com a partida.
 	player.get_parent().add_child(field)

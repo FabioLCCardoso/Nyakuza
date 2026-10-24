@@ -107,6 +107,59 @@ var knocked_down : bool = false
 ## Altura do chao onde ele pisou por ultimo (o AirComboController usa para alinhar o player ao inimigo no ar).
 var ground_y : float = 0.0
 
+var musou_owner: WeakRef
+var musou_target: Vector3
+var musou_lock_left: float = 0.0
+var musou_pull_speed: float = 7.0
+var musou_saved_mask: int = 1
+
+func is_musou_captured() -> bool:
+	return musou_owner != null and is_instance_valid(musou_owner.get_ref()) and musou_lock_left > 0.0 and not is_dead()
+
+func set_musou_capture(source: Node3D, destination: Vector3, speed: float) -> bool:
+	if is_dead() or (is_musou_captured() and musou_owner.get_ref() != source):
+		return false
+	if not is_musou_captured():
+		# Restaura uma eventual captura expirada antes de salvar a mascara.
+		if musou_owner != null:
+			end_musou_capture()
+		musou_saved_mask = collision_mask
+		collision_mask |= 4
+		if state != State.AIRBORNE:
+			_enter(State.STAGGER, 0.3)
+			_play(ANIM_HIT)
+	musou_owner = weakref(source)
+	musou_target = destination
+	musou_pull_speed = maxf(speed, 0.0)
+	musou_lock_left = 0.25
+	return true
+
+func end_musou_capture(source: Node3D = null) -> void:
+	if musou_owner == null:
+		return
+	if source != null and musou_owner.get_ref() != source:
+		return
+	collision_mask = musou_saved_mask
+	musou_owner = null
+	musou_lock_left = 0.0
+	if not is_dead() and state != State.AIRBORNE:
+		_enter(State.STAGGER, 0.25)
+		attack_cd = maxf(attack_cd, 0.35)
+
+func _process_musou_capture(delta: float) -> void:
+	if state == State.AIRBORNE:
+		_process_airborne(delta)
+	else:
+		if state != State.STAGGER:
+			_enter(State.STAGGER, 0.3)
+		state_timer = maxf(state_timer, 0.3)
+	var offset := musou_target - global_position
+	offset.y = 0.0
+	var distance := offset.length()
+	var speed := minf(musou_pull_speed, minf(distance * 8.0, distance / maxf(delta, 0.001)))
+	_set_horizontal(offset.normalized() * speed if distance > 0.025 else Vector3.ZERO)
+	knock_velocity = Vector3.ZERO
+
 var attack_coordinator: AttackCoordinator
 var crowd_director: Node
 var area_attack_radius: float = 0.0
@@ -167,16 +220,21 @@ func _physics_process(delta):
 	attack_cd = maxf(attack_cd - delta, 0.0)
 	state_timer -= delta
 
-	match state:
-		State.IDLE: _process_idle()
-		State.CHASE: _process_chase(delta)
-		State.ATTACK_WINDUP: _process_attack_windup(delta)
-		State.ATTACK_ACTIVE: _process_attack_active()
-		State.ATTACK_RECOVER: _process_attack_recover()
-		State.STAGGER: _process_stagger(delta)
-		State.AIRBORNE: _process_airborne(delta)
-		State.DEAD: _process_dead(delta)
-
+	musou_lock_left = maxf(musou_lock_left - delta, 0.0)
+	if musou_owner != null and not is_musou_captured():
+		end_musou_capture()
+	if is_musou_captured():
+		_process_musou_capture(delta)
+	else:
+		match state:
+			State.IDLE: _process_idle()
+			State.CHASE: _process_chase(delta)
+			State.ATTACK_WINDUP: _process_attack_windup(delta)
+			State.ATTACK_ACTIVE: _process_attack_active()
+			State.ATTACK_RECOVER: _process_attack_recover()
+			State.STAGGER: _process_stagger(delta)
+			State.AIRBORNE: _process_airborne(delta)
+			State.DEAD: _process_dead(delta)
 	var hanging := state == State.AIRBORNE and hang_left > 0.0 and not slamming
 	if hanging:
 		velocity.y = move_toward(velocity.y, 0.0, 40.0 * delta)   # "freia" no ar em vez de cair
@@ -271,6 +329,8 @@ func _move_waiting(_victim: Node3D, inward: Vector3, distance: float) -> void:
 	_play(ANIM_RUN, maxf(0.5, move_speed * orbit_speed_scale / 3.6))
 
 func _start_attack() -> void:
+	if is_musou_captured():
+		return
 	if is_instance_valid(attack_coordinator) and not attack_coordinator.request_attack(self):
 		attack_cd = randf_range(0.10, 0.18)
 		return
@@ -501,6 +561,7 @@ func _spawn_shockwave() -> void:
 func _die(hit : HitData) -> void:
 	if state == State.DEAD:
 		return
+	end_musou_capture()
 	hurt_box.can_receive_hits = false
 	_enter(State.DEAD)
 	remove_from_group("enemies")
