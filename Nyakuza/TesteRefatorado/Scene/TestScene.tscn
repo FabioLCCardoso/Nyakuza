@@ -347,27 +347,75 @@ active_skills = [NodePath("ActiveSkill_1"), NodePath("ActiveSkill_2"), NodePath(
 
 [node name="ActiveSkill_1" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1690275044 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
-animation_name = &"Right_Hand_Sword_Slash"
-windup_duration = 0.5
-delivery_duration = 1.0
-recovery_duration = 0.5
+animation_name = &"Spike/Right_Hand_Sword_Slash"
+windup_duration = 0.07
+delivery_duration = 0.23
+recovery_duration = 0.15
 vfx = NodePath("../GPUTrail3D")
+
+animation_start_offset = 0.25
+
+playback_speed = 1.0
+
+animation_delivery_start = 0.45
+
+animation_delivery_end = 0.7
+
+animation_end_offset = 1.35
+
+hit_delay = 0.015
+
+vfx_delay = 0.015
+
+vfx_duration = 0.21500000000000002
 
 [node name="ActiveSkill_2" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1342802571 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
-animation_name = &"Attack"
-windup_duration = 1.0
-delivery_duration = 1.0
-recovery_duration = 0.5
+animation_name = &"Spike/Charged_Slash"
+windup_duration = 0.07
+delivery_duration = 0.25
+recovery_duration = 0.16
 vfx = NodePath("../GPUTrail3D")
+
+animation_start_offset = 0.85
+
+playback_speed = 1.0
+
+animation_delivery_start = 1.04
+
+animation_delivery_end = 1.34
+
+animation_end_offset = 1.8
+
+hit_delay = 0.015
+
+vfx_delay = 0.015
+
+vfx_duration = 0.235
 
 [node name="ActiveSkill_3" type="Node3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1662291546 node_paths=PackedStringArray("vfx")]
 script = ExtResource("19_22d3y")
-animation_name = &"Attack"
-windup_duration = 1.0
-delivery_duration = 1.0
-recovery_duration = 0.5
+animation_name = &"Spike/Attack"
+windup_duration = 0.09
+delivery_duration = 0.25
+recovery_duration = 0.2
 vfx = NodePath("../GPUTrail3D")
+
+animation_start_offset = 0.65
+
+playback_speed = 1.0
+
+animation_delivery_start = 0.98
+
+animation_delivery_end = 1.2
+
+animation_end_offset = 1.65
+
+hit_delay = 0.015
+
+vfx_delay = 0.015
+
+vfx_duration = 0.235
 
 [node name="GPUTrail3D" type="GPUParticles3D" parent="Player/MeshRoot/SpikePrototipo/target_character/Skeleton3D/katana/SkillsContainer" unique_id=1880832745]
 transform = Transform3D(1.4178147, -0.012015536, -0.06653594, 0.061509073, 0.31362087, 0.06827742, 0.0956538, -0.023572728, 0.9423096, -0.31478047, 0.40797406, 0.120706975)

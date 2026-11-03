@@ -8,8 +8,8 @@ class_name ActiveSkillController
 @export var camera_controller : CameraController
 
 var last_movement_state : MovementState
-## clique dado no meio de um golpe: vira o proximo golpe do combo assim que a recuperacao comeca.
-@export var input_buffer_time: float = 0.28
+## clique dado no meio de um golpe: vira o proximo golpe do combo depois da janela mínima de recuperação.
+@export var input_buffer_time: float = 0.40
 @export var minimum_recovery: float = 0.035
 @export var heavy_cooldown: float = 0.55
 var attack_buffered : bool = false
@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	var recovered: float = 0.0
 	if skills_container.current_active_skill != null:
 		recovered = skills_container.current_active_skill.recovery_duration - skills_container.recovery_timer.time_left
-	if state == ActiveSkill.State.READY or (state == ActiveSkill.State.RECOVERING and recovered >= minimum_recovery):
+	if state == ActiveSkill.State.READY or (state == ActiveSkill.State.RECOVERING and recovered >= maxf(minimum_recovery, skills_container.current_active_skill.recovery_duration * skills_container.current_active_skill.recovery_cancel_fraction)):
 		if not buffered_heavy or heavy_left <= 0.0:
 			start_attack(buffered_heavy)
 

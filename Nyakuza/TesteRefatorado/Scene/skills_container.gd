@@ -44,6 +44,8 @@ func _ready():
 	recovery_timer.timeout.connect(_on_recovery_timer_timeout)
 	end_timer.timeout.connect(_on_end_timer_timeout)
 	combo_timer.timeout.connect(_on_combo_timer_timeout)
+	for timer in [windup_timer, delivery_timer, recovery_timer, end_timer, combo_timer]:
+		timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
 	windup_timer.one_shot = true
 	delivery_timer.one_shot = true
 	recovery_timer.one_shot = true
@@ -60,17 +62,23 @@ func switch_attack_buffer(attack_anim_name : StringName):
 	attack_buffer = anim_tree.tree_root.get("nodes/attack_buffer_" + str(attack_buffer_id) + "/node")
 	attack_anim_node = attack_buffer.get_node("Animation")
 	attack_anim_node.animation = attack_anim_name
-	_apply_animation_trim(current_active_skill.animation_start_offset)
+	_apply_animation_trim(current_active_skill.animation_start_offset, current_active_skill.animation_end_offset)
 	
 ## Faz a animacao do buffer atual comecar em 'offset' segundos (0 = comeco normal).
 ## IMPORTANTE: sempre reseta, senao um offset antigo vazaria para o proximo golpe que usar esse buffer.
-func _apply_animation_trim(offset : float):
-	attack_anim_node.use_custom_timeline = offset > 0.0
-	if offset > 0.0:
-		var ap := anim_tree.get_node(anim_tree.anim_player) as AnimationPlayer
-		var length : float = ap.get_animation(attack_anim_node.animation).length
-		attack_anim_node.start_offset = offset
-		attack_anim_node.timeline_length = maxf(length - offset, 0.05)
+func _apply_animation_trim(offset: float, end_offset: float = 0.0):
+	var ap := anim_tree.get_node(anim_tree.anim_player) as AnimationPlayer
+	var length: float = ap.get_animation(attack_anim_node.animation).length
+	attack_anim_node.use_custom_timeline = true
+	attack_anim_node.stretch_time_scale = false
+	attack_anim_node.start_offset = clampf(offset, 0.0, length - 0.001)
+	attack_anim_node.timeline_length = maxf((end_offset if end_offset > offset else length) - offset, 0.001)
+	attack_anim_node.loop_mode = Animation.LOOP_NONE
+
+## Percorre o segmento inteiro durante a fase, em vez de congelar o windup
+## e interromper o clip por um timer sem relação com o movimento da espada.
+func _phase_speed(from: float, to: float, duration: float) -> float:
+	return maxf(to - from, 0.001) / maxf(duration, 0.001)
 
 func set_attack_buffer_timescale(value : float): 
 	anim_tree["parameters/attack_buffer_" + str(attack_buffer_id) + "/TimeScale/scale"] = value
@@ -131,9 +139,13 @@ func cancel_attack(reset_combo : bool = true):
 	
 func windup(): 
 	attack_state = ActiveSkill.State.WINDING_UP
-	attack_transition_node.xfade_time = current_active_skill.windup_duration
+	attack_transition_node.xfade_time = current_active_skill.animation_blend_in
 	set_attack_transition("attack_buffer_" + str(attack_buffer_id))
-	set_attack_buffer_timescale(0)
+	var skill := current_active_skill
+	if skill.animation_end_offset > 0.0:
+		set_attack_buffer_timescale(_phase_speed(skill.animation_start_offset, skill.animation_delivery_start, skill.windup_duration))
+	else:
+		set_attack_buffer_timescale(skill.playback_speed)
 	windup_timer.start(maxf(current_active_skill.windup_duration, 0.001))
 
 func _on_windup_timer_timeout(): 
@@ -141,7 +153,8 @@ func _on_windup_timer_timeout():
 	
 func deliver(): 
 	attack_state = ActiveSkill.State.DELIVERING
-	set_attack_buffer_timescale(current_active_skill.playback_speed)
+	var skill := current_active_skill
+	set_attack_buffer_timescale(_phase_speed(skill.animation_delivery_start, skill.animation_delivery_end, skill.delivery_duration) if skill.animation_end_offset > 0.0 else skill.playback_speed)
 	delivery_timer.start(maxf(current_active_skill.delivery_duration, 0.001))
 	delivery_started.emit(current_active_skill)
 	play_vfx(current_active_skill)
@@ -152,11 +165,15 @@ func _on_delivery_timer_timeout():
 func recover(): 
 	delivery_ended.emit()
 	attack_state = ActiveSkill.State.RECOVERING
+	var skill := current_active_skill
+	if skill.animation_end_offset > 0.0:
+		set_attack_buffer_timescale(_phase_speed(skill.animation_delivery_end, skill.animation_end_offset, skill.recovery_duration))
 	recovery_timer.start(maxf(current_active_skill.recovery_duration, 0.001))
 	
 func _on_recovery_timer_timeout(): 
 	attack_state = ActiveSkill.State.READY
-	end_timer.start(0.05)
+	attack_transition_node.xfade_time = current_active_skill.animation_blend_out
+	set_attack_transition("end_attack")
 	combo_timer.start(maxf(combo_window, 0.01))
 	completed_recovery.emit()
 
@@ -213,4 +230,6 @@ func release_pose(blend : float = 0.15):
 
 func setup(_anim_tree : AnimationTree):
 	anim_tree = _anim_tree
+	anim_tree.tree_root = anim_tree.tree_root.duplicate(true)
+	anim_tree.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS
 	attack_transition_node = anim_tree.tree_root.get("nodes/attack_transition/node")

@@ -12,6 +12,15 @@ enum State {READY, WINDING_UP, DELIVERING, RECOVERING}
 @export var animation_start_offset : float = 0.0
 @export_range(0.1, 3.0) var playback_speed: float = 1.0
 
+## Marcos no clip original (segundos). End > 0 habilita reprodução por fases.
+@export var animation_delivery_start: float = 0.0
+@export var animation_delivery_end: float = 0.0
+@export var animation_end_offset: float = 0.0
+@export var animation_blend_in: float = 0.055
+@export var animation_blend_out: float = 0.10
+## Fração mínima do follow-through antes de aceitar outro golpe.
+@export_range(0.0, 1.0) var recovery_cancel_fraction: float = 0.65
+
 @export_category("Movement")
 @export var acceleration : float = 8
 @export var dash_delay : float = 0.1
