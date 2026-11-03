@@ -3,6 +3,8 @@ render_mode specular_disabled, ambient_light_disabled;
 // Tres faixas, sombras coloridas e rim discreto. Opaco: sem ALPHA.
 uniform vec4 base_color : source_color = vec4(1.0);
 uniform sampler2D albedo_texture : source_color, hint_default_white, filter_linear_mipmap;
+uniform vec3 uv_scale = vec3(1.0);
+uniform vec3 uv_offset = vec3(0.0);
 uniform vec4 shadow_color : source_color = vec4(0.17, 0.12, 0.24, 1.0);
 uniform vec4 mid_color : source_color = vec4(0.64, 0.58, 0.73, 1.0);
 uniform float shadow_threshold : hint_range(-1.0, 1.0) = 0.08;
@@ -15,11 +17,20 @@ uniform float rim_strength : hint_range(0.0, 1.0) = 0.18;
 uniform float rim_power : hint_range(1.0, 12.0) = 4.0;
 uniform float hatch_strength : hint_range(0.0, 0.5) = 0.08;
 uniform float hatch_scale : hint_range(4.0, 100.0) = 36.0;
+// Opcional: borda interna para malhas que não aceitam casca expandida.
+// Zero mantém o comportamento dos materiais antigos.
+uniform float ink_strength : hint_range(0.0, 1.0) = 0.0;
+uniform float ink_threshold : hint_range(0.0, 0.5) = 0.16;
+uniform float ink_softness : hint_range(0.001, 0.2) = 0.055;
+uniform vec4 ink_tint : source_color = vec4(0.07, 0.04, 0.10, 1.0);
 varying float hatch;
 void fragment() {
-	vec3 tex = texture(albedo_texture, UV).rgb * base_color.rgb;
+	vec3 tex = texture(albedo_texture, UV * uv_scale.xy + uv_offset.xy).rgb * base_color.rgb;
 	float gray = dot(tex, vec3(0.2126, 0.7152, 0.0722));
 	ALBEDO = max(mix(vec3(gray), tex, saturation), vec3(0.0));
+	float facing = abs(dot(normalize(NORMAL), normalize(VIEW)));
+	float ink = 1.0 - smoothstep(ink_threshold, ink_threshold + ink_softness, facing);
+	ALBEDO = mix(ALBEDO, ALBEDO * ink_tint.rgb, ink * ink_strength);
 	ROUGHNESS = 1.0;
 	SPECULAR = 0.0;
 	EMISSION = ALBEDO * shadow_color.rgb * ambient_floor;

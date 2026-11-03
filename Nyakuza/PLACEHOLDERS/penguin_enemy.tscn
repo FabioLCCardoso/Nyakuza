@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://2md7oqu3pv0e"]
+
+[ext_resource type="PackedScene" uid="uid://doe20qvbitas" path="res://PLACEHOLDERS/PenguinEnemy/PenguinEnemy.glb" id="1_jp0ry"]
+
+[node name="PenguinEnemy" unique_id=295101732 instance=ExtResource("1_jp0ry")]

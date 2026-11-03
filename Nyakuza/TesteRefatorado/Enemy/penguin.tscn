@@ -1,7 +1,63 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/Enemy.tscn" id="1"]
-[ext_resource type="Resource" path="res://TesteRefatorado/Enemy/Profiles/penguin.tres" id="2"]
+[ext_resource type="Script" path="res://TesteRefatorado/Enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/Visuals/PenguinVisual.tscn" id="2_model"]
+[ext_resource type="Script" path="res://TesteRefatorado/Combat/hurt_box.gd" id="3_hurt"]
+[ext_resource type="Script" path="res://TesteRefatorado/Combat/health_component.gd" id="4_health"]
 
-[node name="penguin" instance=ExtResource("1")]
-profile = ExtResource("2")
+[ext_resource type="Resource" path="res://TesteRefatorado/Enemy/Profiles/penguin.tres" id="profile"]
+[ext_resource type="AnimationLibrary" path="res://TesteRefatorado/Enemy/Visuals/PenguinAnimations.tres" id="animations"]
+[ext_resource type="PackedScene" path="res://TesteRefatorado/Enemy/Weapons/DragonSlayer.tscn" id="weapon"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.49
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hurt"]
+radius = 0.53
+height = 1.8800000000000001
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_attack"]
+size = Vector3(1.3, 1.5, 1.3)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=456811351]
+script = ExtResource("1_enemy")
+profile = ExtResource("profile")
+corrected_animations = ExtResource("animations")
+preserve_textures = true
+weapon_scene = ExtResource("weapon")
+ANIM_IDLE = &"Idle_Hold"
+ANIM_RUN = &"Walking"
+ANIM_HIT = &"Idle_Hold"
+ANIM_AIR = &"Idle_Hold"
+ANIM_DEATH = &"Knock_Down"
+attack_animation = &"Heavy_Hammer_Swing"
+corpse_time = 5.0
+bar_height = 2.1
+ground_strike = true
+blade_center = Vector3(0, 1.15, 0)
+blade_size = Vector3(0.43, 2.1, 0.2)
+blade_tip = Vector3(0, 2.25, 0)
+
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=166751880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Model" parent="." unique_id=733092446 instance=ExtResource("2_model")]
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=720067938]
+script = ExtResource("3_hurt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=1737247280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9400000000000001, 0)
+shape = SubResource("CapsuleShape3D_hurt")
+
+[node name="AttackHitBox" type="Area3D" parent="." unique_id=935252586]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitBox" unique_id=570673130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+shape = SubResource("BoxShape3D_attack")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1749040166]
+script = ExtResource("4_health")

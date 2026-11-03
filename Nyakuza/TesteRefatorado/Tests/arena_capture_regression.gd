@@ -32,7 +32,7 @@ func run() -> void:
  var enemies: Array[Enemy] = []
  var center := Vector3(0,1.6,3)
  for i in 16:
-  var packed: PackedScene = director.red_panda_scene if i == 0 else director.fox_scene
+  var packed: PackedScene = [director.red_panda_scene, director.penguin_scene, director.fox_scene][i % 3]
   var e := packed.instantiate() as Enemy
   game.add_child(e)
   var a := float(i)*TAU/16.0
@@ -48,17 +48,23 @@ func run() -> void:
  check(sphere.slots.size() == 19, "19 posicoes reservaveis")
  check(sphere.captured.size() == 16, "16 inimigos capturados")
  var min_distance: float = INF
+ var min_clearance: float = INF
  var mean_radius: float = 0.0
  var all_stunned: bool = true
  for e in enemies:
   all_stunned = all_stunned and e.is_musou_captured() and e.state == Enemy.State.STAGGER and e.collision_mask == 5
   mean_radius += Vector2(e.global_position.x,e.global_position.z-3).length()/16.0
   for other in enemies:
-   if e != other: min_distance = minf(min_distance, e.global_position.distance_to(other.global_position))
+   if e != other:
+    var d := e.global_position.distance_to(other.global_position)
+    min_distance = minf(min_distance,d)
+    var a := (e.get_node("CollisionShape3D") as CollisionShape3D).shape as CapsuleShape3D
+    var b := (other.get_node("CollisionShape3D") as CollisionShape3D).shape as CapsuleShape3D
+    min_clearance = minf(min_clearance,d-a.radius-b.radius)
  check(all_stunned, "Stunlock continuo e colisao entre corpos")
- check(min_distance >= 0.79, "Capsulas nao se sobrepoem")
+ check(min_clearance >= -0.015, "Horda mista respeita raios individuais das capsulas")
  check(mean_radius < 2.2, "Atracao aproxima horda do centro")
- print("METRICS: min_distance=",min_distance," mean_radius=",mean_radius)
+ print("METRICS: min_distance=",min_distance," mean_radius=",mean_radius," min_clearance=",min_clearance)
  check(enemies[0].posture == 60.0, "Captura nao consome postura do elite")
  enemies[0]._start_attack()
  check(enemies[0].state == Enemy.State.STAGGER, "Inimigo capturado nao inicia ataque")

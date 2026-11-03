@@ -38,7 +38,7 @@ enum State { IDLE, CHASE, ATTACK_WINDUP, ATTACK_ACTIVE, ATTACK_RECOVER, STAGGER,
 @export var gravity : float = 26.0
 @export var knockback_friction : float = 16.0
 ## Quanto tempo o corpo fica no chao antes de afundar e sumir.
-@export var corpse_time : float = 1.5
+@export var corpse_time : float = 5.0
 
 @export_category("Air / Juggle")
 ## Ao ser lancado, fica "congelado" por esse tempo (s) no ponto mais alto. Da tempo do player usar o dash para subir.
@@ -78,13 +78,34 @@ var obstacle_check_left: float = 0.0
 @export var tint : Color = Color(0.55, 0.1, 0.1)
 
 # Nomes das animacoes DEPOIS do import do Godot (ele remove o sufixo "_Loop" dos nomes do .glb).
-const ANIM_IDLE : StringName = &"Idle"
-const ANIM_RUN : StringName = &"Jog_Fwd"
-const ANIM_HIT : StringName = &"Hit_Chest"
-const ANIM_AIR : StringName = &"Hit_Head"
-const ANIM_DEATH : StringName = &"Death01"
+@export var ANIM_IDLE : StringName = &"Idle"
+@export var ANIM_RUN : StringName = &"Jog_Fwd"
+@export var ANIM_HIT : StringName = &"Hit_Chest"
+@export var ANIM_AIR : StringName = &"Hit_Head"
+@export var ANIM_DEATH : StringName = &"Death01"
 
 
+
+@export_category("Imported Visual")
+@export var corrected_animations: AnimationLibrary
+@export var preserve_textures: bool = false
+@export var weapon_scene: PackedScene
+@export var weapon_rotation_degrees: Vector3 = Vector3(-90, 0, 0)
+@export var blade_center: Vector3 = Vector3(0, .62, 0)
+@export var blade_size: Vector3 = Vector3(.2, 1.0, .2)
+@export var blade_tip: Vector3 = Vector3(0, 1.15, 0)
+@export var ground_strike: bool = false
+@export var bar_height: float = 2.05
+var weapon: Node3D
+var weapon_shape: BoxShape3D
+var weapon_hit_victims: Dictionary = {}
+var previous_blade_transform: Transform3D
+var blade_was_active: bool = false
+var ground_struck: bool = false
+var corpse_started: bool = false
+var weapon_laid_down: bool = false
+var death_animation_left: float = 0.0
+var corpse_left: float = 0.0
 
 @onready var model : Node3D = $Model
 @onready var health : HealthComponent = $HealthComponent
@@ -188,6 +209,11 @@ func _ready():
 	collision_mask = 1
 	separation_left = randf_range(0.0, 0.12)
 	anim = model.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if anim != null and corrected_animations != null:
+		for key in anim.get_animation_library_list(): anim.remove_animation_library(key)
+		anim.add_animation_library("", corrected_animations)
+		anim.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS
+	_setup_weapon()
 
 	health.max_health = max_health
 	health.reset()
@@ -241,6 +267,7 @@ func _physics_process(delta):
 	elif not is_on_floor():
 		velocity.y -= gravity * delta
 	move_and_slide()
+	if weapon != null: _sample_weapon_hits()
 	if is_on_floor():
 		ground_y = global_position.y
 
@@ -251,6 +278,10 @@ func _exit_tree() -> void:
 func _enter(new_state : State, duration : float = 0.0) -> void:
 	if not new_state in [State.ATTACK_WINDUP, State.ATTACK_ACTIVE, State.ATTACK_RECOVER] and is_instance_valid(attack_coordinator):
 		attack_coordinator.release(self)
+	if new_state == State.ATTACK_WINDUP:
+		weapon_hit_victims.clear()
+		ground_struck = false
+		blade_was_active = false
 	if state == State.ATTACK_ACTIVE:
 		attack_box.set_deferred("monitoring", false)
 	if area_indicator != null:
@@ -359,6 +390,9 @@ func _process_attack_windup(delta : float) -> void:
 
 func _process_attack_active() -> void:
 	_set_horizontal(Vector3.ZERO)
+	if weapon != null:
+		if state_timer <= 0.0: _enter(State.ATTACK_RECOVER, attack_recover)
+		return
 	if not attack_hit_done and area_attack_radius > 0.0:
 		attack_hit_done = true
 		_deliver_area_attack()
@@ -404,6 +438,13 @@ func _process_airborne(delta : float) -> void:
 		_play(ANIM_HIT, 1.0, 0.05, true)
 
 func _process_dead(delta : float) -> void:
+	death_animation_left = maxf(death_animation_left - delta, 0.0)
+	if death_animation_left <= 0.0 and is_on_floor():
+		if weapon != null and not weapon_laid_down: _lay_weapon_on_ground()
+		corpse_left -= delta
+		if corpse_left <= 0.0 and not corpse_started:
+			corpse_started = true
+			_cleanup_later()
 	_set_horizontal(knock_velocity)
 	knock_velocity = knock_velocity.move_toward(Vector3.ZERO, knockback_friction * delta)
 
@@ -422,7 +463,10 @@ func _on_hit_received(hit : HitData) -> void:
 	if state == State.DEAD:
 		return
 	last_attacker = hit.attacker
+	var hp_before := health.current_health
 	health.take_damage(hit.damage)
+	if health.current_health < hp_before:
+		CombatVFX.get_manager(get_tree()).blood_hit(self, global_position + Vector3.UP * bar_height * .48, hit.direction, hit.is_heavy)
 	if hit.show_damage_popup:
 		DamagePopup.spawn(get_tree(), global_position + Vector3(0.0, 2.2, 0.0), str(int(hit.damage)))
 	_flash(Color(1.0, 1.0, 1.0, 0.9), 0.15)
@@ -502,6 +546,7 @@ func _slam_impact() -> void:
 	slamming = false
 	knocked_down = true
 	_spawn_shockwave()
+	CombatVFX.get_manager(get_tree()).ground_impact(global_position, slam_shockwave_radius * .65)
 	_shockwave_damage_neighbors()
 	DamagePopup.spawn(get_tree(), global_position + Vector3(0.0, 2.2, 0.0), str(int(slam_impact_damage)), Color(1.0, 0.55, 0.2), 1.2)
 	health.take_damage(slam_impact_damage)
@@ -569,15 +614,15 @@ func _die(hit : HitData) -> void:
 	hurt_box.set_deferred("monitorable", false)
 	knock_velocity = hit.direction * hit.knockback * 0.7
 	_play(ANIM_DEATH, 1.0, 0.05, true)
+	death_animation_left = anim.get_animation(ANIM_DEATH).length if anim != null and anim.has_animation(ANIM_DEATH) else 0.0
+	corpse_left = corpse_time
 	if bar_mesh != null:
 		bar_mesh.hide()
 	if posture_bar != null:
 		posture_bar.hide()
 	died.emit(self)
-	_cleanup_later()
 
 func _cleanup_later() -> void:
-	await get_tree().create_timer(corpse_time).timeout
 	if not is_inside_tree():
 		return
 	set_physics_process(false)
@@ -651,7 +696,7 @@ func _setup_visuals() -> void:
 
 	for m in model.find_children("*", "MeshInstance3D", true, false):
 		var mi := m as MeshInstance3D
-		mi.material_override = mat
+		if not preserve_textures: mi.material_override = mat
 		mi.material_overlay = flash_mat
 
 func _flash(color : Color, duration : float) -> void:
@@ -671,7 +716,7 @@ func _build_health_bar() -> void:
 	bar_mesh = MeshInstance3D.new()
 	bar_mesh.mesh = quad
 	bar_mesh.material_override = bar_mat
-	bar_mesh.position = Vector3(0.0, 2.05, 0.0)
+	bar_mesh.position = Vector3(0.0, bar_height, 0.0)
 	bar_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(bar_mesh)
 	bar_mesh.hide()   # so aparece depois do primeiro dano
@@ -704,6 +749,7 @@ func _build_area_indicator() -> void:
 	area_indicator.material_override = material
 	area_indicator.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	area_indicator.position.y = 0.06
+	if ground_strike: area_indicator.position.z = 1.8
 	area_indicator.scale.y = 0.15
 	add_child(area_indicator)
 	area_indicator.hide()
@@ -767,3 +813,64 @@ func _update_posture_bar() -> void:
 		return
 	posture_mat.set_shader_parameter("ratio", posture / maxf(posture_max, 0.01))
 	posture_mat.set_shader_parameter("bg_color", Color(0.2, 0.65, 0.9, 0.9) if posture <= 0.0 else Color(0.04, 0.04, 0.04, 0.85))
+
+func _setup_weapon() -> void:
+	if weapon_scene == null: return
+	var sk := model.find_child("Skeleton3D", true, false) as Skeleton3D
+	if sk == null or sk.find_bone("mixamorig_RightHand") < 0:
+		push_error("Arma sem osso mixamorig_RightHand: " + name)
+		return
+	var socket := BoneAttachment3D.new()
+	socket.name = "WeaponSocket"; socket.bone_name = "mixamorig_RightHand"; sk.add_child(socket)
+	weapon = weapon_scene.instantiate() as Node3D; socket.add_child(weapon)
+	weapon.rotation_degrees = weapon_rotation_degrees; weapon.position = Vector3(0,.045,0)
+	weapon_shape = BoxShape3D.new(); weapon_shape.size = blade_size
+	(attack_box.get_node("CollisionShape3D") as CollisionShape3D).disabled = true
+	var area := Area3D.new(); area.name = "WeaponHitBox"; area.collision_layer = 0; area.collision_mask = 0; area.monitoring = false
+	weapon.add_child(area)
+	var shape := CollisionShape3D.new(); shape.name = "BladeCollision"; shape.shape = weapon_shape; shape.position = blade_center; area.add_child(shape)
+
+func _sample_weapon_hits() -> void:
+	var current := weapon.global_transform * Transform3D(Basis.IDENTITY, blade_center)
+	if state != State.ATTACK_ACTIVE:
+		previous_blade_transform = current; blade_was_active = false
+		return
+	if not blade_was_active: previous_blade_transform = current
+	blade_was_active = true
+	var travel := previous_blade_transform.origin.distance_to(current.origin)
+	var angle := previous_blade_transform.basis.get_rotation_quaternion().angle_to(current.basis.get_rotation_quaternion())
+	var steps := clampi(int(ceil((travel + angle * blade_size.y)/.12)),1,24)
+	for i in range(steps+1):
+		if state != State.ATTACK_ACTIVE: break
+		var query := PhysicsShapeQueryParameters3D.new(); query.shape = weapon_shape
+		query.transform = previous_blade_transform.interpolate_with(current,float(i)/steps)
+		query.collision_mask = HitData.LAYER_PLAYER_HURT; query.collide_with_areas = true; query.collide_with_bodies = false
+		for result in get_world_3d().direct_space_state.intersect_shape(query,8):
+			var hurt := result.collider as CombatHurtBox
+			if hurt == null or weapon_hit_victims.has(hurt.get_instance_id()): continue
+			if not get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(global_position+Vector3.UP,hurt.global_position+Vector3.UP,1)).is_empty(): continue
+			weapon_hit_victims[hurt.get_instance_id()] = true; _deliver_hit(hurt)
+	previous_blade_transform = current
+	if ground_strike and not ground_struck and state == State.ATTACK_ACTIVE:
+		var tip := weapon.to_global(blade_tip); var floor_hit := CombatVFX.floor_at(self,tip)
+		if not floor_hit.is_empty() and tip.y <= float(floor_hit.position.y)+.22:
+			ground_struck = true
+			var impact: Vector3 = floor_hit.position
+			CombatVFX.get_manager(get_tree()).ground_impact(impact,area_attack_radius)
+			var victim := _get_target()
+			if victim != null and absf(victim.global_position.y-impact.y)<1.8:
+				var hurt := victim.get_node_or_null("HurtBox") as CombatHurtBox
+				var off := victim.global_position-impact; off.y = 0
+				if hurt != null and off.length()<=area_attack_radius and not weapon_hit_victims.has(hurt.get_instance_id()):
+					if get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(impact+Vector3.UP*.2,victim.global_position+Vector3.UP,1)).is_empty():
+						weapon_hit_victims[hurt.get_instance_id()] = true; _deliver_hit(hurt)
+
+func _lay_weapon_on_ground() -> void:
+	weapon_laid_down = true
+	var floor_hit := CombatVFX.floor_at(self,weapon.global_position)
+	if floor_hit.is_empty(): return
+	var along := weapon.global_basis.y; along.y = 0
+	if along.length_squared()<.01: along = global_basis.z
+	along = along.normalized(); weapon.reparent(self,true)
+	weapon.global_basis = Basis(along.cross(Vector3.UP).normalized(),along,Vector3.UP)
+	weapon.global_position = floor_hit.position + Vector3.UP*.10

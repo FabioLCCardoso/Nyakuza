@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://TesteRefatorado/Visuals/nyakuza_toon.gdshader" id="1_weg2s"]
+[ext_resource type="Texture2D" path="res://PLACEHOLDERS/RedPandaEnemy/RedPandaEnemy_Image_0.jpg" id="2_fvqqc"]
+
+[resource]
+resource_name = "RedPanda Textured Toon"
+render_priority = 0
+shader = ExtResource("1_weg2s")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_fvqqc")
+shader_parameter/uv_scale = Vector3(1, 1, 1)
+shader_parameter/uv_offset = Vector3(0, 0, 0)
+shader_parameter/shadow_color = Color(0.3, 0.25, 0.4, 1)
+shader_parameter/mid_color = Color(0.72, 0.66, 0.8, 1)
+shader_parameter/shadow_threshold = 0.08
+shader_parameter/light_threshold = 0.58
+shader_parameter/edge_softness = 0.045
+shader_parameter/ambient_floor = 0.22
+shader_parameter/saturation = 1.04
+shader_parameter/rim_color = Color(0.58, 0.76, 1, 1)
+shader_parameter/rim_strength = 0.12
+shader_parameter/rim_power = 4.0
+shader_parameter/hatch_strength = 0.025
+shader_parameter/hatch_scale = 36.0
+shader_parameter/ink_strength = 0.7
+shader_parameter/ink_threshold = null
+shader_parameter/ink_softness = null
+shader_parameter/ink_tint = null

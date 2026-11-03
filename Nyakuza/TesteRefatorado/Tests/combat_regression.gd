@@ -99,9 +99,9 @@ func _run() -> void:
 	check(fox.move_speed == 4.8 and fox.attack_windup < 0.4, "Raposa rapida aplica perfil")
 	var penguin := director.penguin_scene.instantiate() as Enemy
 	game.add_child(penguin)
-	penguin.global_position = player.global_position + Vector3(0, 0.5, 2.0)
+	penguin.global_position = player.global_position + Vector3(0, 0.5, 1.5)
 	await frames(2)
-	check(penguin.area_attack_radius == 2.7 and penguin.area_indicator != null, "Pinguim tem AOE e indicador")
+	check(penguin.area_attack_radius == 1.8 and penguin.area_indicator != null, "Pinguim tem AOE e indicador")
 	penguin._start_attack()
 	check(penguin.area_indicator.visible, "AOE avisa durante preparacao")
 	strike(penguin, 1)
@@ -160,7 +160,7 @@ func _run() -> void:
 	health.invincible = false
 	var player_combat := player.get_node("PlayerCombat") as PlayerCombat
 	player_combat.invuln_left = 0.0
-	penguin.global_position = player.global_position + Vector3(0, 0.5, 2)
+	penguin.global_position = player.global_position + Vector3(0, 0.5, 1.5)
 	var hp_before: float = health.current_health
 	penguin._deliver_area_attack()
 	check(health.current_health < hp_before, "AOE do pinguim causa dano dentro do raio")
@@ -173,7 +173,7 @@ func _run() -> void:
 	check(is_equal_approx(health.current_health, hp_after), "AOE nao atinge jogador em outra altura")
 	health.invincible = true
 	# Perfect guard and hit-stop share time scaling without early restoration.
-	penguin.global_position = player.global_position + Vector3(0, 0.5, 2.0)
+	penguin.global_position = player.global_position + Vector3(0, 0.5, 1.5)
 	player_combat.invuln_left = 0.0
 	guard.released_time = 99.0
 	guard.start_guard()
