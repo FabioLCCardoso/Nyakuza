@@ -17,6 +17,7 @@ enum Phase { WAITING, SPAWNING, FIGHTING, COMPLETE, DEFEAT, ERROR }
 @export_range(0.0, 20.0) var min_player_distance: float = 5.0
 @export_range(0.0, 5.0) var spawn_jitter: float = 1.8
 @export_range(0.05, 1.0) var separation_interval: float = 0.12
+@export var encounter_chase_range: float = 0.0
 @export var auto_start: bool = true
 
 var phase: Phase = Phase.WAITING
@@ -132,6 +133,8 @@ func _try_spawn() -> void:
 		instance.free()
 		_fail("A raiz das cenas de inimigos precisa usar Enemy.")
 		return
+	if encounter_chase_range > 0:
+		enemy.chase_range = encounter_chase_range
 	enemy.position = to_local(location)
 	add_child(enemy)
 	register_enemy(enemy)
@@ -243,3 +246,22 @@ func get_separation(enemy: Enemy) -> Vector3:
 					var d: float = sqrt(d2)
 					push += offset / d * (1.4 - d)
 	return push
+
+func start_encounter(definitions: Array[WaveDefinition], markers: Node3D) -> bool:
+	if not alive.is_empty() or not pending.is_empty() or phase == Phase.DEFEAT: return false
+	waves = definitions
+	spawn_points = markers
+	points.clear()
+	for child in markers.get_children():
+		if child is Marker3D: points.append(child)
+	if not _validate_configuration(): return false
+	wave_index = -1
+	phase = Phase.WAITING
+	countdown = initial_delay
+	spawn_left = 0.0
+	spawn_cursor = 0
+	cells.clear()
+	status_message = ""
+	set_physics_process(true)
+	stats_changed.emit()
+	return true

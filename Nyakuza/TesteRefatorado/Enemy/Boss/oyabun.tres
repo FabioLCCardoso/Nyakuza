@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyProfile" load_steps=2 format=3]
+[ext_resource type="Script" path="res://TesteRefatorado/Enemy/enemy_profile.gd" id="1"]
+[resource]
+script = ExtResource("1")
+display_name = "Oyabun — Guardião do Eclipse"
+max_health = 900.0
+move_speed = 2.8
+attack_range = 3.5
+attack_damage = 28.0
+attack_windup = 1.45
+attack_active = 0.35
+attack_recover = 0.6
+attack_cooldown = 1.35
+attack_knockback = 10.0
+area_attack_radius = 2.4
+stagger_scale = 0.4
+knockback_scale = 0.35
+posture_max = 120.0
+posture_regen_delay = 4.0
+posture_break_duration = 5.0

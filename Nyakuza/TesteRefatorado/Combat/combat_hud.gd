@@ -88,18 +88,8 @@ func _build_ui() -> void:
 	add_child(root)
 
 	# Vinheta vermelha quando apanha
-	var grad := Gradient.new()
-	grad.offsets = PackedFloat32Array([0.45, 1.0])
-	grad.colors = PackedColorArray([Color(0.8, 0.0, 0.0, 0.0), Color(0.8, 0.0, 0.0, 0.85)])
-	var gtex := GradientTexture2D.new()
-	gtex.gradient = grad
-	gtex.fill = GradientTexture2D.FILL_RADIAL
-	gtex.fill_from = Vector2(0.5, 0.5)
-	gtex.fill_to = Vector2(1.0, 0.5)
-	gtex.width = 256
-	gtex.height = 256
 	vignette = TextureRect.new()
-	vignette.texture = gtex
+	vignette.texture = preload("res://TesteRefatorado/UI/hurt_vignette.svg")
 	vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
 	vignette.stretch_mode = TextureRect.STRETCH_SCALE
 	vignette.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -218,7 +208,7 @@ func _build_ui() -> void:
 
 	# Dicas de teclas (discretas)
 	var hint := Label.new()
-	hint.text = "LMB Leve | RMB Pesado (lanca / slam) | F Guarda | Q Dash | R Musou\nWASD Mover | Espaco Pular | F5 Reiniciar | Esc Cursor"
+	hint.text = "LMB Leve | RMB Pesado (lanca / slam) | F Guarda | Q Dash | R Musou\nWASD Mover | Espaco Pular | F5 Reiniciar | Esc Pausa/Cursor"
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.modulate = Color(1, 1, 1, 0.45)
 	hint.anchor_left = 1.0

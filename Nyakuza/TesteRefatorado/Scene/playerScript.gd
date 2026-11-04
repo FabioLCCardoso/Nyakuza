@@ -26,19 +26,16 @@ func _input(event):
 		
 		
 	if event.is_action("movement"):
-		movement_direction.x = Input.get_action_strength("left") - Input.get_action_strength("right")
-		movement_direction.z = Input.get_action_strength("forward") - Input.get_action_strength("back")
-		
-		if is_movement_ongoing():
-			if Input.is_action_pressed("sprint"):
-				set_movement_state.emit(movement_states["sprint"])
-			else:
-				if Input.is_action_pressed("walk"):
-					set_movement_state.emit(movement_states["walk"])
-				else: 
-					set_movement_state.emit(movement_states["run"])
-		else:
-			set_movement_state.emit(movement_states["stand"])
+		refresh_movement_input()
+
+func refresh_movement_input() -> void:
+	movement_direction.x = Input.get_action_strength("left") - Input.get_action_strength("right")
+	movement_direction.z = Input.get_action_strength("forward") - Input.get_action_strength("back")
+	var state: String = "stand"
+	if is_movement_ongoing():
+		state = "sprint" if Input.is_action_pressed("sprint") else ("walk" if Input.is_action_pressed("walk") else "run")
+	set_movement_state.emit(movement_states[state])
+	set_movement_direction.emit(movement_direction)
 
 func _ready():
 	set_movement_state.emit(movement_states["stand"])

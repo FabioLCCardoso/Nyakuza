@@ -40,7 +40,7 @@ func register_effect(node:Node3D,mark:bool,lifetime:float)->void:
   if is_instance_valid(old):old.queue_free()
  list.append(node)
  var reference:WeakRef=weakref(node)
- get_tree().create_timer(lifetime).timeout.connect(func():
+ get_tree().create_timer(lifetime, false).timeout.connect(func():
   var effect:=reference.get_ref() as Node3D
   if is_instance_valid(effect):effect.queue_free())
 func burst(at:Vector3,direction:Vector3,count:int,life:float,color:Color,rock:bool=false)->void:
