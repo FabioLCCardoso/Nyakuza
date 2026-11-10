@@ -276,6 +276,7 @@ func _update_god_label() -> void:
 	god_label.text = "GOD MODE" if (player_health != null and player_health.invincible) else ""
 
 func _on_hit_landed(_hit : HitData, _hurt : CombatHurtBox) -> void:
+	if _hurt.team == CombatHurtBox.Team.BREAKABLE: return
 	combo_count += 1
 	combo_left = 2.0
 	var in_air := air_combo != null and air_combo.is_active()
@@ -341,8 +342,10 @@ func _update_musou(current: float, maximum: float) -> void:
 	musou_bar.value = current
 	if musou_message_left > 0.0:
 		return
-	if is_instance_valid(musou.field):
-		musou_label.text = "MUSOU ATIVA — ESFERA DE CORTES"
+	if musou.active:
+		musou_bar.max_value = musou.mode_duration
+		musou_bar.value = musou.time_left
+		musou_label.text = "MUSOU %.1fs | R + LMB: esfera %.1fs | R + RMB: explosão %.1fs" % [musou.time_left, musou.sphere_left, musou.explosion_left]
 	elif current >= maximum:
 		musou_label.text = "R — MUSOU PRONTA"
 	else:

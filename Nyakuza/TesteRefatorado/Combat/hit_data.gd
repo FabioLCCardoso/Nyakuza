@@ -8,6 +8,8 @@ class_name HitData
 const LAYER_PLAYER_HURT : int = 1 << 3   # = 8
 const LAYER_ENEMY_HURT : int = 1 << 4    # = 16
 
+const LAYER_BREAKABLE_HURT: int = 1 << 5
+
 var attacker : Node3D
 var damage : float = 10.0
 var knockback : float = 4.0        # empurrao horizontal (m/s)

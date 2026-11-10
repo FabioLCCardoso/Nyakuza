@@ -576,6 +576,8 @@ func _shockwave_damage_neighbors() -> void:
 		var h := HitData.new()
 		h.attacker = last_attacker if is_instance_valid(last_attacker) else self
 		h.damage = slam_shockwave_damage
+		if h.attacker is Player:
+			h.damage *= h.attacker.outgoing_damage_multiplier()
 		h.knockback = 5.0
 		h.knockup = 5.0
 		h.stagger_duration = 0.7

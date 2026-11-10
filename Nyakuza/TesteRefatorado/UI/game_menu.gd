@@ -181,7 +181,8 @@ func show_controls(back: Callable) -> void:
 		["Mouse direito", "Pesado / lançar / slam no ar"],
 		["Q", "Esquivar / seguir inimigo lançado"],
 		["F (segurar)", "Defender / defesa perfeita"],
-		["R", "Musou (barra cheia)"],
+		["R", "Ativar Musou (barra cheia, 30s)"],
+		["R + Mouse esq. / dir.", "Esfera cortante / explosão"],
 		["Esc / Start", "Pausar / continuar"]]:
 		for i in 2:
 			var label := Label.new()

@@ -16,6 +16,11 @@ signal dash_ended
 ## Quanto o FOV da camera abre durante o dash.
 @export var camera_fov_kick : float = 8.0
 
+@export_category("Trail VFX")
+@export var trail_enabled: bool = true
+@export var trail_lifetime: float = 0.22
+@export var trail_width: float = 0.65
+
 @export_category("Animation")
 ## Nome de um OneShot no AnimationTree (parameters/<nome>/request). Se o no nao existir, e ignorado.
 @export var animation_oneshot : StringName = &"dash"
@@ -69,6 +74,7 @@ func dash():
 	
 	# FOLLOW-UP AEREO: dash logo depois de um launcher = sobe junto com o inimigo (ignora o cooldown da esquiva)
 	if air_combo != null and air_combo.try_follow_up():
+		_spawn_trail()
 		cooldown_left = 0.25
 		return
 	
@@ -100,9 +106,10 @@ func dash():
 	camera_controller.set_fov(base_fov + camera_fov_kick)
 	
 	_play_animation()
+	_spawn_trail()
 	dash_started.emit(dir)
 	
-	await get_tree().create_timer(dash_duration).timeout
+	await get_tree().create_timer(dash_duration, false).timeout
 	if id != dash_id:
 		return   # veio outro dash
 	if not player.is_attacking:
@@ -126,3 +133,12 @@ func _play_animation():
 		return
 	if (tree.tree_root as AnimationNodeBlendTree).has_node(animation_oneshot):
 		tree["parameters/" + str(animation_oneshot) + "/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+func _spawn_trail() -> void:
+	if not trail_enabled: return
+	var trail := preload("res://TesteRefatorado/VFX/dash_trail.gd").new()
+	trail.source = player
+	trail.emit_duration = dash_duration
+	trail.lifetime = maxf(trail_lifetime, 0.05)
+	trail.width = maxf(trail_width, 0.01)
+	player.get_parent().add_child(trail)

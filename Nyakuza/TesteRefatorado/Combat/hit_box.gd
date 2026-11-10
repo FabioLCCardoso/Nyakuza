@@ -29,7 +29,7 @@ var hit_stop_running : bool = false
 
 func _ready():
 	collision_layer = 0
-	collision_mask = HitData.LAYER_ENEMY_HURT
+	collision_mask = HitData.LAYER_ENEMY_HURT | HitData.LAYER_BREAKABLE_HURT
 	monitorable = false
 	monitoring = false
 
@@ -59,7 +59,7 @@ func _build_reach_volume() -> void:
 	reach_area = Area3D.new()
 	reach_area.name = "ReachVolume"
 	reach_area.collision_layer = 0
-	reach_area.collision_mask = HitData.LAYER_ENEMY_HURT
+	reach_area.collision_mask = HitData.LAYER_ENEMY_HURT | HitData.LAYER_BREAKABLE_HURT
 	reach_area.monitorable = false
 	reach_area.monitoring = false
 	reach_area.position = reach_offset
@@ -76,7 +76,7 @@ func activate(skill : ActiveSkill) -> void:
 	activation_token += 1
 	var token := activation_token
 	if skill.hit_delay > 0.0:
-		await get_tree().create_timer(skill.hit_delay).timeout
+		await get_tree().create_timer(skill.hit_delay, false).timeout
 		if token != activation_token:
 			return   # o golpe acabou/foi cancelado antes da hitbox ligar
 	set_deferred("monitoring", true)
@@ -106,7 +106,7 @@ func _try_hit(hurt_box : CombatHurtBox) -> void:
 
 	var hit := HitData.new()
 	hit.attacker = attacker
-	hit.grants_musou = true
+	hit.grants_musou = hurt_box.team == CombatHurtBox.Team.ENEMY
 	if current_skill != null:
 		hit.damage = current_skill.damage
 		hit.knockback = current_skill.knockback
@@ -116,6 +116,9 @@ func _try_hit(hurt_box : CombatHurtBox) -> void:
 		hit.slam = current_skill.slam
 		hit.is_heavy = current_skill.is_heavy
 		hit.posture_damage = current_skill.posture_damage
+
+	if attacker is Player:
+		hit.damage *= attacker.outgoing_damage_multiplier()
 
 	var origin : Vector3 = attacker.global_position if attacker != null else global_position
 	var flat : Vector3 = hurt_box.global_position - origin

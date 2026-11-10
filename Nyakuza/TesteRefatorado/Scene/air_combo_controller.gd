@@ -262,6 +262,7 @@ func _on_delivery_started(skill : ActiveSkill) -> void:
 			enemy.hold_in_air(enemy_hang_time)   # mantem a galera suspensa enquanto o combo continua
 
 func _on_hit_landed(_hit : HitData, _hurt : CombatHurtBox) -> void:
+	if _hurt.team == CombatHurtBox.Team.BREAKABLE: return
 	if state == State.NONE:
 		return
 	hit_count += 1

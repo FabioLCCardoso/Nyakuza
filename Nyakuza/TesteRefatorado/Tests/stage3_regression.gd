@@ -140,7 +140,8 @@ func _run() -> void:
 	await frames(2)
 	r.pressed = false
 	Input.parse_input_event(r)
-	check(is_instance_valid(musou.field) and musou.charge == 0.0, "Input real R cria esfera e consome carga")
+	check(musou.active and musou.charge == 0.0, "Input real R ativa modo e consome carga")
+	check(musou.try_sphere(), "Modo permite esfera")
 	var sphere := musou.field
 	if not is_instance_valid(sphere):
 		quit(1)
@@ -159,7 +160,7 @@ func _run() -> void:
 	var hp := victim.health.current_health
 	sphere._pulse()
 	sphere._pulse()
-	check(victim.health.current_health == hp - 16.0, "Esfera causa dano repetido de 8 por pulso")
+	check(victim.health.current_health == hp - 24.0, "Esfera causa dano repetido com bonus do modo")
 	check(victim.posture == 60.0, "Musou nao substitui pesado na quebra de postura")
 	check(outside.health.current_health == outside.max_health, "Alvo fora do raio nao recebe dano")
 	check(health.current_health == health.max_health, "Campo nao atinge jogador")
@@ -199,6 +200,7 @@ func _run() -> void:
 	await frames(2)
 	check(not is_instance_valid(sphere), "Campo se remove no fim da duracao")
 	outside.queue_free()
+	musou.end_mode()
 	musou.add_charge(100)
 	check(musou.try_activate(), "Pode carregar e usar novamente apos termino")
 	health.invincible = false

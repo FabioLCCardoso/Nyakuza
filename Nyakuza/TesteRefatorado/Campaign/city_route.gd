@@ -4,6 +4,8 @@ class_name CityRoute
 const TITLES = ["RUA DOS LETREIROS", "DISTRITO ARCADE", "PÁTIO DOS TORII", "FORTALEZA ECLIPSE"]
 const COLORS = [Color(0.1, 0.8, 1), Color(1, 0.12, 0.55), Color(1, 0.45, 0.12), Color(0.75, 0.25, 1)]
 @export_range(68.0, 120.0, 1.0) var district_spacing: float = 68.0
+@export var healing_crate_scene: PackedScene = preload("res://TesteRefatorado/Pickups/BreakableCrate.tscn")
+@export var crate_positions: Array[Vector3] = [Vector3(-8, 0.5, 12), Vector3(8, 0.5, -12)]
 @export var arena_module: PackedScene = preload("res://TesteRefatorado/Arena/NeonCityArena.tscn")
 var districts: Array[Node3D] = []
 var gates: Array[Array] = []
@@ -32,6 +34,11 @@ func _ready() -> void:
 		for sign_node in district.find_children("*", "Label3D", true, false):
 			sign_node.modulate = COLORS[i]
 		_decorate(district, i)
+		if healing_crate_scene != null:
+			for crate_pos in crate_positions:
+				var crate := healing_crate_scene.instantiate() as Node3D
+				crate.position = crate_pos
+				district.add_child(crate)
 		var markers := Node3D.new()
 		markers.name = "SpawnPoints"
 		district.add_child(markers)

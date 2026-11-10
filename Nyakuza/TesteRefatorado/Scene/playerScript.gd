@@ -18,6 +18,9 @@ var movement_direction : Vector3
 var is_attacking : bool = false
 
 func _input(event):
+	var musou := get_node_or_null("MusouController") as MusouController
+	if musou != null and musou.handle_input(event):
+		return
 	
 	if event.is_action_pressed("heavy_attack"):
 		pressed_heavy_fire.emit()
@@ -61,3 +64,7 @@ func _physics_process(delta):
 
 func is_movement_ongoing() -> bool: 
 	return abs(movement_direction.x) > 0 or abs(movement_direction.z) > 0
+
+func outgoing_damage_multiplier() -> float:
+	var musou := get_node_or_null("MusouController") as MusouController
+	return musou.get_damage_multiplier() if musou != null else 1.0

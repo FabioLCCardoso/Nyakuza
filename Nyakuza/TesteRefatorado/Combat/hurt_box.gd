@@ -5,12 +5,14 @@ class_name CombatHurtBox
 
 signal hit_received(hit : HitData)
 
-enum Team { PLAYER, ENEMY }
+enum Team { PLAYER, ENEMY, BREAKABLE }
 @export var team : Team = Team.ENEMY
 
 func _ready():
 	# Camadas configuradas aqui para ficarem todas num lugar so (ver HitData).
 	collision_layer = HitData.LAYER_PLAYER_HURT if team == Team.PLAYER else HitData.LAYER_ENEMY_HURT
+	if team == Team.BREAKABLE:
+		collision_layer = HitData.LAYER_BREAKABLE_HURT
 	collision_mask = 0
 	monitoring = false
 	monitorable = true
