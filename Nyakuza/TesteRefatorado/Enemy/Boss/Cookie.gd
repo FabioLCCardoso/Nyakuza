@@ -10,8 +10,13 @@ var transforming: bool = false
 var aura: Node3D
 var attack_index: int = 0
 var radial_skill: bool = false
+var blade_trail := preload("res://TesteRefatorado/VFX/cookie_blade_trail.gd").new()
 func _ready() -> void:
 	super._ready()
+	blade_trail.blade = weapon
+	blade_trail.base_local = blade_center - Vector3.UP * blade_size.y * 0.5
+	blade_trail.tip_local = blade_tip
+	add_child(blade_trail)
 	health.health_changed.connect(_health_changed)
 func _health_changed(current: float, maximum: float) -> void:
 	if current > 0 and current <= maximum * phase_threshold and boss_phase == 1:
@@ -32,6 +37,7 @@ func incoming_damage(hit: HitData) -> float:
 func _enter(new_state: State, duration: float = 0) -> void:
 	if new_state != State.ATTACK_RECOVER: transforming = false
 	super._enter(new_state, duration)
+	blade_trail.set_swing(new_state == State.ATTACK_ACTIVE and not radial_skill)
 func _process_attack_recover() -> void:
 	if transforming and state_timer > 0:
 		_set_horizontal(Vector3.ZERO); return
