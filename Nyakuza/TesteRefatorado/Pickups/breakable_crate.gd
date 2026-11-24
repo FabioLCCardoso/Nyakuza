@@ -35,6 +35,16 @@ func _ready() -> void:
 			mat.albedo_color = Color(0.3, 0.12, 0.055) if is_equal_approx(part.x, 1.05) else Color(0.12, 0.8, 0.65)
 			mesh.material_override = mat
 			visual.add_child(mesh)
+	var outline := MeshInstance3D.new()
+	var shell := BoxMesh.new()
+	shell.size = Vector3.ONE * 1.16
+	outline.mesh = shell
+	outline.position.y = .55
+	outline.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var glow := ShaderMaterial.new()
+	glow.shader = preload("res://TesteRefatorado/Pickups/crate_edges.gdshader")
+	outline.material_override = glow
+	visual.add_child(outline)
 	hurt_box = CombatHurtBox.new()
 	hurt_box.name = "HurtBox"
 	hurt_box.team = CombatHurtBox.Team.BREAKABLE

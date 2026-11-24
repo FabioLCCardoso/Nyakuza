@@ -19,7 +19,11 @@ func run():
 	check(game.objective_panel.size.x<=360.1,"Largura compacta")
 	check(game.objective_panel.size.y<75,"Altura compacta")
 	check(not game.compass.has_destination,"Sem destino bloqueado durante waves")
-	for title in CityRoute.TITLES:check(not title in game.objective.text,"HUD sem nome de rua: "+title)
+	game.director.phase = WaveDirector.Phase.WAITING
+	game._refresh_objective()
+	check(game.objective.text == "PRÓXIMA ONDA · %ds" % ceili(game.director.countdown), "HUD mostra apenas a contagem")
+	for sector in game.route.districts:
+		check(sector.find_children("*", "Label3D", false, false).is_empty(), "Sem título 3D na entrada")
 	game.compass.heading=0
 	check(is_zero_approx(game.compass.relative_bearing(Vector3.FORWARD)),"Norte centralizado")
 	check(game.compass.relative_bearing(Vector3.RIGHT)>0,"Leste à direita")

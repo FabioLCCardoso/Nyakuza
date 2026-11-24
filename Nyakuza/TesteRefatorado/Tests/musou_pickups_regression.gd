@@ -36,6 +36,8 @@ func run() -> void:
 	await frames(30)
 	check(get_nodes_in_group("breakable_crates").size() == 8, "Duas caixas em cada distrito")
 	var crate := get_nodes_in_group("breakable_crates")[0] as BreakableCrate
+	var hud := game.get_node("CombatHUD") as CombatHUD
+	check(hud.sphere_icon.text.begins_with("○") and hud.blast_icon.text.begins_with("○"), "Musou inativa: dois circulos vazios")
 	var pickup_position := crate.global_position
 	var skill := ActiveSkill.new()
 	skill.damage = 25
@@ -77,11 +79,13 @@ func run() -> void:
 	mode.add_charge(100)
 	check(mode.charge == 0, "Modo ativo nao recarrega barra")
 	await frames(75) # Skill_01 termina antes do especial.
+	check(hud.sphere_icon.text.begins_with("●") and hud.blast_icon.text.begins_with("●"), "Musou ativa: dois especiais prontos")
 	mouse(MOUSE_BUTTON_LEFT, true)
 	await frames(2)
 	mouse(MOUSE_BUTTON_LEFT, false)
 	await frames(1)
 	check(is_instance_valid(mode.field) and normal_inputs == 0, "R + LMB dispara esfera sem ataque comum")
+	check(hud.sphere_icon.text.begins_with("○") and hud.blast_icon.text.begins_with("●"), "Usar esfera preserva o indicador da explosao")
 	check(mode.field.damage_per_tick == 12, "Esfera recebe bonus de dano")
 	check(not mode.try_sphere(), "Esfera respeita recarga e limite de um campo")
 	mode.field.queue_free()

@@ -20,6 +20,8 @@ enum State { NONE, RISING, HOVER, FINISHING }
 @export var rise_max_time : float = 0.5
 ## Distancia horizontal (m) que o player fica do inimigo.
 @export var attach_distance : float = 1.5
+## Altura adicional do Spike ao acompanhar o alvo (m).
+@export var follow_height_bonus : float = 0.2
 
 @export_category("Combo aereo")
 ## Sem atacar por esse tempo (s) o combo aereo acaba e todo mundo cai.
@@ -190,7 +192,7 @@ func _goal_position() -> Vector3:
 		away = -movement_controller.mesh_root.global_transform.basis.z
 		away.y = 0.0
 	away = away.normalized()
-	return Vector3(tp.x + away.x * attach_distance, tp.y + y_offset, tp.z + away.z * attach_distance)
+	return Vector3(tp.x + away.x * attach_distance, tp.y + y_offset + follow_height_bonus, tp.z + away.z * attach_distance)
 
 func _face_target() -> void:
 	camera_controller.set_air_target(target)
@@ -246,6 +248,7 @@ func _process_hover(delta : float) -> void:
 			return
 	_face_target()
 	var v : Vector3 = (_goal_position() - player.global_position) * follow_gain
+	v.y = 0.0 if target.impact_hold_left > 0 else v.y + minf(target.velocity.y, 0.0)
 	movement_controller.forced_velocity = v.limit_length(follow_max_speed)
 
 # ------------------------------------------------------------------ eventos

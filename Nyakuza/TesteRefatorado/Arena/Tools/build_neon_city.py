@@ -50,7 +50,7 @@ for side in [-1,1]:
    for dz in [-2.4,0,2.4]:win[i%2].append((side*21.43,y,z+dz))
   box(f'Shop{side}_{i}',(side*21.23,3.3,z),(.22,1.4,7.2),dark,'Signs')
   box(f'ShopLine{side}_{i}',(side*21.04,2.5,z),(.08,.08,7.1),cyan if i%2 else pink,'Signs')
-  text=['ラーメン','カラオケ','ゲームセンター','ネコ組','夜の街','NEKO CLUB'][i]
+  text=['ラーメン','カラオケ','ゲームセンター','ネコ組','寿司','NEKO CLUB'][i]
   label(f'ShopText{side}_{i}',text,(side*21.05,3.3,z),-side*math.pi/2,.007)
   box(f'Blade{side}_{i}',(side*20.5,8,z+3.6),(.4,5,1.6),pink if i%2 else violet,'Signs')
   label(f'BladeText{side}_{i}','ネ\nオ\nン',(side*20.26,8,z+3.6),-side*math.pi/2,.007,'1, 0.85, 0.95')
@@ -60,7 +60,6 @@ for side in [-1,1]:
   for y in range(7,h,3):
    for dx in [-1.4,1.4]:win[2+i%2].append((x+dx,y,side*27.43))
  box(f'Garage{side}',(0,3,side*26.4),(12,5,.1),dark,'Buildings')
- label(f'Club{side}','NEKO DISTRICT',(0,8,side*26.4),math.pi if side==1 else 0,.011,'1, 0.35, 0.7')
  for x in [-5.5,5.5]:box(f'Pillar{side}_{x}',(x,3.6,side*22),(.65,6.2,.65),red,'Torii',True)
  box(f'Beam{side}',(0,5.5,side*22),(12,.4,.6),red,'Torii')
  box(f'Cap{side}',(0,6.9,side*22),(14,.4,1),dark,'Torii')

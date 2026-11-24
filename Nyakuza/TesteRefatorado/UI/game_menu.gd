@@ -13,6 +13,7 @@ var controls_visible: bool = false
 var result: String = ""
 var changing: bool = false
 var controls_return: Callable
+var replay_scene := GAME
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -44,7 +45,7 @@ func _build() -> void:
 	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	screen.add_child(center)
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(820, 550)
+	panel.custom_minimum_size = Vector2(820, 0)
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.025, 0.02, 0.065, 0.96)
 	style.set_border_width_all(1)
@@ -109,14 +110,10 @@ func show_main() -> void:
 	title.text = "NYAKUZA"
 	title.add_theme_font_override("font", preload("res://TesteRefatorado/Arena/Fonts/edosz.ttf"))
 	title.add_theme_font_size_override("font_size", 78)
-	subtitle.text = "UMA NOITE. QUATRO DISTRITOS. NENHUM RECUO."
-	_text("CIDADE NEON / ROTA DO ECLIPSE", 14, PINK)
-	_text("01 Letreiros → 02 Arcade → 03 Torii → 04 Cookie", 17)
-	_text("Derrote as ondas, abra as passagens e enfrente o chefe.")
+	subtitle.hide()
 	_button("INICIAR JOGO →", start_game, true).grab_focus()
 	_button("CONTROLES", func(): show_controls(show_main))
 	_button("SAIR", func(): get_tree().quit())
-	_text("Teclado + mouse • Enter para selecionar • Setas para navegar", 14)
 
 func start_game() -> void:
 	_change_scene(GAME)
@@ -130,6 +127,7 @@ func _change_scene(path: String) -> void:
 	var error := get_tree().change_scene_to_file(path)
 	if error != OK:
 		changing = false
+		subtitle.show()
 		subtitle.text = "Não foi possível abrir a cena: %s" % error_string(error)
 		if in_game: get_tree().paused = true
 
@@ -143,13 +141,10 @@ func pause_game() -> void:
 func show_pause() -> void:
 	_clear()
 	title.text = "PAUSA"
-	subtitle.text = "A CIDADE PODE ESPERAR."
-	_text("A luta, os efeitos e as ondas estão pausados.")
+	subtitle.hide()
 	_button("CONTINUAR", resume_game, true).grab_focus()
 	_button("CONTROLES", func(): show_controls(show_pause))
 	_button("VOLTAR AO MENU PRINCIPAL", func(): _change_scene(MAIN))
-	_text("Voltar ao menu encerra esta partida. O progresso não é salvo.", 15)
-	_text("Esc / Start para continuar", 15, CYAN)
 
 func resume_game() -> void:
 	if not result.is_empty(): return
@@ -167,6 +162,7 @@ func show_controls(back: Callable) -> void:
 	title.text = "CONTROLES"
 	title.remove_theme_font_override("font")
 	title.add_theme_font_size_override("font_size", 48)
+	subtitle.show()
 	subtitle.text = "SPIKE / COMBATE E MOVIMENTO"
 	var grid := GridContainer.new()
 	grid.columns = 2
@@ -199,9 +195,10 @@ func show_result(won: bool, kos: int) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_clear()
 	title.text = "CIDADE LIBERADA" if won else "FIM DE PARTIDA"
-	subtitle.text = "ROTA DO ECLIPSE / %d KOs" % kos
+	subtitle.show()
+	subtitle.text = "%d KOs" % kos
 	_text("Cookie caiu. A noite é sua." if won else "Spike caiu. Tente uma nova investida.")
-	_button("JOGAR NOVAMENTE →", start_game, true).grab_focus()
+	_button("JOGAR NOVAMENTE →", func(): _change_scene(replay_scene), true).grab_focus()
 	_button("CONTROLES", func(): show_controls(func(): show_result(won, kos)))
 	_button("MENU PRINCIPAL", func(): _change_scene(MAIN))
 

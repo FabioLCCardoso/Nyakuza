@@ -1,7 +1,6 @@
 extends Node3D
 class_name CityRoute
 ## Os quatro distritos reutilizam o modulo original. Geracao ocorre ao executar.
-const TITLES = ["RUA DOS LETREIROS", "DISTRITO ARCADE", "PÁTIO DOS TORII", "FORTALEZA ECLIPSE"]
 const COLORS = [Color(0.1, 0.8, 1), Color(1, 0.12, 0.55), Color(1, 0.45, 0.12), Color(0.75, 0.25, 1)]
 @export_range(68.0, 120.0, 1.0) var district_spacing: float = 68.0
 @export var healing_crate_scene: PackedScene = preload("res://TesteRefatorado/Pickups/BreakableCrate.tscn")
@@ -98,14 +97,6 @@ func _open_wall(district: Node3D, side: int) -> void:
 	if slats != null: slats.hide()
 
 func _decorate(district: Node3D, index: int) -> void:
-	var title := Label3D.new()
-	title.position = Vector3(0, 9, 24)
-	title.rotation.y = PI
-	title.text = "%02d / %s" % [index + 1, TITLES[index]]
-	title.font_size = 64
-	title.pixel_size = 0.012
-	title.modulate = COLORS[index]
-	district.add_child(title)
 	if index == 1:
 		for x in [-18, 18]:
 			for z in [-8, 0, 8]:

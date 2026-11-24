@@ -7,6 +7,7 @@ enum Stage { COMBAT, TRAVEL, BOSS, VICTORY, DEFEAT }
 @export var area_1_waves: Array[WaveDefinition] = []
 @export var area_2_waves: Array[WaveDefinition] = []
 @export var area_3_waves: Array[WaveDefinition] = []
+@export var boss_practice := false
 @export var boss_scene: PackedScene = preload("res://TesteRefatorado/Enemy/Boss/Cookie.tscn")
 @export var heal_between_areas: float = 30.0
 @export_range(240,600,10) var compass_width: float = 360.0
@@ -24,6 +25,9 @@ var objective_panel: PanelContainer
 var objective: Label
 var boss_label: Label
 var boss_bar: ProgressBar
+@export var completion_seconds := 15.0
+var completion_label := Label.new()
+var completion_left := 0.0
 var objective_clock: float = 0.0
 
 func _ready() -> void:
@@ -40,12 +44,27 @@ func _ready() -> void:
 	player.get_node("HealthComponent").died.connect(_on_player_died)
 	for i in route.entries.size():
 		route.entries[i].body_entered.connect(_entered.bind(i + 1))
-	_start_district(0)
+	if boss_practice:
+		player.position = route.center(3) + Vector3(0, 0.6, 7)
+		player.reset_physics_interpolation()
+		menu.replay_scene = scene_file_path
+		_start_district(3)
+	else:
+		_start_district(0)
 
 func _build_objective() -> void:
 	var canvas := CanvasLayer.new()
 	canvas.layer = 12
 	add_child(canvas)
+	canvas.add_child(completion_label)
+	completion_label.text = "LEVEL COMPLETE"
+	completion_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	completion_label.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
+	completion_label.offset_top = 68
+	completion_label.add_theme_font_size_override("font_size", 34)
+	completion_label.add_theme_constant_override("outline_size", 6)
+	completion_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	completion_label.hide()
 	var panel := PanelContainer.new()
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
 	objective_panel = panel
@@ -94,6 +113,9 @@ func _build_objective() -> void:
 	boss_bar.hide()
 
 func _process(delta: float) -> void:
+	if completion_left > 0:
+		completion_left = maxf(0, completion_left - delta)
+		completion_label.visible = completion_left > 0
 	objective_clock -= delta
 	if objective_clock <= 0:
 		objective_clock = 0.2
@@ -141,6 +163,8 @@ func _on_encounter_finished() -> void:
 	if stage != Stage.COMBAT or current_area >= 3: return
 	cleared[current_area] = true
 	stage = Stage.TRAVEL
+	completion_left = completion_seconds
+	completion_label.visible = completion_left > 0
 	route.set_passage(current_area, true)
 	player.get_node("HealthComponent").heal(heal_between_areas)
 	district_cleared.emit(current_area)

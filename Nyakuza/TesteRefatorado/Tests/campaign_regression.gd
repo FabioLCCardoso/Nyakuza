@@ -94,6 +94,9 @@ func run() -> void:
 			seen[game.director.wave_index] = true
 			for enemy in game.director.alive.values(): strike(enemy, game.player)
 			if game.stage == CityCampaign.Stage.TRAVEL: break
+		check(game.completion_label.visible and game.completion_left > 14.5, "Ultima onda exibe LEVEL COMPLETE por 15s")
+		game._process(15.1)
+		check(not game.completion_label.visible, "Aviso desaparece sem bloquear viagem")
 		check(game.cleared[area] and game.stage == CityCampaign.Stage.TRAVEL, "Todas ondas liberam area %d" % area)
 		check(seen.has(0) and seen.has(1) and seen.has(2), "Executou as tres ondas")
 		check(game.director.kos == expected_kos, "KOs acumulados entre areas")

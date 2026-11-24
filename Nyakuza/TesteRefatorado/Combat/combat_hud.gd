@@ -13,6 +13,8 @@ class_name CombatHUD
 var musou: MusouController
 var musou_bar: ProgressBar
 var musou_label: Label
+var sphere_icon: Label
+var blast_icon: Label
 var musou_message_left: float = 0.0
 var root : Control
 var hp_trail : ColorRect
@@ -50,6 +52,10 @@ func _ready():
 
 func _process(delta):
 	musou_message_left = maxf(0.0, musou_message_left - delta)
+	if is_instance_valid(musou):
+		var ready_now := musou.active and musou.activation_left <= 0 and not musou.combat.health.is_dead and musou.player.is_physics_processing() and not get_tree().paused
+		sphere_icon.text = ("●" if ready_now and musou.sphere_left <= 0 and not is_instance_valid(musou.field) else "○") + " Esfera"
+		blast_icon.text = ("●" if ready_now and musou.explosion_left <= 0 else "○") + " Explosão"
 	if is_instance_valid(musou) and musou_message_left <= 0.0:
 		_update_musou(musou.charge, musou.max_charge)
 	if combo_left > 0.0:
@@ -318,18 +324,32 @@ func _bind_musou() -> void:
 	if musou == null:
 		return
 	musou_bar = ProgressBar.new()
-	musou_bar.position = Vector2(48, 66)
+	root.add_child(musou_bar)
+	musou_bar.anchor_top = 1
+	musou_bar.anchor_bottom = 1
+	musou_bar.position = Vector2(48, root.size.y - 43)
 	musou_bar.size = Vector2(280, 16)
 	musou_bar.show_percentage = false
 	musou_bar.modulate = Color(0.4, 0.8, 1.0)
 	musou_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	root.add_child(musou_bar)
 	musou_label = Label.new()
-	musou_label.position = Vector2(48, 84)
+	root.add_child(musou_label)
+	musou_label.anchor_top = 1
+	musou_label.anchor_bottom = 1
+	musou_label.position = Vector2(48, root.size.y - 26)
 	musou_label.add_theme_font_size_override("font_size", 17)
 	musou_label.add_theme_constant_override("outline_size", 5)
 	musou_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	root.add_child(musou_label)
+	sphere_icon = Label.new()
+	blast_icon = Label.new()
+	for i in 2:
+		var icon := sphere_icon if i == 0 else blast_icon
+		root.add_child(icon)
+		icon.anchor_top = 1
+		icon.anchor_bottom = 1
+		icon.position = Vector2(338 + i * 86, root.size.y - 49)
+		icon.add_theme_font_size_override("font_size", 15)
+		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	musou.charge_changed.connect(_update_musou)
 	musou.activation_rejected.connect(func(reason: String):
 		musou_label.text = reason

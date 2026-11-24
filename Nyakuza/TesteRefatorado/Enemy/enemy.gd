@@ -120,6 +120,16 @@ var knock_velocity : Vector3 = Vector3.ZERO
 var target : Node3D
 var speed_mult : float = 1.0
 var attack_hit_done : bool = false
+@export var juggle_fall_speed: float = 1.0
+var impact_hold_left := 0.0
+var recoil: Tween
+@onready var rest_pitch := model.rotation.x
+func _recoil(strength: float) -> void:
+	if recoil: recoil.kill()
+	recoil = create_tween()
+	recoil.tween_property(model, "rotation:x", rest_pitch - strength, .055)
+	recoil.tween_property(model, "rotation:x", rest_pitch, .15)
+
 var hang_left : float = 0.0          # tempo restante flutuando (gravidade desligada)
 var apex_done : bool = false         # ja "congelou" no ponto mais alto deste lancamento?
 var slamming : bool = false
@@ -240,6 +250,7 @@ func is_dead() -> bool:
 
 # ------------------------------------------------------------------ loop principal
 func _physics_process(delta):
+	impact_hold_left = maxf(0, impact_hold_left - delta)
 	_tick_posture(delta)
 	obstacle_check_left -= delta
 	separation_left -= delta
@@ -261,9 +272,9 @@ func _physics_process(delta):
 			State.STAGGER: _process_stagger(delta)
 			State.AIRBORNE: _process_airborne(delta)
 			State.DEAD: _process_dead(delta)
-	var hanging := state == State.AIRBORNE and hang_left > 0.0 and not slamming
+	var hanging := state == State.AIRBORNE and hang_left > 0.0 and velocity.y <= 0.0 and not slamming
 	if hanging:
-		velocity.y = move_toward(velocity.y, 0.0, 40.0 * delta)   # "freia" no ar em vez de cair
+		velocity.y = 0.0 if impact_hold_left > 0 else move_toward(velocity.y, -juggle_fall_speed, 40.0 * delta)   # "freia" no ar em vez de cair
 	elif not is_on_floor():
 		velocity.y -= gravity * delta
 	move_and_slide()
@@ -482,6 +493,7 @@ func _on_hit_received(hit : HitData) -> void:
 
 	# O proprio pesado que zera a barra pode lancar.
 	_apply_posture_hit(hit)
+	if damage > 0: _recoil(.08 if has_posture_armor() else .29)
 	if has_posture_armor() or (state == State.AIRBORNE and not hit.affects_air_reaction):
 		return
 	knock_velocity = hit.direction * hit.knockback * knockback_scale
@@ -497,7 +509,8 @@ func _on_hit_received(hit : HitData) -> void:
 	elif state == State.AIRBORNE:
 		# Ja esta no ar: o golpe segura ele la em cima (juggle) e quase nao empurra para os lados
 		knock_velocity = hit.direction * hit.knockback * air_knockback_scale
-		velocity.y = maxf(velocity.y, 1.5)
+		velocity.y = 0.0
+		impact_hold_left = .12
 		apex_done = true
 		hang_left = maxf(hang_left, juggle_hang_time)
 		_play(ANIM_AIR, 1.0, 0.05, true)
@@ -520,6 +533,7 @@ func hold_in_air(seconds : float) -> void:
 
 ## Deixa o inimigo cair normalmente.
 func release_hang() -> void:
+	impact_hold_left = 0.0
 	hang_left = 0.0
 
 ## Chamado pelo GuardController quando o player faz um PERFECT GUARD: interrompe o ataque e atordoa.

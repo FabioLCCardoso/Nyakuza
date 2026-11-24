@@ -122,6 +122,11 @@ func _run() -> void:
 			break
 	check(air.state == AirComboController.State.HOVER, "Subida alcanca hover")
 	check(skills.air_mode and movement.forced, "Combo aereo troca skills e suspende jogador")
+	strike(tank, 1)
+	await frames(2)
+	check(tank.impact_hold_left > 0 and is_zero_approx(tank.velocity.y), "Acerto aereo pausa a queda")
+	await frames(10)
+	check(tank.impact_hold_left == 0 and tank.velocity.y < 0 and tank.velocity.y >= -tank.juggle_fall_speed - 0.01, "Entre golpes volta a cair devagar")
 	strike(tank, 1, 0.0, true)
 	check(tank.slamming, "Finisher ativa slam")
 	await frames(75)
