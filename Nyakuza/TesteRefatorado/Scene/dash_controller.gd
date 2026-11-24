@@ -69,6 +69,8 @@ func _physics_process(delta):
 		dash()
 
 func dash():
+	var musou := player.get_node_or_null("MusouController") as MusouController
+	if musou != null and musou.activation_left > 0: return
 	if not player.is_physics_processing():   # player morto
 		return
 	

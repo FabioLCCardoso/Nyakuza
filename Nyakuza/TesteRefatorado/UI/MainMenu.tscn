@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3]
-[ext_resource type="Script" path="res://TesteRefatorado/UI/game_menu.gd" id="1"]
-[node name="MainMenu" type="CanvasLayer"]
+[gd_scene format=3 uid="uid://b0qayhvygmfsp"]
+
+[ext_resource type="Script" uid="uid://dmrw3k44gkjgk" path="res://TesteRefatorado/UI/game_menu.gd" id="1"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=621314673]
 process_mode = 3
 script = ExtResource("1")

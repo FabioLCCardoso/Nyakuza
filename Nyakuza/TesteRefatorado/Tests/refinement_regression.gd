@@ -99,7 +99,7 @@ func _run() -> void:
 	var crowd: Array[Enemy] = []
 	coordinator.start_spacing = 0.0
 	for i in 6:
-		var e: Enemy = director.fox_scene.instantiate()
+		var e: Enemy = load("res://TesteRefatorado/Enemy/Enemy.tscn").instantiate()
 		game.add_child(e)
 		e.set_physics_process(false)
 		e.global_position = player.global_position + Vector3(0, 0.5, 1.2)
@@ -137,7 +137,7 @@ func _run() -> void:
 	coordinator.start_spacing = 0.2
 	coordinator.spacing_left = 0.0
 	p1._start_attack()
-	var fox: Enemy = director.fox_scene.instantiate()
+	var fox: Enemy = load("res://TesteRefatorado/Enemy/Enemy.tscn").instantiate()
 	game.add_child(fox)
 	fox.set_physics_process(false)
 	fox.global_position = player.global_position + Vector3(0, 0.5, 1.2)

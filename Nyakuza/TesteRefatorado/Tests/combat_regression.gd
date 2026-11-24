@@ -96,7 +96,7 @@ func _run() -> void:
 	var fox := director.fox_scene.instantiate() as Enemy
 	game.add_child(fox)
 	fox.global_position = player.global_position + Vector3(12, 0.5, 10)
-	check(fox.move_speed == 4.8 and fox.attack_windup < 0.4, "Raposa rapida aplica perfil")
+	check(fox is FoxRanged and fox.attack_range == 11.0 and fox.posture_max == 0, "Raposa ranged sem armadura de postura")
 	var penguin := director.penguin_scene.instantiate() as Enemy
 	game.add_child(penguin)
 	penguin.global_position = player.global_position + Vector3(0, 0.5, 1.5)

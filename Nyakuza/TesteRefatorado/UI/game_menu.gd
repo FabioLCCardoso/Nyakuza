@@ -111,7 +111,7 @@ func show_main() -> void:
 	title.add_theme_font_size_override("font_size", 78)
 	subtitle.text = "UMA NOITE. QUATRO DISTRITOS. NENHUM RECUO."
 	_text("CIDADE NEON / ROTA DO ECLIPSE", 14, PINK)
-	_text("01 Letreiros → 02 Arcade → 03 Torii → 04 Oyabun", 17)
+	_text("01 Letreiros → 02 Arcade → 03 Torii → 04 Cookie", 17)
 	_text("Derrote as ondas, abra as passagens e enfrente o chefe.")
 	_button("INICIAR JOGO →", start_game, true).grab_focus()
 	_button("CONTROLES", func(): show_controls(show_main))
@@ -200,7 +200,7 @@ func show_result(won: bool, kos: int) -> void:
 	_clear()
 	title.text = "CIDADE LIBERADA" if won else "FIM DE PARTIDA"
 	subtitle.text = "ROTA DO ECLIPSE / %d KOs" % kos
-	_text("Oyabun caiu. A noite é sua." if won else "Spike caiu. Tente uma nova investida.")
+	_text("Cookie caiu. A noite é sua." if won else "Spike caiu. Tente uma nova investida.")
 	_button("JOGAR NOVAMENTE →", start_game, true).grab_focus()
 	_button("CONTROLES", func(): show_controls(func(): show_result(won, kos)))
 	_button("MENU PRINCIPAL", func(): _change_scene(MAIN))

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3]
-[ext_resource type="Script" path="res://TesteRefatorado/UI/game_menu.gd" id="1"]
-[node name="PauseMenu" type="CanvasLayer"]
+[gd_scene format=3 uid="uid://dq8fpy0ja1h4w"]
+
+[ext_resource type="Script" uid="uid://dmrw3k44gkjgk" path="res://TesteRefatorado/UI/game_menu.gd" id="1"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1983602528]
 process_mode = 3
 script = ExtResource("1")
 in_game = true

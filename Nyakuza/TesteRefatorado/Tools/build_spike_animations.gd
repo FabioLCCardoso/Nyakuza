@@ -8,7 +8,7 @@ func build() -> void:
  var skeleton := model.find_child("Skeleton3D", true, false) as Skeleton3D
  var hips := skeleton.get_bone_rest(skeleton.find_bone("mixamorig_Hips")).origin
  var library := AnimationLibrary.new()
- for name in ["Right_Hand_Sword_Slash", "Charged_Slash", "Attack", "Charged_Upward_Slash"]:
+ for name in ["Right_Hand_Sword_Slash", "Charged_Slash", "Attack", "Charged_Upward_Slash", "Skill_01"]:
   var clip := player.get_animation(name).duplicate(true) as Animation
   for t in clip.get_track_count():
    if clip.track_get_type(t) == Animation.TYPE_POSITION_3D and String(clip.track_get_path(t)).ends_with(":mixamorig_Hips"):

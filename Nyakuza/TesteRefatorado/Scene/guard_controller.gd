@@ -122,6 +122,8 @@ func _physics_process(delta):
 
 # ------------------------------------------------------------------ estados
 func start_guard() -> void:
+	var musou := player.get_node_or_null("MusouController") as MusouController
+	if musou != null and musou.activation_left > 0: return
 	if is_guarding:
 		return
 	# cancela combo de chao ou aereo

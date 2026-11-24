@@ -63,6 +63,8 @@ func _queue_attack(heavy: bool) -> void:
 	buffer_left = input_buffer_time
 
 func start_attack(heavy: bool = false):
+	var musou := player.get_node_or_null("MusouController") as MusouController
+	if musou != null and musou.activation_left > 0: return
 	attack_buffered = false
 	if not player.is_physics_processing() or skills_container.get_current_skill(heavy) == null:
 		return

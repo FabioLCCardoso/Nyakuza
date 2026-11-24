@@ -96,7 +96,7 @@ func _run() -> void:
 	coord.start_spacing = 0.0
 	var crowd: Array[Enemy] = []
 	for i in 6:
-		var e := spawn(director.fox_scene, Vector3(sin(float(i)), 0, cos(float(i))) * 1.2)
+		var e := spawn(load("res://TesteRefatorado/Enemy/Enemy.tscn"), Vector3(sin(float(i)), 0, cos(float(i))) * 1.2)
 		e._enter(Enemy.State.CHASE)
 		e.rotation.y = atan2(-e.position.x + player.position.x, -e.position.z + player.position.z)
 		crowd.append(e)
@@ -141,6 +141,7 @@ func _run() -> void:
 	r.pressed = false
 	Input.parse_input_event(r)
 	check(musou.active and musou.charge == 0.0, "Input real R ativa modo e consome carga")
+	await frames(75) # Ativacao Skill_01.
 	check(musou.try_sphere(), "Modo permite esfera")
 	var sphere := musou.field
 	if not is_instance_valid(sphere):

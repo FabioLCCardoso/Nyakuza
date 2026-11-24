@@ -146,7 +146,7 @@ func _update_capture() -> void:
 			var ray := PhysicsRayQueryParameters3D.create(global_position, destination, 1)
 			if not get_world_3d().direct_space_state.intersect_ray(ray).is_empty():
 				continue
-			var cost := slots[i].length_squared() * 4.0 + destination.distance_squared_to(enemy.global_position + Vector3.UP)
+			var cost := slots[i].length_squared() * 0.2 + destination.distance_squared_to(enemy.global_position + Vector3.UP)
 			if cost < score:
 				score = cost
 				best = i

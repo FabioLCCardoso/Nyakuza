@@ -41,6 +41,8 @@ var sphere_left: float = 0.0
 var explosion_left: float = 0.0
 var applied_health_bonus: float = 0.0
 var aura: Node3D
+var activation_left: float = 0.0
+var activation_player: AnimationPlayer
 
 func _ready() -> void:
 	player = get_parent() as Player
@@ -55,6 +57,9 @@ func _ready() -> void:
 	combat.player_died.connect(_on_death)
 
 func _physics_process(delta: float) -> void:
+	if activation_left > 0:
+		activation_left = maxf(0, activation_left - delta)
+		if activation_left <= 0: _finish_activation()
 	sphere_left = maxf(0, sphere_left - delta)
 	explosion_left = maxf(0, explosion_left - delta)
 	if active:
@@ -64,6 +69,7 @@ func _physics_process(delta: float) -> void:
 	# Input e roteado pelo Player, antes dos sinais de ataque normal.
 
 func handle_input(event: InputEvent) -> bool:
+	if activation_left > 0: return true
 	if event.is_echo(): return false
 	if event.is_action_pressed("musou"):
 		if not active: try_activate()
@@ -108,10 +114,12 @@ func try_activate() -> bool:
 	aura = preload("res://TesteRefatorado/VFX/musou_aura.gd").new()
 	player.add_child(aura)
 	charge_changed.emit(charge, max_charge)
+	_start_activation()
 	activated.emit()
 	return true
 
 func _can_special() -> bool:
+	if activation_left > 0: return _reject("AGUARDE A ATIVAÇÃO")
 	if combat.health.is_dead or not player.is_physics_processing() or get_tree().paused: return false
 	if not active: return _reject("ATIVE A MUSOU COM R PRIMEIRO")
 	return true
@@ -188,6 +196,7 @@ func _reject(reason: String) -> bool:
 	return false
 
 func end_mode() -> void:
+	if activation_left > 0: _finish_activation()
 	if not active: return
 	active = false
 	time_left = 0
@@ -206,3 +215,21 @@ func _on_death() -> void:
 	end_mode()
 	charge = 0
 	charge_changed.emit(charge, max_charge)
+
+func _start_activation() -> void:
+	activation_player = skills.anim_tree.get_node(skills.anim_tree.anim_player) as AnimationPlayer
+	if activation_player == null or not activation_player.has_animation("Spike/Skill_01"): return
+	activation_left = activation_player.get_animation("Spike/Skill_01").length
+	skills.anim_tree.active = false
+	player.is_attacking = true
+	player.velocity = Vector3.ZERO
+	player.movement_controller.velocity = Vector3.ZERO
+	activation_player.speed_scale = 1
+	activation_player.play("Spike/Skill_01", .08)
+
+func _finish_activation() -> void:
+	activation_left = 0
+	if is_instance_valid(activation_player): activation_player.stop()
+	skills.anim_tree.active = true
+	player.is_attacking = false
+	if not combat.health.is_dead: player.refresh_movement_input()

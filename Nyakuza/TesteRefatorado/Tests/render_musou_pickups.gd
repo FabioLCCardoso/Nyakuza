@@ -43,6 +43,7 @@ func run() -> void:
 	await frames(40)
 	mode.add_charge(100)
 	mode.try_activate()
+	await frames(75) # Skill_01 termina antes do especial.
 	mode.try_explosion()
 	await frames(6)
 	await shot("Nyakuza_Explosao")

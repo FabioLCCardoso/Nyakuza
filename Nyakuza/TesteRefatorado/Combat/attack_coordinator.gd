@@ -5,6 +5,9 @@ class_name AttackCoordinator
 @export_range(1, 8) var max_area_attackers: int = 1
 @export_range(0.0, 1.0) var start_spacing: float = 0.18
 @export var enabled: bool = true
+@export_range(1, 8) var max_shooters: int = 2
+var shooters: Dictionary = {}
+var shot_spacing_left: float = 0.0
 var holders: Dictionary = {}
 var waiting: Array[WeakRef] = []
 var spacing_left: float = 0.0
@@ -18,6 +21,11 @@ func _exit_tree() -> void:
 		Performance.remove_custom_monitor("Nyakuza/Attacking")
 
 func _physics_process(delta: float) -> void:
+	shot_spacing_left = maxf(0, shot_spacing_left - delta)
+	for id in shooters.keys():
+		var shooter := shooters[id].get_ref() as Enemy
+		if shooter == null or not shooter.is_inside_tree() or shooter.is_musou_captured() or not shooter.state in [Enemy.State.ATTACK_WINDUP, Enemy.State.ATTACK_ACTIVE]:
+			shooters.erase(id)
 	spacing_left = maxf(spacing_left - delta, 0.0)
 	for id in holders.keys():
 		var enemy: Enemy = holders[id].get_ref() as Enemy
@@ -75,7 +83,19 @@ func request_attack(enemy: Enemy) -> bool:
 	return false
 
 func release(enemy: Enemy) -> void:
+	release_shot(enemy)
 	holders.erase(enemy.get_instance_id())
 	for i in range(waiting.size() - 1, -1, -1):
 		if waiting[i].get_ref() == null or waiting[i].get_ref() == enemy:
 			waiting.remove_at(i)
+
+func request_shot(enemy: Enemy) -> bool:
+	if not _eligible(enemy) or enemy.is_musou_captured(): return false
+	if shooters.has(enemy.get_instance_id()): return true
+	if shooters.size() >= max_shooters or shot_spacing_left > 0: return false
+	shooters[enemy.get_instance_id()] = weakref(enemy)
+	shot_spacing_left = .35
+	return true
+
+func release_shot(enemy: Enemy) -> void:
+	shooters.erase(enemy.get_instance_id())

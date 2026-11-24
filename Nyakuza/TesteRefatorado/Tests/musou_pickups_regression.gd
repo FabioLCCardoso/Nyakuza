@@ -76,6 +76,7 @@ func run() -> void:
 	check(not mode.try_activate() and health.max_health == 150, "Nao acumula bonus reativando")
 	mode.add_charge(100)
 	check(mode.charge == 0, "Modo ativo nao recarrega barra")
+	await frames(75) # Skill_01 termina antes do especial.
 	mouse(MOUSE_BUTTON_LEFT, true)
 	await frames(2)
 	mouse(MOUSE_BUTTON_LEFT, false)

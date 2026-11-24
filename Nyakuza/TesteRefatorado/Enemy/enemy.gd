@@ -459,16 +459,20 @@ func _deliver_hit(hurt : CombatHurtBox) -> void:
 	hit.direction = flat.normalized() if flat.length_squared() > 0.0001 else Vector3.FORWARD
 	hurt.receive_hit(hit)
 
+func incoming_damage(hit: HitData) -> float:
+	return hit.damage
+
 func _on_hit_received(hit : HitData) -> void:
 	if state == State.DEAD:
 		return
 	last_attacker = hit.attacker
 	var hp_before := health.current_health
-	health.take_damage(hit.damage)
+	var damage := incoming_damage(hit)
+	health.take_damage(damage)
 	if health.current_health < hp_before:
 		CombatVFX.get_manager(get_tree()).blood_hit(self, global_position + Vector3.UP * bar_height * .48, hit.direction, hit.is_heavy)
 	if hit.show_damage_popup:
-		DamagePopup.spawn(get_tree(), global_position + Vector3(0.0, 2.2, 0.0), str(int(hit.damage)))
+		DamagePopup.spawn(get_tree(), global_position + Vector3(0.0, 2.2, 0.0), str(int(damage)))
 	_flash(Color(1.0, 1.0, 1.0, 0.9), 0.15)
 	_update_health_bar()
 

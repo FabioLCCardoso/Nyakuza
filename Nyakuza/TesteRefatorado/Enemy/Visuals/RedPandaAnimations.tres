@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" format=3]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://cfa35tc88br32"]
 
 [sub_resource type="Animation" id="Animation_61yua"]
 resource_name = "Charged_Slash"
