@@ -110,6 +110,7 @@ func _process_attack_active() -> void:
 		bullet.shooter = self; bullet.damage = attack_damage; bullet.speed = bullet_speed
 		get_parent().add_child(bullet)
 		bullet.global_position = weapon.get_node("Muzzle").global_position
+		GameplaySFX.play_at(bullet, "shot")
 		bullet.direction = (aim_point-bullet.global_position).normalized()
 	if state_timer <= 0:
 		_enter(State.ATTACK_RECOVER, attack_recover)

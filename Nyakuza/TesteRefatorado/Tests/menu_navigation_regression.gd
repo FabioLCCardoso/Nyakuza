@@ -14,7 +14,13 @@ func frames(n: int) -> void:
 func press(menu: GameMenu, text: String) -> void:
 	for node in menu.content.get_children():
 		if node is Button and node.text == text:
-			node.pressed.emit()
+			node.grab_focus()
+			for down in [true, false]:
+				var cross := InputEventJoypadButton.new()
+				cross.button_index = JOY_BUTTON_A # Botão sul: Cross no DualShock/DualSense.
+				cross.pressed = down
+				Input.parse_input_event(cross)
+				Input.flush_buffered_events()
 			return
 	check(false, "Botao nao encontrado: " + text)
 func run() -> void:

@@ -152,7 +152,9 @@ func resume_game() -> void:
 	controls_visible = false
 	get_tree().paused = false
 	var player := get_tree().get_first_node_in_group("player") as Player
-	if player != null: player.refresh_movement_input()
+	if player != null:
+		player.ignore_menu_jump = Input.is_action_pressed("jump") or Input.is_action_just_pressed("jump")
+		player.refresh_movement_input()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func show_controls(back: Callable) -> void:
@@ -170,15 +172,15 @@ func show_controls(back: Callable) -> void:
 	grid.add_theme_constant_override("v_separation", 7)
 	content.add_child(grid)
 	for row in [
-		["WASD / Mouse", "Mover / olhar"],
-		["Espaço / Espaço no ar", "Pular / salto duplo"],
-		["Shift", "Correr"],
-		["Mouse esquerdo", "Ataque leve / combo"],
-		["Mouse direito", "Pesado / lançar / slam no ar"],
-		["Q", "Esquivar / seguir inimigo lançado"],
-		["F (segurar)", "Defender / defesa perfeita"],
-		["R", "Ativar Musou (barra cheia, 30s)"],
-		["R + Mouse esq. / dir.", "Esfera cortante / explosão"],
+		["WASD + Mouse  /  Analógicos E + D", "Mover / olhar"],
+		["Espaço / X (cruz)", "Pular / salto duplo"],
+		["Shift / L3", "Correr"],
+		["Mouse esquerdo / Quadrado", "Ataque leve / combo"],
+		["Mouse direito / Triângulo", "Pesado / lançar / slam no ar"],
+		["Q / Círculo", "Esquivar / seguir inimigo lançado"],
+		["F / L1 (segurar)", "Defender / defesa perfeita"],
+		["R / R1", "Ativar Musou (barra cheia, 30s)"],
+		["R + cliques / R1 + Quadrado ou Triângulo", "Esfera cortante / explosão"],
 		["Esc / Start", "Pausar / continuar"]]:
 		for i in 2:
 			var label := Label.new()
@@ -204,7 +206,7 @@ func show_result(won: bool, kos: int) -> void:
 
 func _input(event: InputEvent) -> void:
 	# B tambem e ui_cancel, mas durante o jogo precisa continuar sendo dash.
-	var pause_event: bool = (event is InputEventKey and event.is_action_pressed("ui_cancel")) or (event is InputEventJoypadButton and event.pressed and event.button_index == JOY_BUTTON_START) or (screen.visible and event.is_action_pressed("ui_cancel"))
+	var pause_event := event.is_action_pressed("pause_game") or (screen.visible and event.is_action_pressed("ui_cancel"))
 	if event.is_echo() or not pause_event: return
 	get_viewport().set_input_as_handled()
 	if screen.visible and controls_visible:

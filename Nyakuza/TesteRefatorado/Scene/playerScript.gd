@@ -13,8 +13,10 @@ signal set_movement_direction(_movement_direction : Vector3)
 
 @onready var movement_controller: MovementController = get_node_or_null("MovementController") as MovementController
 
+var ignore_menu_jump := false
 var air_jump_counter : int = 0
 var movement_direction : Vector3
+var previous_move_state := ""
 var is_attacking : bool = false
 
 func _input(event):
@@ -28,32 +30,32 @@ func _input(event):
 		pressed_primary_fire.emit()
 		
 		
-	if event.is_action("movement"):
-		refresh_movement_input()
-
-func refresh_movement_input() -> void:
-	movement_direction.x = Input.get_action_strength("left") - Input.get_action_strength("right")
-	movement_direction.z = Input.get_action_strength("forward") - Input.get_action_strength("back")
-	var state: String = "stand"
-	if is_movement_ongoing():
-		state = "sprint" if Input.is_action_pressed("sprint") else ("walk" if Input.is_action_pressed("walk") else "run")
-	set_movement_state.emit(movement_states[state])
-	set_movement_direction.emit(movement_direction)
+func refresh_movement_input(force_update: bool = true) -> void:
+	var stick := Input.get_vector("right", "left", "back", "forward")
+	var next := Vector3(stick.x, 0, stick.y)
+	var moving := next.length_squared() > 0
+	var state := "stand"
+	if moving: state = "sprint" if Input.is_action_pressed("sprint") else ("walk" if Input.is_action_pressed("walk") else "run")
+	if force_update or (not is_attacking and state != previous_move_state):
+		set_movement_state.emit(movement_states[state])
+		previous_move_state = state
+	if force_update or moving or next != movement_direction:
+		set_movement_direction.emit(next)
+	movement_direction = next
 
 func _ready():
+	ignore_menu_jump = Input.is_action_pressed("jump") or Input.is_action_just_pressed("jump")
 	set_movement_state.emit(movement_states["stand"])
 
 func _physics_process(delta):
-	if is_movement_ongoing(): 
-		set_movement_direction.emit(movement_direction)
-		
+	refresh_movement_input(false)
 	if is_on_floor():
 		air_jump_counter = 0
 	elif air_jump_counter == 0: 
 		air_jump_counter = 1
 		
 	if air_jump_counter <= max_air_jump and not is_attacking and (movement_controller == null or not movement_controller.is_dashing()):
-		if Input.is_action_just_pressed("jump"):
+		if not ignore_menu_jump and Input.is_action_just_pressed("jump"):
 			var jump_name = "ground_jump"
 			
 			if air_jump_counter > 0: 
@@ -61,6 +63,9 @@ func _physics_process(delta):
 				
 			pressed_jump.emit(jump_states[jump_name])
 			air_jump_counter += 1
+
+	if not Input.is_action_pressed("jump") and not Input.is_action_just_pressed("jump"):
+		ignore_menu_jump = false
 
 func is_movement_ongoing() -> bool: 
 	return abs(movement_direction.x) > 0 or abs(movement_direction.z) > 0

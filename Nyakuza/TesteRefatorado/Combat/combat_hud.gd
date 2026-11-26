@@ -214,7 +214,7 @@ func _build_ui() -> void:
 
 	# Dicas de teclas (discretas)
 	var hint := Label.new()
-	hint.text = "LMB Leve | RMB Pesado (lanca / slam) | F Guarda | Q Dash | R Musou\nWASD Mover | Espaco Pular | F5 Reiniciar | Esc Pausa/Cursor"
+	hint.text = "LMB / Quadrado: leve  |  RMB / Triângulo: pesado  |  Q / Círculo: dash\nF / L1: guarda  |  R / R1: Musou  |  Esc / Options: pausa"
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.modulate = Color(1, 1, 1, 0.45)
 	hint.anchor_left = 1.0
@@ -365,8 +365,8 @@ func _update_musou(current: float, maximum: float) -> void:
 	if musou.active:
 		musou_bar.max_value = musou.mode_duration
 		musou_bar.value = musou.time_left
-		musou_label.text = "MUSOU %.1fs | R + LMB: esfera %.1fs | R + RMB: explosão %.1fs" % [musou.time_left, musou.sphere_left, musou.explosion_left]
+		musou_label.text = "MUSOU %.1fs | Esfera %.1fs | Explosão %.1fs" % [musou.time_left, musou.sphere_left, musou.explosion_left]
 	elif current >= maximum:
-		musou_label.text = "R — MUSOU PRONTA"
+		musou_label.text = "R / R1 — MUSOU PRONTA"
 	else:
 		musou_label.text = "MUSOU %d / %d — acerte / perfect guard" % [int(current), int(maximum)]

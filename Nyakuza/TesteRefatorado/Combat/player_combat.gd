@@ -87,6 +87,7 @@ func _on_hit_received(hit : HitData) -> void:
 	var hp_before := health.current_health
 	health.take_damage(hit.damage)
 	if health.current_health < hp_before:
+		if hit.attacker is Enemy and not hit.attacker is FoxRanged: GameplaySFX.play_at(player, "hit")
 		CombatVFX.get_manager(get_tree()).blood_hit(player,player.global_position+Vector3.UP*1.2,hit.direction,hit.is_heavy)
 	invuln_left = invulnerability_time
 	player.velocity += hit.direction * hit.knockback * hurt_knockback_scale

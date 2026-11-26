@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://TesteRefatorado/Audio/gameplay_sfx.gd" id="script"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/step1.wav" id="step0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/step2.wav" id="step1"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/step3.wav" id="step2"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/run1.wav" id="run0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/run2.wav" id="run1"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/run3.wav" id="run2"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/KatanaSWISH/swish-1.wav" id="swish0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/KatanaSWISH/swish-2.wav" id="swish1"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/KatanaSWISH/swish-3.wav" id="swish2"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/KatanaSWISH/swish-7.wav" id="heavy0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/hit1.wav" id="hit0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/OneShots/shot1.wav" id="shot0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/Cure/Cure1.wav" id="cure0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/Crate/sfxmint-impact-crate-break-09.wav" id="crate0"]
+[ext_resource type="AudioStream" path="res://TesteRefatorado/Audio/SFX/KatanaOnHit/KatanaMUSOU1.mp3" id="musou0"]
+
+[sub_resource type="AudioStreamRandomizer" id="step"]
+streams_count = 3
+stream_0/stream = ExtResource("step0")
+stream_1/stream = ExtResource("step1")
+stream_2/stream = ExtResource("step2")
+
+[sub_resource type="AudioStreamRandomizer" id="run"]
+streams_count = 3
+stream_0/stream = ExtResource("run0")
+stream_1/stream = ExtResource("run1")
+stream_2/stream = ExtResource("run2")
+
+[sub_resource type="AudioStreamRandomizer" id="swish"]
+streams_count = 3
+stream_0/stream = ExtResource("swish0")
+stream_1/stream = ExtResource("swish1")
+stream_2/stream = ExtResource("swish2")
+
+[node name="GameplaySFX" type="Node"]
+script = ExtResource("script")
+clips = Dictionary[String, AudioStream]({"step": SubResource("step"), "run": SubResource("run"), "swish": SubResource("swish"), "heavy": ExtResource("heavy0"), "hit": ExtResource("hit0"), "shot": ExtResource("shot0"), "cure": ExtResource("cure0"), "crate": ExtResource("crate0"), "musou": ExtResource("musou0")})
+gain_db = Dictionary[String, float]({"step":-15.0,"run":-14.0,"swish":-10.0,"heavy":-8.0,"hit":-8.0,"shot":-8.0,"cure":-7.0,"crate":-9.0,"musou":-11.0})

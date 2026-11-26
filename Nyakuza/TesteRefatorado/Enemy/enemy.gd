@@ -306,6 +306,8 @@ func _enter(new_state : State, duration : float = 0.0) -> void:
 	match new_state:
 		State.ATTACK_ACTIVE:
 			attack_hit_done = false
+			if weapon != null and not self is FoxRanged and not (self is CookieBoss and (self as CookieBoss).radial_skill):
+				GameplaySFX.play_at(self, "heavy" if ground_strike else "swish")
 			attack_box.set_deferred("monitoring", true)
 			_flash(Color(1.0, 0.3, 0.1, 0.55), 0.2)
 
@@ -481,6 +483,7 @@ func _on_hit_received(hit : HitData) -> void:
 	var damage := incoming_damage(hit)
 	health.take_damage(damage)
 	if health.current_health < hp_before:
+		if hit.grants_musou: GameplaySFX.play_at(self, "hit")
 		CombatVFX.get_manager(get_tree()).blood_hit(self, global_position + Vector3.UP * bar_height * .48, hit.direction, hit.is_heavy)
 	if hit.show_damage_popup:
 		DamagePopup.spawn(get_tree(), global_position + Vector3(0.0, 2.2, 0.0), str(int(damage)))

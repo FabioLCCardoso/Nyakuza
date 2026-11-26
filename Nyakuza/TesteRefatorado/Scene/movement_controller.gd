@@ -37,8 +37,8 @@ func _physics_process(delta):
 		mesh_root.rotation.y = lerp_angle(mesh_root.rotation.y, forced_rotation, rotation_speed * delta)
 		return
 	
-	velocity.x = speed * direction.normalized().x
-	velocity.z = speed * direction.normalized().z
+	velocity.x = speed * direction.limit_length(1.0).x
+	velocity.z = speed * direction.limit_length(1.0).z
 	
 	if evading and not is_dashing():
 		evading = false
@@ -66,6 +66,7 @@ func _physics_process(delta):
 	player.velocity = player.velocity.lerp(velocity, clampf(acceleration * delta, 0.0, 1.0))
 	player.velocity.y = velocity.y
 	player.move_and_slide()
+	_tick_steps(delta)
 	
 	var target_rotation = atan2(direction.x, direction.z) - player.rotation.y
 	mesh_root.rotation.y = lerp_angle(mesh_root.rotation.y, target_rotation, rotation_speed * delta)
@@ -154,3 +155,15 @@ func force_rotate_mesh():
 	
 	tween = create_tween()
 	tween.tween_property(mesh_root, "rotation", target_rotation, 0.1)
+
+var step_distance := 0.0
+func _tick_steps(delta: float) -> void:
+	if not player.is_on_floor() or player.is_attacking or is_dashing() or not (player as Player).is_movement_ongoing():
+		step_distance = 0.0
+		return
+	var real_speed := Vector2(player.get_real_velocity().x, player.get_real_velocity().z).length()
+	var running := Input.is_action_pressed("sprint")
+	step_distance += real_speed * delta
+	if step_distance >= (1.9 if running else 1.55):
+		step_distance = 0.0
+		GameplaySFX.play_at(player, "run" if running else "step")

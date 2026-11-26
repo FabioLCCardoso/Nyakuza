@@ -59,6 +59,7 @@ func _receive_hit(hit: HitData) -> void:
 	health = maxf(0, health - hit.damage)
 	if health > 0: return
 	destroyed = true
+	GameplaySFX.play_at(self, "crate")
 	hurt_box.can_receive_hits = false
 	set_deferred("collision_layer", 0)
 	broken.emit()

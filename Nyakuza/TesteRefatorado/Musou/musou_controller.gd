@@ -153,6 +153,7 @@ func try_sphere() -> bool:
 	player.get_parent().add_child(field)
 	field.global_position = center
 	sphere_left = maxf(sphere_cooldown, 0.1)
+	GameplaySFX.play_at(field, "musou")
 	return true
 
 func try_explosion() -> bool:

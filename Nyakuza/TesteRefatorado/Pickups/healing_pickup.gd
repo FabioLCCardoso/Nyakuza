@@ -60,6 +60,7 @@ func try_collect(player: Player) -> bool:
 	consumed = true
 	var before := health.current_health
 	health.heal(heal_amount)
+	GameplaySFX.play_at(player, "cure")
 	collected.emit(player, health.current_health - before)
 	DamagePopup.spawn(get_tree(), player.global_position + Vector3.UP * 2, "+%d HP" % roundi(health.current_health - before), Color(0.2, 1, 0.5))
 	queue_free()

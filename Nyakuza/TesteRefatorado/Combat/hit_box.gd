@@ -80,6 +80,7 @@ func activate(skill : ActiveSkill) -> void:
 		if token != activation_token:
 			return   # o golpe acabou/foi cancelado antes da hitbox ligar
 	set_deferred("monitoring", true)
+	GameplaySFX.play_at(self, "heavy" if skill.is_heavy else "swish")
 	if reach_area != null:
 		reach_area.set_deferred("monitoring", true)
 

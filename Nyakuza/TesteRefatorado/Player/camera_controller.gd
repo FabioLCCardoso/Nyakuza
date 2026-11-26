@@ -14,6 +14,9 @@ signal set_cam_rotation(_cam_rotation: float)
 @export var framing_speed: float = 8.0
 @export var air_fov: float = 76.0
 @export var slam_hold_time: float = 0.45
+@export_category("Controle")
+@export_range(20, 360, 5) var stick_yaw_speed := 165.0
+@export_range(20, 240, 5) var stick_pitch_speed := 105.0
 @export_category("Mouse")
 @export var yaw_sensitivity: float = 0.07
 @export var pitch_sensitivity: float = 0.07
@@ -46,7 +49,7 @@ func _ready() -> void:
 	spring_arm.add_excluded_object(player.get_rid())
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if event is InputEventKey and event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseButton and event.pressed and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -80,6 +83,11 @@ func end_air(immediate: bool = false) -> void:
 		slam_left = slam_hold_time
 
 func _physics_process(delta: float) -> void:
+	var look := Input.get_vector("look_left", "look_right", "look_up", "look_down")
+	if look != Vector2.ZERO:
+		yaw -= look.x * stick_yaw_speed * delta
+		pitch -= look.y * stick_pitch_speed * delta
+		input_grace = 0.8
 	input_grace = maxf(input_grace - delta, 0.0)
 	if not in_air and slam_left > 0.0:
 		slam_left = maxf(slam_left - delta, 0.0)
